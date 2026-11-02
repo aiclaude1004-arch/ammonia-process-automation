@@ -1,0 +1,30 @@
+{
+  "case_name": "ammonia_hybrid_power",
+  "aspen": {
+    "progid": "Apwn.Document.40.0",
+    "model_path": "models/ammonia_hybrid_baseline.bkp"
+  },
+  "decision_variables": {
+    "cracker_temperature_c": [500.0, 850.0],
+    "cracker_pressure_bar": [1.1, 20.0],
+    "cracker_conversion": [0.75, 0.995],
+    "sofc_fuel_utilization": [0.55, 0.90],
+    "engine_h2_split": [0.0, 1.0],
+    "engine_excess_air_ratio": [1.05, 2.20],
+    "orc_evaporator_approach_c": [8.0, 30.0],
+    "nox_reduction": [0.70, 0.99]
+  },
+  "constraints": {
+    "min_net_power_kw": 1.0,
+    "max_nox_mg_per_nm3": 100.0,
+    "max_energy_balance_relative_error": 0.02,
+    "max_element_balance_relative_error": 0.001,
+    "min_temperature_approach_c": 5.0,
+    "min_pressure_bar": 1.0
+  },
+  "objective": {
+    "kind": "maximize_net_power_per_nh3",
+    "nox_penalty_per_mg_nm3": 0.002,
+    "unmet_power_penalty_per_kw": 1000.0
+  }
+}

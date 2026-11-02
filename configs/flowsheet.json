@@ -1,0 +1,2271 @@
+{
+  "flowsheet_name": "marine_alt_fuel_hybrid_power_bfd",
+  "schema_version": "1.0.0",
+  "description": "Block flow diagram of the superstructure: the union of every unit and every stream that appears in any enumerated case. A case is a path through this one graph, not a diagram of its own. Coordinates are hand-placed on purpose - the layout is a fixed map, and only the ink changes as options are pinned.",
+  "canvas": {
+    "width": 1460,
+    "height": 880,
+    "block_width": 126,
+    "block_height": 48
+  },
+  "stream_types": {
+    "feed": {
+      "label": "Carrier / fuel",
+      "token": "feed"
+    },
+    "h2": {
+      "label": "Hydrogen-rich gas",
+      "token": "hydro"
+    },
+    "heat": {
+      "label": "Heat",
+      "token": "heat"
+    },
+    "exhaust": {
+      "label": "Exhaust",
+      "token": "exhaust"
+    },
+    "power": {
+      "label": "Electrical power",
+      "token": "elec"
+    },
+    "air": {
+      "label": "Air / oxidant",
+      "token": "teal"
+    },
+    "water": {
+      "label": "Water / steam",
+      "token": "water"
+    }
+  },
+  "blocks": [
+    {
+      "id": "TANK",
+      "x": 30,
+      "y": 298,
+      "label": "Fuel storage",
+      "label_ko": "연료 탱크",
+      "dynamic_label": {
+        "S1": {
+          "NH3": "NH3 tank",
+          "MEOH": "Methanol tank",
+          "LOHC": "LOHC tank",
+          "LH2": "LH2 tank",
+          "GLY": "Glycerol tank"
+        }
+      }
+    },
+    {
+      "id": "WATER",
+      "x": 30,
+      "y": 551,
+      "label": "Reformer process water",
+      "label_ko": "개질용수",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "rationale": "Process water for methanol and glycerol reforming only. Steam cycle and electrolyser water come from the separate make-up block.",
+      "kind": "boundary"
+    },
+    {
+      "id": "FEEDSYS",
+      "x": 201,
+      "y": 298,
+      "label": "Pump & vaporiser",
+      "label_ko": "펌프 · 기화기"
+    },
+    {
+      "id": "STEAMGEN",
+      "x": 201,
+      "y": 551,
+      "label": "Steam generator",
+      "label_ko": "스팀 발생기",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "id": "FIREDHTR",
+      "x": 372,
+      "y": 34,
+      "label": "Fired heater",
+      "label_ko": "직화 히터",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ]
+      }
+    },
+    {
+      "id": "ANODEBURN",
+      "x": 372,
+      "y": 122,
+      "label": "Anode off-gas burner",
+      "label_ko": "Anode off-gas 연소기",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "rationale": "The reformer needs 15-20 percent of feed LHV, and at 60-80 percent fuel utilisation a fifth to two fifths of the hydrogen leaves the anode unburned. Burning it supplies that duty. It is structurally distinct from taking stack exhaust heat: combustion reaches a higher temperature and decouples the reformer from the stack temperature."
+    },
+    {
+      "id": "REFHX",
+      "x": 372,
+      "y": 210,
+      "label": "Reformer exchanger",
+      "label_ko": "개질 열교환기",
+      "active_when": {
+        "S5": [
+          "SOFCEXH"
+        ]
+      }
+    },
+    {
+      "id": "REFORMER",
+      "x": 372,
+      "y": 298,
+      "label": "Reformer / cracker",
+      "label_ko": "개질기 · 크래커",
+      "active_when": {
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "dynamic_label": {
+        "S1": {
+          "NH3": "NH3 cracker",
+          "MEOH": "MeOH reformer",
+          "LOHC": "Dehydrogenator",
+          "GLY": "Glycerol SR"
+        }
+      }
+    },
+    {
+      "id": "WGS",
+      "x": 372,
+      "y": 403,
+      "label": "Water-gas shift",
+      "label_ko": "수성가스 전환",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "FULL"
+        ]
+      }
+    },
+    {
+      "id": "COND",
+      "x": 372,
+      "y": 490,
+      "label": "Reformate KO drum",
+      "label_ko": "개질가스 기액분리",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "rationale": "Not the cycle condenser. This knocks steam out of methanol or glycerol reformate so a purifier or a low temperature cell can take the gas: a different stream, pressure and purpose."
+    },
+    {
+      "id": "BLOWER",
+      "x": 545,
+      "y": 122,
+      "label": "Air blower",
+      "label_ko": "공기 블로워",
+      "rationale": "Air for the cathode, the engine and the burners. The anode recycle blower is a different machine and lives in the recirculation block."
+    },
+    {
+      "id": "PSA",
+      "x": 545,
+      "y": 403,
+      "label": "PSA",
+      "label_ko": "PSA",
+      "active_when": {
+        "S3": [
+          "PSA"
+        ]
+      }
+    },
+    {
+      "id": "MEMB",
+      "x": 545,
+      "y": 490,
+      "label": "Membrane",
+      "label_ko": "막분리",
+      "active_when": {
+        "S3": [
+          "MEMB"
+        ]
+      }
+    },
+    {
+      "id": "REAGENT",
+      "x": 545,
+      "y": 637,
+      "label": "Reagent tank",
+      "label_ko": "환원제 탱크",
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ],
+        "S1": [
+          "MEOH",
+          "GLY",
+          "LOHC",
+          "LH2"
+        ]
+      },
+      "rationale": "An ammonia-fuelled ship already carries the SCR reagent in its fuel tank, so a second tank is duplicate equipment. Only a non-ammonia feed needs urea or aqueous ammonia bunkered separately."
+    },
+    {
+      "id": "SOFC",
+      "x": 718,
+      "y": 210,
+      "label": "SOFC",
+      "label_ko": "고체산화물 연료전지",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "id": "HTPEM",
+      "x": 718,
+      "y": 298,
+      "label": "HT-PEM",
+      "label_ko": "고온 PEM",
+      "active_when": {
+        "S4": [
+          "HTPEM"
+        ]
+      }
+    },
+    {
+      "id": "PEMFC",
+      "x": 718,
+      "y": 386,
+      "label": "LT-PEM",
+      "label_ko": "저온 PEM",
+      "active_when": {
+        "S4": [
+          "PEMFC"
+        ]
+      }
+    },
+    {
+      "id": "ENGINE",
+      "x": 718,
+      "y": 512,
+      "label": "Dual fuel engine",
+      "label_ko": "이중연료 엔진",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "id": "HRSG",
+      "x": 908,
+      "y": 122,
+      "label": "HRSG",
+      "label_ko": "배열 회수 보일러",
+      "active_when": {
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      }
+    },
+    {
+      "id": "ORC",
+      "x": 908,
+      "y": 298,
+      "label": "ORC",
+      "label_ko": "유기 랭킨 사이클",
+      "active_when": {
+        "S6": [
+          "ORC",
+          "CASC"
+        ]
+      }
+    },
+    {
+      "id": "KALINA",
+      "x": 908,
+      "y": 386,
+      "label": "Kalina cycle",
+      "label_ko": "칼리나 사이클",
+      "active_when": {
+        "S6": [
+          "KAL"
+        ]
+      }
+    },
+    {
+      "id": "SCR",
+      "x": 908,
+      "y": 512,
+      "label": "SCR",
+      "label_ko": "선택적 촉매 환원",
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "rationale": "IMO Tier III inside an emission control area cannot be met by an ammonia or hydrogen engine without aftertreatment."
+    },
+    {
+      "id": "ASC",
+      "x": 908,
+      "y": 600,
+      "label": "Slip catalyst",
+      "label_ko": "암모니아 슬립 촉매",
+      "active_when": {
+        "S7": [
+          "SCR_ASC"
+        ]
+      },
+      "rationale": "Redundant while ammonia is dosed at or below one mole per mole of NOx. It earns its place because `nh3_to_nox_ratio` runs to 1.20: over-dosing buys deNOx conversion and needs a slip catalyst to stay under 10 ppm."
+    },
+    {
+      "id": "NORR",
+      "x": 908,
+      "y": 688,
+      "label": "NORR cell",
+      "label_ko": "NORR 전해셀",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      }
+    },
+    {
+      "id": "STEAMTURB",
+      "x": 1088,
+      "y": 122,
+      "label": "Steam turbine",
+      "label_ko": "증기 터빈",
+      "active_when": {
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      }
+    },
+    {
+      "id": "SWCOND",
+      "x": 1088,
+      "y": 298,
+      "label": "Condenser",
+      "label_ko": "응축기",
+      "active_when": {
+        "S6": [
+          "ORC",
+          "SRC",
+          "KAL",
+          "CASC"
+        ]
+      },
+      "rationale": "Seawater is the coolant utility, not the identity of the unit. Naming the block after the coolant hid that this is simply the cycle condenser."
+    },
+    {
+      "id": "STACK",
+      "x": 1088,
+      "y": 600,
+      "label": "Funnel",
+      "label_ko": "연돌"
+    },
+    {
+      "id": "POWER",
+      "x": 1268,
+      "y": 298,
+      "label": "Net power boundary",
+      "label_ko": "순출력 경계",
+      "rationale": "Not a generator. Gross output from the stack, engine and turbines minus every parasitic load - pumps, compressors, blowers, EHC, NORR, recovery.",
+      "kind": "boundary"
+    },
+    {
+      "id": "ANODEREC",
+      "x": 545,
+      "y": 210,
+      "label": "Anode recycle",
+      "label_ko": "Anode 재순환",
+      "rationale": "Returns unconverted hydrogen from the anode instead of letting it leave on a single pass. Whether that helps an ammonia stack is disputed: the recycle saves fuel but the blower or compressor draws parasitic power, and published results differ on which wins.",
+      "active_when": {
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ]
+      },
+      "dynamic_label": {
+        "S10": {
+          "BLOWER": "Recycle blower",
+          "EHC": "Electrochem. compressor"
+        }
+      }
+    },
+    {
+      "id": "AIR",
+      "x": 545,
+      "y": 34,
+      "kind": "boundary",
+      "label": "Ambient air",
+      "label_ko": "대기 공기",
+      "active_when": {},
+      "rationale": "Where combustion and cathode air enters. Without it the blower appears to make oxygen."
+    },
+    {
+      "id": "AOG_SPLITTER",
+      "x": 718,
+      "y": 122,
+      "label": "Anode off-gas split",
+      "label_ko": "Anode off-gas 분배",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "rationale": "One anode outlet with several destinations - engine in the series hybrid, burner, recycle, purge. The fractions must sum to one, so the split is a unit rather than separate arrows from the stack that could each claim the whole flow."
+    },
+    {
+      "id": "LOHC_SEP",
+      "x": 545,
+      "y": 298,
+      "label": "Carrier separator",
+      "label_ko": "탈수소 기액분리",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ]
+      },
+      "dynamic_label": {
+        "LOHC_CARRIER": {
+          "MCH": "MCH / toluene KO",
+          "DBT": "H0-DBT KO"
+        }
+      },
+      "rationale": "Dehydrogenation returns hydrogen and spent carrier together. The carrier and its vapour are knocked out before the hydrogen goes on, and the carrier is kept for return ashore rather than counted as fuel."
+    },
+    {
+      "id": "CARRIER",
+      "x": 30,
+      "y": 420,
+      "kind": "boundary",
+      "label": "Spent carrier tank",
+      "label_ko": "캐리어 회수 탱크",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ]
+      },
+      "dynamic_label": {
+        "LOHC_CARRIER": {
+          "MCH": "Toluene tank",
+          "DBT": "H0-DBT tank"
+        }
+      },
+      "rationale": "Closes the carbon balance of the carrier: everything that came aboard as MCH or H18-DBT leaves as toluene or H0-DBT, or as an explicit loss."
+    },
+    {
+      "id": "PILOT",
+      "x": 372,
+      "y": 600,
+      "kind": "boundary",
+      "label": "Pilot fuel",
+      "label_ko": "파일럿 연료",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "rationale": "A compression ignition ammonia engine needs a pilot fuel to ignite. It is a carbon source in the balance even when the main fuel carries no carbon."
+    },
+    {
+      "id": "NORR_PRE",
+      "x": 718,
+      "y": 688,
+      "label": "NOx capture",
+      "label_ko": "NOx 흡수·전처리",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "rationale": "An electrolyser cannot take engine exhaust directly. NO is captured and concentrated first; the lean exhaust leaves separately."
+    },
+    {
+      "id": "NH3REC",
+      "x": 908,
+      "y": 776,
+      "label": "NH3 recovery",
+      "label_ko": "NH3 회수·정제",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "rationale": "The cell makes ammonia in electrolyte, not tank-grade ammonia. It is stripped, dried and brought to tank pressure before it is fuel again."
+    },
+    {
+      "id": "MAKEUP",
+      "x": 908,
+      "y": 34,
+      "kind": "boundary",
+      "label": "Demin make-up",
+      "label_ko": "탈염수 보급",
+      "active_when": {
+        "any_of": [
+          {
+            "S6": [
+              "SRC",
+              "CASC"
+            ]
+          },
+          {
+            "S7": [
+              "NORR"
+            ]
+          }
+        ]
+      },
+      "rationale": "Utility water for the steam cycle and the NOx electrolyser, kept apart from the reformer process water it used to share a block with."
+    },
+    {
+      "id": "DRAIN",
+      "x": 1088,
+      "y": 776,
+      "kind": "boundary",
+      "label": "Liquid discharge",
+      "label_ko": "배출수·블로다운",
+      "active_when": {
+        "any_of": [
+          {
+            "S1": [
+              "MEOH",
+              "GLY"
+            ],
+            "S2": [
+              "PARTIAL",
+              "FULL"
+            ]
+          },
+          {
+            "S6": [
+              "SRC",
+              "CASC"
+            ]
+          },
+          {
+            "S7": [
+              "NORR"
+            ]
+          }
+        ]
+      },
+      "rationale": "Condensate bleed, boiler blowdown and spent electrolyte leave here, so the liquid balance closes instead of every liquid being assumed reused."
+    }
+  ],
+  "streams": [
+    {
+      "from": "TANK",
+      "to": "FEEDSYS",
+      "type": "feed",
+      "sid": "E001"
+    },
+    {
+      "from": "FEEDSYS",
+      "to": "REFORMER",
+      "type": "feed",
+      "active_when": {
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "sid": "E002"
+    },
+    {
+      "from": "FEEDSYS",
+      "to": "SOFC",
+      "type": "feed",
+      "active_when": {
+        "S2": [
+          "NONE"
+        ],
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "sid": "E003"
+    },
+    {
+      "from": "FEEDSYS",
+      "to": "HTPEM",
+      "type": "feed",
+      "active_when": {
+        "S2": [
+          "NONE"
+        ],
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E004"
+    },
+    {
+      "from": "FEEDSYS",
+      "to": "PEMFC",
+      "type": "feed",
+      "active_when": {
+        "S2": [
+          "NONE"
+        ],
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E005"
+    },
+    {
+      "from": "FEEDSYS",
+      "to": "ENGINE",
+      "type": "feed",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ],
+        "S1": [
+          "NH3",
+          "MEOH",
+          "LH2"
+        ]
+      },
+      "sid": "E006",
+      "label": "engine fresh fuel (supplementary in the series hybrid)"
+    },
+    {
+      "from": "FEEDSYS",
+      "to": "FIREDHTR",
+      "type": "feed",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ]
+      },
+      "sid": "E007"
+    },
+    {
+      "from": "WATER",
+      "to": "STEAMGEN",
+      "type": "water",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "sid": "E008"
+    },
+    {
+      "from": "STEAMGEN",
+      "to": "REFORMER",
+      "type": "water",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "sid": "E009"
+    },
+    {
+      "from": "FIREDHTR",
+      "to": "REFORMER",
+      "type": "heat",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ]
+      },
+      "sid": "E010"
+    },
+    {
+      "from": "ANODEBURN",
+      "to": "REFORMER",
+      "type": "heat",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "sid": "E011"
+    },
+    {
+      "from": "REFHX",
+      "to": "REFORMER",
+      "type": "heat",
+      "active_when": {
+        "S5": [
+          "SOFCEXH"
+        ]
+      },
+      "sid": "E012"
+    },
+    {
+      "from": "SOFC",
+      "to": "REFHX",
+      "type": "heat",
+      "active_when": {
+        "S5": [
+          "SOFCEXH"
+        ]
+      },
+      "sid": "E013"
+    },
+    {
+      "from": "HTPEM",
+      "to": "ANODEBURN",
+      "type": "h2",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ],
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E015"
+    },
+    {
+      "from": "PEMFC",
+      "to": "ANODEBURN",
+      "type": "h2",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ],
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E016"
+    },
+    {
+      "from": "REFORMER",
+      "to": "WGS",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "FULL"
+        ]
+      },
+      "sid": "E017"
+    },
+    {
+      "from": "WGS",
+      "to": "COND",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "FULL"
+        ]
+      },
+      "sid": "E018"
+    },
+    {
+      "from": "REFORMER",
+      "to": "COND",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL"
+        ]
+      },
+      "sid": "E019"
+    },
+    {
+      "from": "REFORMER",
+      "to": "PSA",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S3": [
+          "PSA"
+        ]
+      },
+      "sid": "E020"
+    },
+    {
+      "from": "REFORMER",
+      "to": "MEMB",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S3": [
+          "MEMB"
+        ]
+      },
+      "sid": "E021"
+    },
+    {
+      "from": "COND",
+      "to": "PSA",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S3": [
+          "PSA"
+        ]
+      },
+      "sid": "E022"
+    },
+    {
+      "from": "COND",
+      "to": "MEMB",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S3": [
+          "MEMB"
+        ]
+      },
+      "sid": "E023"
+    },
+    {
+      "from": "PSA",
+      "to": "HTPEM",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "PSA"
+        ],
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E024"
+    },
+    {
+      "from": "PSA",
+      "to": "PEMFC",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "PSA"
+        ],
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E025"
+    },
+    {
+      "from": "MEMB",
+      "to": "HTPEM",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "MEMB"
+        ],
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E026"
+    },
+    {
+      "from": "MEMB",
+      "to": "PEMFC",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "MEMB"
+        ],
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E027"
+    },
+    {
+      "from": "REFORMER",
+      "to": "SOFC",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ],
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "sid": "E028"
+    },
+    {
+      "from": "REFORMER",
+      "to": "ENGINE",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ],
+        "S4": [
+          "ICE"
+        ],
+        "S3": [
+          "NONE"
+        ]
+      },
+      "sid": "E029"
+    },
+    {
+      "from": "COND",
+      "to": "SOFC",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ],
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "sid": "E030"
+    },
+    {
+      "from": "COND",
+      "to": "ENGINE",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ],
+        "S4": [
+          "ICE"
+        ],
+        "S3": [
+          "NONE"
+        ]
+      },
+      "sid": "E031"
+    },
+    {
+      "from": "BLOWER",
+      "to": "SOFC",
+      "type": "air",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "sid": "E032"
+    },
+    {
+      "from": "BLOWER",
+      "to": "HTPEM",
+      "type": "air",
+      "active_when": {
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E033"
+    },
+    {
+      "from": "BLOWER",
+      "to": "PEMFC",
+      "type": "air",
+      "active_when": {
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E034"
+    },
+    {
+      "from": "BLOWER",
+      "to": "ENGINE",
+      "type": "air",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "sid": "E035"
+    },
+    {
+      "from": "BLOWER",
+      "to": "FIREDHTR",
+      "type": "air",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ]
+      },
+      "sid": "E036"
+    },
+    {
+      "from": "BLOWER",
+      "to": "ANODEBURN",
+      "type": "air",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "sid": "E037"
+    },
+    {
+      "from": "SOFC",
+      "to": "HRSG",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S6": [
+          "SRC",
+          "CASC"
+        ],
+        "S5": [
+          "NONE",
+          "ANODEBURN",
+          "FUELBURN"
+        ]
+      },
+      "sid": "E038",
+      "label": "cathode exhaust heat"
+    },
+    {
+      "from": "SOFC",
+      "to": "ORC",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S6": [
+          "ORC"
+        ],
+        "S5": [
+          "NONE",
+          "ANODEBURN",
+          "FUELBURN"
+        ]
+      },
+      "sid": "E039",
+      "label": "cathode exhaust heat"
+    },
+    {
+      "from": "SOFC",
+      "to": "KALINA",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S6": [
+          "KAL"
+        ],
+        "S5": [
+          "NONE",
+          "ANODEBURN",
+          "FUELBURN"
+        ]
+      },
+      "sid": "E040",
+      "label": "cathode exhaust heat"
+    },
+    {
+      "from": "ENGINE",
+      "to": "HRSG",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ],
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      },
+      "sid": "E041"
+    },
+    {
+      "from": "ENGINE",
+      "to": "ORC",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ],
+        "S6": [
+          "ORC"
+        ]
+      },
+      "sid": "E042"
+    },
+    {
+      "from": "ENGINE",
+      "to": "KALINA",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ],
+        "S6": [
+          "KAL"
+        ]
+      },
+      "sid": "E043"
+    },
+    {
+      "from": "HTPEM",
+      "to": "ORC",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "HTPEM"
+        ],
+        "S6": [
+          "ORC"
+        ]
+      },
+      "sid": "E044",
+      "label": "low-grade stack heat (hold: needs a low-temperature ORC)"
+    },
+    {
+      "from": "PEMFC",
+      "to": "ORC",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "PEMFC"
+        ],
+        "S6": [
+          "ORC"
+        ]
+      },
+      "sid": "E045",
+      "label": "low-grade stack heat (hold: needs a low-temperature ORC)"
+    },
+    {
+      "from": "HRSG",
+      "to": "STEAMTURB",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      },
+      "sid": "E046"
+    },
+    {
+      "from": "STEAMTURB",
+      "to": "ORC",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "CASC"
+        ]
+      },
+      "sid": "E047",
+      "label": "exhaust steam, condensing in the ORC evaporator"
+    },
+    {
+      "from": "ORC",
+      "to": "SWCOND",
+      "type": "heat",
+      "active_when": {
+        "S6": [
+          "ORC",
+          "CASC"
+        ]
+      },
+      "sid": "E048"
+    },
+    {
+      "from": "KALINA",
+      "to": "SWCOND",
+      "type": "heat",
+      "active_when": {
+        "S6": [
+          "KAL"
+        ]
+      },
+      "sid": "E049"
+    },
+    {
+      "from": "STEAMTURB",
+      "to": "SWCOND",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "SRC"
+        ]
+      },
+      "sid": "E050",
+      "label": "exhaust steam"
+    },
+    {
+      "from": "ENGINE",
+      "to": "SCR",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "sid": "E051"
+    },
+    {
+      "from": "REAGENT",
+      "to": "SCR",
+      "type": "feed",
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ],
+        "S1": [
+          "MEOH",
+          "GLY",
+          "LOHC",
+          "LH2"
+        ]
+      },
+      "sid": "E053"
+    },
+    {
+      "from": "SCR",
+      "to": "ASC",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "SCR_ASC"
+        ]
+      },
+      "sid": "E054"
+    },
+    {
+      "from": "SCR",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "SCR"
+        ]
+      },
+      "sid": "E055"
+    },
+    {
+      "from": "ASC",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "SCR_ASC"
+        ]
+      },
+      "sid": "E056"
+    },
+    {
+      "from": "NORR",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "sid": "E057",
+      "label": "cell off-gas"
+    },
+    {
+      "from": "SOFC",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "sid": "E059",
+      "label": "cathode exhaust"
+    },
+    {
+      "from": "HTPEM",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E060"
+    },
+    {
+      "from": "PEMFC",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E061"
+    },
+    {
+      "from": "FIREDHTR",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ],
+        "S7": [
+          "NONE"
+        ]
+      },
+      "sid": "E062"
+    },
+    {
+      "from": "ANODEBURN",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ],
+        "S7": [
+          "NONE"
+        ]
+      },
+      "sid": "E063"
+    },
+    {
+      "sid": "E118",
+      "from": "FIREDHTR",
+      "to": "SCR",
+      "type": "exhaust",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ],
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "label": "fired heater flue gas to SCR"
+    },
+    {
+      "sid": "E119",
+      "from": "FIREDHTR",
+      "to": "NORR_PRE",
+      "type": "exhaust",
+      "active_when": {
+        "S5": [
+          "FUELBURN"
+        ],
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "fired heater flue gas to NOx capture"
+    },
+    {
+      "sid": "E120",
+      "from": "ANODEBURN",
+      "to": "SCR",
+      "type": "exhaust",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ],
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "label": "burner flue gas to SCR"
+    },
+    {
+      "sid": "E121",
+      "from": "ANODEBURN",
+      "to": "NORR_PRE",
+      "type": "exhaust",
+      "active_when": {
+        "S5": [
+          "ANODEBURN"
+        ],
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "burner flue gas to NOx capture"
+    },
+    {
+      "from": "SOFC",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "sid": "E064"
+    },
+    {
+      "from": "HTPEM",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "sid": "E065"
+    },
+    {
+      "from": "PEMFC",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S4": [
+          "PEMFC"
+        ]
+      },
+      "sid": "E066"
+    },
+    {
+      "from": "STEAMTURB",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      },
+      "sid": "E067"
+    },
+    {
+      "from": "ORC",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S6": [
+          "ORC",
+          "CASC"
+        ]
+      },
+      "sid": "E068"
+    },
+    {
+      "from": "KALINA",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S6": [
+          "KAL"
+        ]
+      },
+      "sid": "E069"
+    },
+    {
+      "from": "POWER",
+      "to": "NORR",
+      "type": "power",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "sid": "E070"
+    },
+    {
+      "from": "POWER",
+      "to": "PSA",
+      "type": "power",
+      "active_when": {
+        "S3": [
+          "PSA"
+        ]
+      },
+      "sid": "E071"
+    },
+    {
+      "from": "POWER",
+      "to": "BLOWER",
+      "type": "power",
+      "sid": "E072"
+    },
+    {
+      "from": "ENGINE",
+      "to": "POWER",
+      "type": "power",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "sid": "E073"
+    },
+    {
+      "from": "TANK",
+      "to": "SCR",
+      "type": "feed",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "note": "an ammonia ship doses SCR from its own fuel tank",
+      "sid": "E074"
+    },
+    {
+      "from": "COND",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "the carbon has to leave somewhere; it was vanishing from the diagram",
+      "sid": "E075",
+      "label": "separator vent (with dissolved gas)"
+    },
+    {
+      "from": "COND",
+      "to": "STEAMGEN",
+      "type": "water",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "knocked-out condensate returns to the steam generator",
+      "sid": "E076"
+    },
+    {
+      "from": "ANODEREC",
+      "to": "REFORMER",
+      "type": "h2",
+      "active_when": {
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "returned to the reformer inlet, which also suppresses carbon deposition",
+      "sid": "E078"
+    },
+    {
+      "from": "ANODEREC",
+      "to": "SOFC",
+      "type": "h2",
+      "active_when": {
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ],
+        "S2": [
+          "NONE"
+        ]
+      },
+      "note": "returned straight to the anode when there is no reformer",
+      "sid": "E079"
+    },
+    {
+      "from": "POWER",
+      "to": "ANODEREC",
+      "type": "power",
+      "active_when": {
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ]
+      },
+      "note": "the parasitic draw that decides whether the recycle pays for itself",
+      "sid": "E080"
+    },
+    {
+      "sid": "E081",
+      "from": "SOFC",
+      "to": "AOG_SPLITTER",
+      "type": "h2",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "label": "anode off-gas"
+    },
+    {
+      "sid": "E082",
+      "from": "AOG_SPLITTER",
+      "to": "ANODEBURN",
+      "type": "h2",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "label": "burner share"
+    },
+    {
+      "sid": "E083",
+      "from": "AOG_SPLITTER",
+      "to": "ANODEREC",
+      "type": "h2",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ]
+      },
+      "label": "recycle share"
+    },
+    {
+      "sid": "E084",
+      "from": "AOG_SPLITTER",
+      "to": "ENGINE",
+      "type": "h2",
+      "active_when": {
+        "S4": [
+          "HYB"
+        ]
+      },
+      "label": "engine share (series hybrid)"
+    },
+    {
+      "sid": "E085",
+      "from": "AOG_SPLITTER",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "label": "purge share"
+    },
+    {
+      "sid": "E086",
+      "from": "AIR",
+      "to": "BLOWER",
+      "type": "air",
+      "label": "ambient air"
+    },
+    {
+      "sid": "E087",
+      "from": "PILOT",
+      "to": "ENGINE",
+      "type": "feed",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "label": "pilot fuel"
+    },
+    {
+      "sid": "E088",
+      "from": "REFORMER",
+      "to": "LOHC_SEP",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ]
+      },
+      "label": "hydrogen and spent carrier"
+    },
+    {
+      "sid": "E089",
+      "from": "LOHC_SEP",
+      "to": "PSA",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "S3": [
+          "PSA"
+        ]
+      }
+    },
+    {
+      "sid": "E090",
+      "from": "LOHC_SEP",
+      "to": "MEMB",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "S3": [
+          "MEMB"
+        ]
+      }
+    },
+    {
+      "sid": "E091",
+      "from": "LOHC_SEP",
+      "to": "SOFC",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "sid": "E092",
+      "from": "LOHC_SEP",
+      "to": "ENGINE",
+      "type": "h2",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "S4": [
+          "ICE"
+        ],
+        "S3": [
+          "NONE"
+        ]
+      }
+    },
+    {
+      "sid": "E093",
+      "from": "LOHC_SEP",
+      "to": "CARRIER",
+      "type": "feed",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ]
+      },
+      "label": "spent carrier, returned ashore"
+    },
+    {
+      "sid": "E094",
+      "from": "ENGINE",
+      "to": "NORR_PRE",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      }
+    },
+    {
+      "sid": "E095",
+      "from": "NORR_PRE",
+      "to": "NORR",
+      "type": "feed",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "captured NOx"
+    },
+    {
+      "sid": "E096",
+      "from": "NORR_PRE",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "exhaust after NOx capture"
+    },
+    {
+      "sid": "E097",
+      "from": "NORR",
+      "to": "NH3REC",
+      "type": "feed",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "ammonia in electrolyte"
+    },
+    {
+      "sid": "E098",
+      "from": "NH3REC",
+      "to": "TANK",
+      "type": "feed",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "dried ammonia at tank specification"
+    },
+    {
+      "sid": "E099",
+      "from": "MAKEUP",
+      "to": "HRSG",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      },
+      "label": "cycle make-up"
+    },
+    {
+      "sid": "E100",
+      "from": "MAKEUP",
+      "to": "NORR",
+      "type": "water",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "electrolyte make-up"
+    },
+    {
+      "sid": "E101",
+      "from": "COND",
+      "to": "DRAIN",
+      "type": "water",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "label": "condensate bleed"
+    },
+    {
+      "sid": "E102",
+      "from": "HRSG",
+      "to": "DRAIN",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      },
+      "label": "boiler blowdown"
+    },
+    {
+      "sid": "E103",
+      "from": "NH3REC",
+      "to": "DRAIN",
+      "type": "water",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "spent electrolyte purge"
+    },
+    {
+      "sid": "E104",
+      "from": "PSA",
+      "to": "ANODEBURN",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "PSA"
+        ],
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "label": "PSA tailgas"
+    },
+    {
+      "sid": "E105",
+      "from": "PSA",
+      "to": "FIREDHTR",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "PSA"
+        ],
+        "S5": [
+          "FUELBURN"
+        ]
+      },
+      "label": "PSA tailgas"
+    },
+    {
+      "sid": "E106",
+      "from": "MEMB",
+      "to": "ANODEBURN",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "MEMB"
+        ],
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "label": "membrane retentate"
+    },
+    {
+      "sid": "E107",
+      "from": "MEMB",
+      "to": "FIREDHTR",
+      "type": "h2",
+      "active_when": {
+        "S3": [
+          "MEMB"
+        ],
+        "S5": [
+          "FUELBURN"
+        ]
+      },
+      "label": "membrane retentate"
+    },
+    {
+      "sid": "E108",
+      "from": "ANODEREC",
+      "to": "STACK",
+      "type": "exhaust",
+      "active_when": {
+        "S10": [
+          "EHC"
+        ]
+      },
+      "label": "EHC residual gas purge"
+    },
+    {
+      "sid": "E109",
+      "from": "POWER",
+      "to": "FEEDSYS",
+      "type": "power",
+      "label": "feed pump / compressor"
+    },
+    {
+      "sid": "E110",
+      "from": "POWER",
+      "to": "MEMB",
+      "type": "power",
+      "active_when": {
+        "S3": [
+          "MEMB"
+        ]
+      },
+      "label": "recompression"
+    },
+    {
+      "sid": "E111",
+      "from": "POWER",
+      "to": "SWCOND",
+      "type": "power",
+      "active_when": {
+        "S6": [
+          "ORC",
+          "SRC",
+          "KAL",
+          "CASC"
+        ]
+      },
+      "label": "cooling-water pump"
+    },
+    {
+      "sid": "E112",
+      "from": "POWER",
+      "to": "NH3REC",
+      "type": "power",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "label": "recovery and drying"
+    },
+    {
+      "sid": "E113",
+      "from": "SWCOND",
+      "to": "HRSG",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "SRC"
+        ]
+      },
+      "label": "condensate return"
+    },
+    {
+      "sid": "E114",
+      "from": "ORC",
+      "to": "HRSG",
+      "type": "water",
+      "active_when": {
+        "S6": [
+          "CASC"
+        ]
+      },
+      "label": "condensate return"
+    },
+    {
+      "sid": "E115",
+      "from": "REFHX",
+      "to": "HRSG",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S5": [
+          "SOFCEXH"
+        ],
+        "S6": [
+          "SRC",
+          "CASC"
+        ]
+      },
+      "label": "heat left after the reformer duty"
+    },
+    {
+      "sid": "E116",
+      "from": "REFHX",
+      "to": "ORC",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S5": [
+          "SOFCEXH"
+        ],
+        "S6": [
+          "ORC"
+        ]
+      },
+      "label": "heat left after the reformer duty"
+    },
+    {
+      "sid": "E117",
+      "from": "REFHX",
+      "to": "KALINA",
+      "type": "heat",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S5": [
+          "SOFCEXH"
+        ],
+        "S6": [
+          "KAL"
+        ]
+      },
+      "label": "heat left after the reformer duty"
+    }
+  ],
+  "review": {
+    "date": "2026-09-04",
+    "source": "lab meeting",
+    "merged": [
+      "BUS + PROP + AUX -> POWER"
+    ],
+    "renamed": [
+      "SWCOND -> Condenser",
+      "COND -> Reformate KO drum"
+    ],
+    "narrowed": [
+      "REAGENT now only on a non-ammonia feed"
+    ],
+    "added": [
+      "TANK -> SCR",
+      "COND -> STACK (CO2)",
+      "COND -> STEAMGEN (water recovery)"
+    ],
+    "kept_with_reasons": [
+      "ANODEBURN",
+      "ASC",
+      "SCR",
+      "COND"
+    ],
+    "deferred_to_lca": "catalyst and stack replacement, electrolyser makeup and purge: utility and inventory items, not blocks",
+    "added_later": [
+      "S10 anode recirculation, with the ANODEREC block and its return and parasitic streams"
+    ],
+    "2026-09-11": {
+      "source": "SOFC/17_All_Cases_Review/CLAUDE_FLOWSHEET_FIX_REQUEST_COMPLETE.md",
+      "verified_before_applying": {
+        "dangling_stream_instances": 315,
+        "cases_with_dangling_streams": 285,
+        "low_temperature_cell_plus_orc": 34,
+        "hybrid_cases": 825,
+        "lohc_cases": 296,
+        "cases_with_parameter_on_inactive_block": 1142
+      },
+      "retired_streams": {
+        "E014": "A2: SOFC to burner now passes through the anode off-gas split (E081, E082)",
+        "E052": "A4.3: engine exhaust goes to NOx capture first (E094, E095)",
+        "E058": "A4.3: electrolyte ammonia is recovered and dried before the tank (E097, E098)",
+        "E077": "A2: SOFC to recycle now passes through the anode off-gas split (E081, E083)"
+      },
+      "hybrid_topology": "series: SOFC anode off-gas feeds the engine through the anode off-gas split; engine fresh fuel is a separate supplementary stream. The parallel hybrid is not a separate case family in this revision.",
+      "not_claimed": "No block here has a detailed or converged model because of this revision. The diagram now shows the connections a model must honour."
+    },
+    "2026-09-12 audit": {
+      "source": "ammonia_optimizer/scripts/audit_all_cases_20260912.py",
+      "found": {
+        "steam_loop_not_closed_runs": 614,
+        "engine_heat_counted_twice_runs": 217,
+        "cathode_exhaust_counted_twice_runs": 348
+      },
+      "not_a_defect": {
+        "ANODEREC single outlet (485 runs)": "with a blower it is a recycle line, not a separator; only the EHC variant splits (E108)",
+        "AOG_SPLITTER single outlet (105 runs)": "with no burner, no recycle and no engine the whole anode off-gas is purged. That is a design choice with unburned fuel at the stack, listed in open_decisions.md"
+      }
+    }
+  }
+}

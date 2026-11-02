@@ -1,0 +1,1997 @@
+{
+  "description": "Reported values for a small number of operating variables, one entry per value actually stated in an abstract that was read. This is the sample the sweep range is argued from: the curated parameters.json holds one row per quantity and therefore has no spread to measure. Candidates were found by scripts/mine_ranges.py and then read one by one; an extractor cannot tell a stack temperature from a calcination temperature, so every value here was kept or dropped by hand.",
+  "read_on": "2026-09-08; 2026-09-12 gap search; 2026-09-15 unit-coverage search; 2026-09-17 OpenAlex reset-day round; 2026-09-18 thin-sample round",
+  "rejected_note": "Hits whose sentence turned out to state a different quantity were dropped, not adjusted. The commonest confusions were efficiency figures inside a sentence about recirculation, relative improvements read as absolute efficiencies, and SOFC stack temperatures read as cracker temperatures.",
+  "quantities": [
+    {
+      "id": "nh3_cracking_T",
+      "label": "Ammonia cracking temperature",
+      "label_ko": "암모니아 분해 온도",
+      "unit": "°C",
+      "block": "REFORMER",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "The cracker itself, not the stack it feeds. Values stated for a fuel cell operating temperature were excluded even where the same catalyst cracks ammonia in situ.",
+      "note_ko": "스택 온도가 아니라 분해기 자체의 온도다. 같은 촉매가 in-situ로 암모니아를 분해하더라도, 연료전지 운전온도로 서술된 값은 제외했다.",
+      "values": [
+        {
+          "v": 230,
+          "doi": "10.1016/j.apcata.2024.119589",
+          "quote": "IrN3 and RhN3 are strong candidates for NH3 cracking at temperatures as low as 230 °C"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.apcata.2025.120616",
+          "quote": "ammonia decomposition ... within a temperature range of 300 °C to 600 °C"
+        },
+        {
+          "v": 400,
+          "doi": "10.1016/j.mcat.2025.115455",
+          "quote": "the NH3 conversion of Na modified 3 wt.% Ru/y-Al2O3 at 400 °C reached 82.3 %"
+        },
+        {
+          "v": 400,
+          "doi": "10.1016/j.scp.2022.100615",
+          "quote": "ammonia conversion close to 96% and hydrogen production rate of 9.1 mmol gcat-1 min-1 at 400 °C"
+        },
+        {
+          "v": 450,
+          "doi": "10.1016/j.apenergy.2025.125871",
+          "quote": "lower-temperature crackers (450 °C), which have energy efficiencies ranging from 82.16 % to 86.75 %"
+        },
+        {
+          "v": 500,
+          "doi": "10.1016/j.ijhydene.2025.151337",
+          "quote": "an optimal cracking reactor temperature of 500 °C"
+        },
+        {
+          "v": 500,
+          "doi": "10.1016/j.ijhydene.2026.154613",
+          "quote": "Catalytic cracking typically operates at 500-800 °C"
+        },
+        {
+          "v": 550,
+          "doi": "10.1016/j.ijhydene.2025.04.461",
+          "quote": "high ammonia decomposition rates at reduced temperatures (550 °C)"
+        },
+        {
+          "v": 550,
+          "doi": "10.1016/j.mtcata.2024.100072",
+          "quote": "Ni-cermet anodes for ammonia cracking, especially at 550 °C or below"
+        },
+        {
+          "v": 600,
+          "doi": "10.1016/j.apenergy.2025.125871",
+          "quote": "High-temperature ammonia crackers (600 °C) achieve a maximum energy efficiency of 87.55 %"
+        },
+        {
+          "v": 600,
+          "doi": "10.1016/j.apcata.2025.120616",
+          "quote": "ammonia decomposition ... within a temperature range of 300 °C to 600 °C"
+        },
+        {
+          "v": 600,
+          "doi": "10.1016/j.ijhydene.2024.09.186",
+          "quote": "an NH3 decomposition activity that enables relatively high power output from direct NH3-PCFCs at 600 °C"
+        },
+        {
+          "v": 800,
+          "doi": "10.1016/j.ijhydene.2026.154613",
+          "quote": "Catalytic cracking typically operates at 500-800 °C"
+        },
+        {
+          "v": 650,
+          "doi": "10.1002/aic.10078",
+          "quote": "A 0.9 x 0.9-cm reactor containing 250 posts decomposed 95% of anhydrous ammonia at 650 C to yield 15 sccm of hydrogen"
+        },
+        {
+          "v": 360,
+          "doi": "10.1002/chem.201800467",
+          "quote": "More than 90% ammonia decomposition was achieved over Ru/Ca(NH2)2 with large oblate hemispheroidal Ru particles at 360 C"
+        },
+        {
+          "v": 450,
+          "doi": "10.1021/acsanm.4c01416",
+          "quote": "The hydrogen production rate from ammonia decomposition per unit mass of Ru is as high as 2446 mmol H2 gRu-1 min-1 at 1 bar, 450 C"
+        },
+        {
+          "v": 400,
+          "doi": "10.1134/s0023158418020015",
+          "quote": "Ru-containing catalysts for ammonia decomposition reaction (0.1 MPa, 400 C)"
+        },
+        {
+          "v": 250,
+          "doi": "10.1021/acsomega.4c09968",
+          "quote": "trimetallic ruthenium-potassium-promoter (RuKM) ammonia decomposition catalysts ... able to perform the decomposition as low as 250 C, which is significantly lower than other known catalysts that require temperatures above 500 C"
+        },
+        {
+          "v": 350,
+          "doi": "10.1134/s0023158423060137",
+          "quote": "catalytic properties of 4%Ru-13.6%Cs/Sibunit and 4%Ru-5.4%Ba-7.9%Cs/Sibunit in the ammonia decomposition (105 Pa, 350-470 C)"
+        },
+        {
+          "v": 470,
+          "doi": "10.1134/s0023158423060137",
+          "quote": "in the ammonia decomposition (105 Pa, 350-470 C)"
+        }
+      ]
+    },
+    {
+      "id": "meoh_reforming_T",
+      "label": "Methanol reforming temperature",
+      "label_ko": "메탄올 개질 온도",
+      "unit": "°C",
+      "block": "REFORMER",
+      "active_when": {
+        "S1": [
+          "MEOH"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "Two families sit in this sample. Low temperature steam reforming is reported at 200-300 °C; decomposition and high temperature reforming are reported at 500-750 °C. The spread is real chemistry, not scatter, which is why the box is wide.",
+      "note_ko": "이 표본에는 두 계열이 섞여 있다. 저온 수증기 개질은 200–300 °C, 분해와 고온 개질은 500–750 °C로 보고된다. 넓은 상자는 산포가 아니라 실제로 다른 반응이라는 뜻이다.",
+      "values": [
+        {
+          "v": 200,
+          "doi": "10.1016/j.rser.2013.08.032",
+          "quote": "low reforming temperature (200-300 °C)"
+        },
+        {
+          "v": 200,
+          "doi": "10.1016/j.ifacol.2024.11.121",
+          "quote": "it requires a temperature between 200-300°C to start the reaction"
+        },
+        {
+          "v": 200,
+          "doi": "10.1201/b11063-5",
+          "quote": "At modest temperatures of 200 °C to 400 °C methanol readily reacts with steam in the presence of a catalyst"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.rser.2013.08.032",
+          "quote": "low reforming temperature (200-300 °C)"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.ifacol.2024.11.121",
+          "quote": "it requires a temperature between 200-300°C to start the reaction"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.heliyon.2023.e13742",
+          "quote": "methanol steam reforming at 300 °C due to 98.5% methanol conversion"
+        },
+        {
+          "v": 400,
+          "doi": "10.1201/b11063-5",
+          "quote": "At modest temperatures of 200 °C to 400 °C methanol readily reacts with steam in the presence of a catalyst"
+        },
+        {
+          "v": 450,
+          "doi": "10.1201/b11063-5",
+          "quote": "steam reforming is accomplished at temperatures less than 450 °C using a variety of commercially available catalysts"
+        },
+        {
+          "v": 500,
+          "doi": "10.1016/j.apenergy.2023.122398",
+          "quote": "a methanol decomposition reaction at moderate temperatures (500 °C)"
+        },
+        {
+          "v": 750,
+          "doi": "10.1016/j.tsep.2025.103605",
+          "quote": "At the working temperature of the reformer of 750 °C, methanol has the best hydrogen yield per unit fuel"
+        },
+        {
+          "v": 160,
+          "doi": "10.1177/14680874261417964",
+          "quote": "at 160 C with S/C = 1, the maximum reforming ratio is 0.6, while at 240 C, it drops to 0.3 (MSR driven by marine medium-speed engine waste heat)"
+        },
+        {
+          "v": 240,
+          "doi": "10.1177/14680874261417964",
+          "quote": "while at 240 C, it drops to 0.3"
+        },
+        {
+          "v": 200,
+          "doi": "10.1016/j.ijhydene.2019.12.192",
+          "quote": "the optimum values of the temperature, S/C ratio and pressure to produce reformate were identified to be 200-300 C, 1.6-2.0 and 1.0 atm"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.ijhydene.2019.12.192",
+          "quote": "identified to be 200-300 C, 1.6-2.0 and 1.0 atm, respectively"
+        },
+        {
+          "v": 300,
+          "doi": "10.3390/catal11091110",
+          "quote": "Cu-Zn catalysts for methanol steam reforming in the temperature range of 200-300 C ... led to the highest H2 production at 300 C"
+        },
+        {
+          "v": 450,
+          "doi": "10.1021/acsaem.1c02356",
+          "quote": "Methanol, ethanol, and glycerol are almost completely steam-reformed ... at 450, 650, and 700 C at a steam/carbon (S/C) ratio of 1, 2.5, and 4"
+        },
+        {
+          "v": 316,
+          "doi": "10.1299/jtst.7.135",
+          "quote": "reference catalyst zone temperatures (589-689 K)"
+        },
+        {
+          "v": 416,
+          "doi": "10.1299/jtst.7.135",
+          "quote": "reference catalyst zone temperatures (589-689 K)"
+        }
+      ]
+    },
+    {
+      "id": "sofc_T",
+      "label": "SOFC stack temperature",
+      "label_ko": "SOFC 스택 온도",
+      "unit": "°C",
+      "block": "SOFC",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "note": "One of the largest samples and the one whose box is narrowest. The low outlier is a cell run at 420 °C on methylcyclohexane dehydrogenation products, a different device class from the rest.",
+      "note_ko": "표본이 큰 편이고 상자가 가장 좁은 항목이다. 낮은 쪽 이상치는 메틸사이클로헥산 탈수소 생성물로 420 °C에서 운전한 셀로, 나머지와는 장치 계열이 다르다.",
+      "values": [
+        {
+          "v": 420,
+          "doi": "10.1016/j.apenergy.2023.121469",
+          "quote": "an SOFC is operated with a cell temperature of 420 °C"
+        },
+        {
+          "v": 550,
+          "doi": "10.1016/j.elecom.2022.107216",
+          "quote": "the Rp values of the cell in ammonia and hydrogen at 550 °C were 0.250 and 0.246 Ohm cm-2"
+        },
+        {
+          "v": 600,
+          "doi": "10.1016/j.ijhydene.2023.05.251",
+          "quote": "in the temperature range of 600-800 °C, at ambient pressure, for application in Solid Oxide Fuel Cells"
+        },
+        {
+          "v": 650,
+          "doi": "10.1016/j.ijhydene.2026.155083",
+          "quote": "improves carbon deposition at T = 650,700,750 °C"
+        },
+        {
+          "v": 650,
+          "doi": "10.1016/j.ijhydene.2024.04.250",
+          "quote": "DA-SOFC operation within the temperature range of 650 °C-750 °C"
+        },
+        {
+          "v": 650,
+          "doi": "10.1016/j.ijhydene.2024.11.320",
+          "quote": "The highest power density of DA-SOFC reported so far is 1330 mW cm-2 at 650 °C"
+        },
+        {
+          "v": 660,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "three operating temperatures (660°C, 710 °C, and 760 °C)"
+        },
+        {
+          "v": 700,
+          "doi": "10.1016/j.ijhydene.2026.155083",
+          "quote": "improves carbon deposition at T = 650,700,750 °C"
+        },
+        {
+          "v": 700,
+          "doi": "10.1016/j.apsusc.2024.162175",
+          "quote": "at three different temperatures: 700, 750, and 800 °C"
+        },
+        {
+          "v": 700,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "at different temperatures (700-850 °C) as well as different recirculation rates"
+        },
+        {
+          "v": 710,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "three operating temperatures (660°C, 710 °C, and 760 °C)"
+        },
+        {
+          "v": 750,
+          "doi": "10.1016/j.ijhydene.2026.155083",
+          "quote": "improves carbon deposition at T = 650,700,750 °C"
+        },
+        {
+          "v": 750,
+          "doi": "10.1016/j.ijhydene.2024.04.250",
+          "quote": "DA-SOFC operation within the temperature range of 650 °C-750 °C"
+        },
+        {
+          "v": 750,
+          "doi": "10.1016/j.apsusc.2024.162175",
+          "quote": "at three different temperatures: 700, 750, and 800 °C"
+        },
+        {
+          "v": 760,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "three operating temperatures (660°C, 710 °C, and 760 °C)"
+        },
+        {
+          "v": 800,
+          "doi": "10.1016/j.apsusc.2024.162175",
+          "quote": "at three different temperatures: 700, 750, and 800 °C"
+        },
+        {
+          "v": 800,
+          "doi": "10.1016/j.adapen.2025.100206",
+          "quote": "peak power densities of 702 and 377 mW cm-2 at 800°C"
+        },
+        {
+          "v": 800,
+          "doi": "10.1016/j.ijhydene.2023.05.251",
+          "quote": "in the temperature range of 600-800 °C, at ambient pressure, for application in Solid Oxide Fuel Cells"
+        },
+        {
+          "v": 850,
+          "doi": "10.1016/j.electacta.2022.141198",
+          "quote": "The experiments at SOFC operating temperature of 850 °C reveals no negative effect on reforming or cell performance"
+        },
+        {
+          "v": 850,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "at different temperatures (700-850 °C) as well as different recirculation rates"
+        },
+        {
+          "v": 770,
+          "doi": "10.1002/fuce.201600165",
+          "quote": "the direct NH3-fueled SOFC stack was stable for 1,000 h at 770 C without significant degradation"
+        },
+        {
+          "v": 635,
+          "doi": "10.1016/j.csite.2022.101868",
+          "quote": "Thirty design cases of SOFC operating temperatures (635 C-835 C) over a range of SOFC fuel utilization (45%-90%) were evaluated"
+        },
+        {
+          "v": 835,
+          "doi": "10.1016/j.csite.2022.101868",
+          "quote": "SOFC operating temperatures (635 C-835 C) ... were evaluated"
+        },
+        {
+          "v": 500,
+          "doi": "10.3390/solids2020012",
+          "quote": "we evaluated the direct ammonia SOFC performance with ... composite anodes in the temperature range of 500 C to 800 C"
+        },
+        {
+          "v": 800,
+          "doi": "10.3390/solids2020012",
+          "quote": "in the temperature range of 500 C to 800 C"
+        },
+        {
+          "v": 750,
+          "doi": "10.1002/fuce.201200175",
+          "quote": "13-cell SOFC stack ... 2,500 h ... at 750 C"
+        },
+        {
+          "v": 700,
+          "doi": "10.1149/1945-7111/abc843",
+          "quote": "within a furnace temperature range of 700 C-750 C ... for more than 10,000 h"
+        },
+        {
+          "v": 750,
+          "doi": "10.1007/s40789-021-00451-3",
+          "quote": "the optimal operating temperatures of stack and reformer when considering the stack degradation are 750 C and 700 C, respectively"
+        }
+      ]
+    },
+    {
+      "id": "scr_T",
+      "label": "SCR operating temperature",
+      "label_ko": "SCR 운전 온도",
+      "unit": "°C",
+      "block": "SCR",
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "note": "Hydrogen-assisted SCR is what pulls the low end to 125-200 °C. Ammonia SCR on copper zeolite is reported from 150 °C, vanadia-based urea SCR from about 250 °C; above 500 °C the catalyst starts oxidising the dosed ammonia to NO.",
+      "note_ko": "하한을 125–200 °C까지 끌어내린 것은 수소 보조 SCR이다. 구리 제올라이트의 암모니아 SCR은 150 °C부터, 바나디아계 요소 SCR은 약 250 °C부터 보고된다. 500 °C를 넘으면 촉매가 주입한 암모니아를 NO로 산화하기 시작한다.",
+      "values": [
+        {
+          "v": 125,
+          "doi": "10.9726/kspse.2024.28.4.045",
+          "quote": "TiO2 기반의 H2-SCR 촉매는 NOx/CO 저감 성능은 125℃ 이하 온도에서는 향상되었고"
+        },
+        {
+          "v": 150,
+          "doi": "10.1016/j.mcat.2021.111888",
+          "quote": "The performance of NH3-SCO and NH3-SCR of different catalysts at 150-400 °C was studied"
+        },
+        {
+          "v": 150,
+          "doi": "10.1177/0957650919857618",
+          "quote": "The simulation values are agreed well with experimental values at 150-500 °C ... under V2O5/TiO2 catalyst"
+        },
+        {
+          "v": 160,
+          "doi": "10.1007/s11244-025-02131-x",
+          "quote": "NOx reduction by hydrogen (H2-SCR) showed NOx reduction of up to 60-70% on platinum catalysts at 100-160 °C"
+        },
+        {
+          "v": 175,
+          "doi": "10.5762/kais.2025.26.7.411",
+          "quote": "175℃에서 72%의 NOx 저감 성능이 향상되었고, 저온쪽으로 윈도우가 이동되었으며"
+        },
+        {
+          "v": 200,
+          "doi": "10.3390/nano12142329",
+          "quote": "Catalysts were evaluated for selective catalytic oxidation of NH3 (NH3-SCO) in the NH3-SCR reaction at 200-300 °C"
+        },
+        {
+          "v": 200,
+          "doi": "10.1177/0958305x251389949",
+          "quote": "Hydrogen with selective catalytic reduction reduces the temperature of reaction to below 200 °C"
+        },
+        {
+          "v": 200,
+          "doi": "10.1002/cctc.202600019",
+          "quote": "In the intermediate temperature range (80-200°C), distinct H2-SCR behaviors are linked to the reactivity of in situ formed NH3"
+        },
+        {
+          "v": 250,
+          "doi": "10.1016/j.seta.2025.104309",
+          "quote": "SCR performed best under stable loads and optimal exhaust temperatures (250-400 °C)"
+        },
+        {
+          "v": 250,
+          "doi": "10.1016/j.applthermaleng.2018.10.067",
+          "quote": "urea-based selective catalytic reduction (urea-SCR) in a diesel engine was investigated at a low engine exhaust temperature (250 °C)"
+        },
+        {
+          "v": 280,
+          "doi": "10.1016/j.csite.2026.108135",
+          "quote": "there is a critical temperature of 280 °C for the influence of ammonia storage on SCR conversion efficiency"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.mspro.2015.11.015",
+          "quote": "Selective catalytic reduction of NO at 300 °C"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.aej.2024.06.013",
+          "quote": "the optimal operating temperature is 300 ~ 420 degrees C"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.cej.2026.178969",
+          "quote": "the presence of DME at temperatures above T > 300 °C can lead to the release of significant amounts of toxic products"
+        },
+        {
+          "v": 300,
+          "doi": "10.3390/nano12142329",
+          "quote": "Catalysts were evaluated for selective catalytic oxidation of NH3 (NH3-SCO) in the NH3-SCR reaction at 200-300 °C"
+        },
+        {
+          "v": 300,
+          "doi": "10.3390/app9081656",
+          "quote": "The near-stable catalytic efficiencies of AC for a slow, a standard and a fast SCR reaction at 300 °C are 12.1%, 31.6%, and 70.8%"
+        },
+        {
+          "v": 350,
+          "doi": "10.1016/j.cej.2026.178969",
+          "quote": "the DeNOx-performance is inhibited for the temperature range above T > 350 °C, when DME is converted during the SCR"
+        },
+        {
+          "v": 350,
+          "doi": "10.1016/j.apsusc.2019.03.024",
+          "quote": "1%Cu-ATP catalyst exhibited good performance in both NH3-SCO and NH3-SCR at 350 °C"
+        },
+        {
+          "v": 350,
+          "doi": "10.1016/j.mcat.2021.111888",
+          "quote": "Cu-SCR catalyst obtained the best activity of both NH3 oxidation and NOx reduction at 350 °C"
+        },
+        {
+          "v": 400,
+          "doi": "10.1016/j.seta.2025.104309",
+          "quote": "optimal exhaust temperatures (250-400 °C)"
+        },
+        {
+          "v": 400,
+          "doi": "10.1016/j.mcat.2021.111888",
+          "quote": "The performance of NH3-SCO and NH3-SCR of different catalysts at 150-400 °C was studied"
+        },
+        {
+          "v": 400,
+          "doi": "10.1002/er.8282",
+          "quote": "At 400°C to 450°C, and a high load, the diesel engine produced undesirable reactions at V2O5/TiO2 based urea-SCR, causing emission of excess N2O"
+        },
+        {
+          "v": 420,
+          "doi": "10.1016/j.aej.2024.06.013",
+          "quote": "the optimal operating temperature is 300 ~ 420 degrees C"
+        },
+        {
+          "v": 450,
+          "doi": "10.1002/er.8282",
+          "quote": "At 400°C to 450°C, and a high load, the diesel engine produced undesirable reactions at V2O5/TiO2 based urea-SCR, causing emission of excess N2O"
+        },
+        {
+          "v": 450,
+          "doi": "10.1007/s11244-022-01725-z",
+          "quote": "reactivity of OME3 and its decomposition products was studied in the temperature range 80-450 °C ... over V2O5/WO3/TiO2 and Cu-CHA SCR catalysts"
+        },
+        {
+          "v": 500,
+          "doi": "10.1177/0957650919857618",
+          "quote": "The simulation values are agreed well with experimental values at 150-500 °C"
+        },
+        {
+          "v": 500,
+          "doi": "10.1021/acsomega.5c09913",
+          "quote": "Under conditions of high temperature (500 °C) and high space velocity, the saturated ammonia storage capacity of the catalyst decreases by 20-30%"
+        },
+        {
+          "v": 500,
+          "doi": "10.1021/ie200060s",
+          "quote": "NH3 oxidation leads to NO formation at temperatures above 500 C. This contributes to the reduction in NO conversion efficiency at high temperatures"
+        },
+        {
+          "v": 150,
+          "doi": "10.1021/es503707c",
+          "quote": "over 95% NOx conversion across a broad range from 150 to 400 C (Cu-SSZ-13)"
+        },
+        {
+          "v": 400,
+          "doi": "10.1021/es503707c",
+          "quote": "over 95% NOx conversion across a broad range from 150 to 400 C"
+        },
+        {
+          "v": 300,
+          "doi": "10.1021/ie9003464",
+          "quote": "The SCR of NO is already active at 150 C and the introduction of equal amounts of NO and NO2 greatly enhances the conversion of NOx at temperatures up to 300 C"
+        }
+      ]
+    },
+    {
+      "id": "fuel_utilisation",
+      "label": "Fuel utilisation",
+      "label_ko": "연료 이용률",
+      "unit": "%",
+      "block": "SOFC",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "note": "This variable and the recirculation ratio are one decision: what the stack leaves unconverted is what the loop returns. The 14 percent value is one end of a deliberate sweep, not a design point.",
+      "note_ko": "이 변수와 재순환율은 하나의 결정이다. 스택이 미전환으로 남기는 만큼이 곧 루프가 되돌리는 양이다. 14 %는 설계점이 아니라 의도적으로 훑은 구간의 끝값이다.",
+      "values": [
+        {
+          "v": 14,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "The highest performance difference (5.87%) is observed at 700 °C and fuel utilization of 14%"
+        },
+        {
+          "v": 55,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "The stack achieved optimal performance at 55-80 % fuel utilization"
+        },
+        {
+          "v": 70,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "the lowest difference (0.05%) belongs to 850 °C and fuel utilization of 70%"
+        },
+        {
+          "v": 70,
+          "doi": "10.1016/j.cej.2026.176840",
+          "quote": "maintaining ammonia concentration above 80% and fuel utilisation over 70%"
+        },
+        {
+          "v": 80,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "The stack achieved optimal performance at 55-80 % fuel utilization"
+        },
+        {
+          "v": 80,
+          "doi": "10.1016/j.ijhydene.2024.03.082",
+          "quote": "a dramatic drop in performance (utilisation factor lower than 80 %) associated with relatively high power demands"
+        },
+        {
+          "v": 85,
+          "doi": "10.1016/j.renene.2024.121302",
+          "quote": "At 60% recirculation ratio, 650 °C reforming temperature, and 85% fuel utilization"
+        },
+        {
+          "v": 45,
+          "doi": "10.1016/j.csite.2022.101868",
+          "quote": "over a range of SOFC fuel utilization (45%-90%)"
+        },
+        {
+          "v": 90,
+          "doi": "10.1016/j.csite.2022.101868",
+          "quote": "over a range of SOFC fuel utilization (45%-90%)"
+        },
+        {
+          "v": 40,
+          "doi": "10.1002/fuce.201200151",
+          "quote": "All these short stacks have been tested with humidified hydrogen at a fuel utilization of 40% and with dry air"
+        },
+        {
+          "v": 41.8,
+          "doi": "10.1016/j.jpowsour.2013.04.027",
+          "quote": "972 h' operation under 0.75 V unit-cell voltage, 0.476 A cm-2 current density and 41.8% fuel utilization"
+        },
+        {
+          "v": 80,
+          "doi": "10.1149/1945-7111/abc843",
+          "quote": "operated within a furnace temperature range of 700 C-750 C with hydrogen fuel at a current density of up to 1 A cm-2 and fuel utilization of up to 80% for more than 10,000 h"
+        },
+        {
+          "v": 52,
+          "doi": "10.1002/fuce.201200175",
+          "quote": "A 13-cell experimental SOFC stack was tested during 2,500 h of operation with hydrogen as fuel with 52% fuel utilization and constant current load (0.2 A cm-2) at 750 C"
+        }
+      ]
+    },
+    {
+      "id": "bottoming_eta",
+      "label": "Bottoming cycle thermal efficiency",
+      "label_ko": "바텀 사이클 열효율",
+      "unit": "%",
+      "block": "ORC",
+      "active_when": {
+        "S6": [
+          "ORC",
+          "SRC",
+          "KAL",
+          "CASC"
+        ]
+      },
+      "note": "Thermal or electrical efficiency only. Figures that state a share of total plant output, a relative improvement over another system, or an exergy efficiency were excluded, because mixing those bases is what makes bottoming cycle efficiencies look implausibly high. 2026-09-18: the ammonia-diesel marine engine ORC (8.8-9.3%) takes jacket water as well as exhaust, which is what this study's ORC option is defined to do.",
+      "note_ko": "열효율과 전기효율만 담았다. 전체 출력 대비 비중, 다른 시스템 대비 상대 개선폭, 엑서지 효율은 제외했다. 이 기준들을 섞는 것이 바텀 사이클 효율을 비현실적으로 높아 보이게 만드는 원인이다. 2026-09-16: 증발기 110–155 °C 시험장치·태양열 ORC 값(4.6–10.5 %)은 이 표본에서 뺐다. 이 표본은 엔진·스택 배기처럼 수백 도의 열원을 쓰는 케이스의 스윕 범위를 정하는데, 초저온 ORC(3–7 %)가 섞이면 창이 아래로 끌려 내려간다. 그 값들은 저온 ORC 행에 그대로 인용되어 있다. 2026-09-18: 암모니아-디젤 선박 엔진 ORC(8.8–9.3 %)는 배기와 함께 재킷 냉각수도 쓰는데, 이 연구의 ORC 옵션 정의(재킷 냉각수·소기 공기 포함)와 같다.",
+      "values": [
+        {
+          "v": 7.84,
+          "doi": "10.7316/khnes.2015.26.1.079",
+          "quote": "highest thermal efficiency of 7.84% with pressure ratio of 3.67 and shaft power of 5.17 kW"
+        },
+        {
+          "v": 8.0,
+          "doi": "10.1016/j.rser.2024.114871",
+          "quote": "organic Rankine cycles (with electrical efficiency above 8%) are advantageous especially in cold climate routes"
+        },
+        {
+          "v": 10.0,
+          "doi": "10.3795/ksme-b.2012.36.7.711",
+          "quote": "ORC 사이클은 250℃ 이하의 폐열 조건에 대하여 약 10%정도의 열효율을 보였다"
+        },
+        {
+          "v": 11.22,
+          "doi": "10.9726/kspse.2024.28.1.034",
+          "quote": "발전 사이클 순 출력은 70~302 kW, 11.22~12.12% 효율을 나타냈으며"
+        },
+        {
+          "v": 12.1,
+          "doi": "10.13000/jfmse.2018.12.30.6.2176",
+          "quote": "the turbine produces up to 118.7 kW of power and 12.1 % of thermal efficiency"
+        },
+        {
+          "v": 12.12,
+          "doi": "10.9726/kspse.2024.28.1.034",
+          "quote": "발전 사이클 순 출력은 70~302 kW, 11.22~12.12% 효율을 나타냈으며"
+        },
+        {
+          "v": 17.09,
+          "doi": "10.1016/j.ecmx.2024.100825",
+          "quote": "the SRC + S-ORC + C-ORC configuration delivered the best performance, achieving a net power output of 3,532.14 kW and a thermal efficiency of 17.09 %"
+        },
+        {
+          "v": 22.49,
+          "doi": "10.3390/app12126287",
+          "quote": "R152a, which provides 71.23 kW of power output, and energy and exergy efficiencies of 22.49% and 42.76%, respectively, is selected as the best thermodynamic performance for the ORC (in an ammonia SOFC-GT-SRC-Kalina-ORC cascade)"
+        },
+        {
+          "v": 14.85,
+          "doi": "10.24425/ather.2021.136945",
+          "quote": "The efficiency of the ORC system, depending on the used working fluid and the adopted scenario, is in the range from 14.85 to 16.68%"
+        },
+        {
+          "v": 16.68,
+          "doi": "10.24425/ather.2021.136945",
+          "quote": "in the range from 14.85 to 16.68%, achieving higher efficiency for the non-cogenerative work scenario"
+        },
+        {
+          "v": 8,
+          "doi": "10.3390/en12071397",
+          "quote": "The results for the ORC and T/C systems indicated ... maximum thermal efficiencies of 8% and 10%, respectively (heavy-duty diesel exhaust)"
+        },
+        {
+          "v": 13,
+          "doi": "10.3390/en13020314",
+          "quote": "The achievable power from the ORC system was calculated to be between 0.2 and 1.3 kW, with 13% system efficiency (diesel exhaust, RDE cycle)"
+        },
+        {
+          "v": 10,
+          "doi": "10.1002/fuce.201800192",
+          "quote": "An average of 7% more power was produced through the ORC cycle with an average efficiency of 10% (SOFC exhaust)"
+        },
+        {
+          "v": 12.76,
+          "doi": "10.3390/en15186720",
+          "quote": "the ORC thermal efficiency could reach a maximum of 12.76% (tractor diesel exhaust)"
+        },
+        {
+          "v": 8.8,
+          "doi": "10.1177/14680874261479759",
+          "quote": "the ORC unit delivers 105.3-145.5 kW of net recovered power, corresponding to cycle efficiencies of 8.8%-9.3% (ammonia-diesel marine engine exhaust and jacket water)"
+        },
+        {
+          "v": 9.3,
+          "doi": "10.1177/14680874261479759",
+          "quote": "cycle efficiencies of 8.8%-9.3%"
+        }
+      ]
+    },
+    {
+      "id": "egr_rate",
+      "label": "Exhaust gas recirculation rate",
+      "label_ko": "배기 재순환율",
+      "unit": "%",
+      "block": "ENGINE",
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "note": "The in-cylinder alternative to aftertreatment. Values here are the recirculated fraction itself; the NOx reductions reported in the same sentences are a different quantity and were excluded.",
+      "note_ko": "후처리를 대신해 실린더 안에서 NOx를 줄이는 경로다. 여기 값은 재순환 비율 자체이며, 같은 문장에 나오는 NOx 저감률은 다른 물성이라 제외했다.",
+      "values": [
+        {
+          "v": 5.2,
+          "doi": "10.1016/j.rineng.2025.105015",
+          "quote": "Box-Behnken design identified 15.2 % MES, 14.9 % AH, and 5.2 % EGR as optimal blend"
+        },
+        {
+          "v": 7.68,
+          "doi": "10.1016/j.heliyon.2023.e23389",
+          "quote": "the engine achieves the best operating conditions at 100 % load, hydrogen fraction of 6.92 %, and EGR rate of 7.68 %"
+        },
+        {
+          "v": 10,
+          "doi": "10.1016/j.enss.2024.10.003",
+          "quote": "The EGR proportions used were 10%, 20%, and 30%"
+        },
+        {
+          "v": 10,
+          "doi": "10.1016/j.csite.2022.102557",
+          "quote": "keeping the EGR rate at an optimum value between 10% and 20%"
+        },
+        {
+          "v": 15,
+          "doi": "10.1016/j.ijhydene.2023.09.278",
+          "quote": "The induction of 15% exhaust gas with B100 + 43.2 g/h H2 reduces NOx by about 31%"
+        },
+        {
+          "v": 20,
+          "doi": "10.1016/j.enss.2024.10.003",
+          "quote": "The EGR proportions used were 10%, 20%, and 30%"
+        },
+        {
+          "v": 20,
+          "doi": "10.1016/j.csite.2022.102557",
+          "quote": "keeping the EGR rate at an optimum value between 10% and 20%"
+        },
+        {
+          "v": 30,
+          "doi": "10.1016/j.enss.2024.10.003",
+          "quote": "The NOx emissions decreased by 59% when 30% EGR was applied"
+        },
+        {
+          "v": 40,
+          "doi": "10.1016/j.ecmx.2025.101050",
+          "quote": "increasing EGR from 0 % to 40 % resulted in a reduction of in-cylinder pressure and HRR"
+        },
+        {
+          "v": 4,
+          "doi": "10.1016/j.ijhydene.2020.05.071",
+          "quote": "the first preferred operating condition at ~13% hydrogen, 4% EGR, and 30 BTDC of diesel injection timing was obtained (H2/diesel dual-fuel CI engine)"
+        },
+        {
+          "v": 30,
+          "doi": "10.1016/j.applthermaleng.2019.03.035",
+          "quote": "a 30% EGR alone could reduce NOx emissions to 2.519 g/kWh (low-speed two-stroke engine, 75% load)"
+        }
+      ]
+    },
+    {
+      "id": "anode_recirculation",
+      "label": "Anode off-gas recirculation ratio",
+      "label_ko": "Anode off-gas 재순환율",
+      "unit": "%",
+      "block": "ANODEREC",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ],
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ]
+      },
+      "note": "Ejector measurements and system models together; the carbon-avoidance and efficiency window reported in one study is 65-70%. The ratio and the stack fuel utilisation are one decision.",
+      "note_ko": "이젝터 실측과 시스템 모델이 함께 있다. 한 연구가 보고한 탄소 회피·효율 창은 65–70 %다. 재순환율과 스택 연료이용률은 하나의 결정이다.",
+      "values": [
+        {
+          "v": 40,
+          "doi": "10.1002/fuce.202200099",
+          "quote": "the combined configuration of an AOGR ratio of 0.4 and a COGR ratio of 0.4 is recommended"
+        },
+        {
+          "v": 50,
+          "doi": "10.1115/1.4055393",
+          "quote": "the process can even be self-sustained without external air input at the AOGR rate of 0.5 and 0.6"
+        },
+        {
+          "v": 60,
+          "doi": "10.1016/j.renene.2024.121302",
+          "quote": "At 60% recirculation ratio, 650 °C reforming temperature, and 85% fuel utilization"
+        },
+        {
+          "v": 60,
+          "doi": "10.1115/1.4055393",
+          "quote": "the process can even be self-sustained without external air input at the AOGR rate of 0.5 and 0.6"
+        },
+        {
+          "v": 70,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "increasing the recirculation rate from 70 to 90% compared to the case without recirculation"
+        },
+        {
+          "v": 70,
+          "doi": "10.1021/acsomega.1c04698",
+          "quote": "the electrical efficiency and exergy efficiency of the SOFC-APU system can reach 55.4 and 77.1% with a 70% anode gas recirculation ratio"
+        },
+        {
+          "v": 90,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "increasing the recirculation rate from 70 to 90% compared to the case without recirculation"
+        },
+        {
+          "v": 70,
+          "doi": "10.1021/acsomega.5c12945",
+          "quote": "the electrical efficiency of the system reached 52.1% with a 0.46 g/s methanol flow rate at a 70% anode gas recirculation ratio"
+        },
+        {
+          "v": 65,
+          "doi": "10.1149/2.0371509jes",
+          "quote": "An optimal operation range to avoid carbon formation and to ensure a high electrical efficiency requires recirculation rates between 65 and 70%"
+        },
+        {
+          "v": 70,
+          "doi": "10.1149/2.0371509jes",
+          "quote": "recirculation rates between 65 and 70%"
+        },
+        {
+          "v": 55,
+          "doi": "10.1115/1.4028361",
+          "quote": "using a variable flow ejector and a recirculation ratio of 0.55-0.62"
+        },
+        {
+          "v": 62,
+          "doi": "10.1115/1.4028361",
+          "quote": "a recirculation ratio of 0.55-0.62"
+        },
+        {
+          "v": 71,
+          "doi": "10.1299/mej.15-00087",
+          "quote": "The recirculation ratio could be changed from 0.67 to 0.71 by moving the needle inside the ejector nozzle"
+        },
+        {
+          "v": 67,
+          "doi": "10.1299/mej.15-00087",
+          "quote": "changed from 0.67 to 0.71"
+        }
+      ]
+    },
+    {
+      "id": "steam_to_carbon",
+      "label": "Steam to carbon ratio",
+      "label_ko": "수증기 대 탄소 비",
+      "unit": "-",
+      "block": "REFORMER",
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "Heterogeneous by reaction: methanol and glycerol steam reforming, methane steam reforming, a palladium membrane reformer and a shift stage. Read it as the band a reformer is designed in, not one reaction's optimum. Extraction was the noisiest of any quantity because the value has no unit to anchor it. 2026-09-18: no longer shown for LOHC, whose dehydrogenation has neither steam nor carbon.",
+      "note_ko": "반응별로 이질적이다 — 메탄올·글리세롤 수증기 개질, 메탄 수증기 개질, 팔라듐 막 개질기, shift 단. 한 반응의 최적값이 아니라 개질기를 설계하는 대역으로 읽는다. 값에 단위가 없어 추출 잡음이 가장 컸다. 2026-09-18: LOHC에는 더 이상 걸지 않는다 — 탈수소에는 수증기도 탄소 전환도 없다.",
+      "values": [
+        {
+          "v": 0.95,
+          "doi": "10.7316/khnes.2015.26.5.402",
+          "quote": "CO conversion was 72% at 400 °C, S/C ratio 0.95, GHSV 333 h-1 in the second test"
+        },
+        {
+          "v": 1.5,
+          "doi": "10.1016/j.fuproc.2025.108212",
+          "quote": "preliminarily screened between 200 and 600 °C under a S/C ratio of 1.5 and WHSV = 2"
+        },
+        {
+          "v": 1.55,
+          "doi": "10.1016/j.cattod.2025.115445",
+          "quote": "a H2 yield of 82% was achieved at 550 °C, space time of 2.8 h, S/C ratio of 1.55 and 3 bar in the retentate"
+        },
+        {
+          "v": 2.0,
+          "doi": "10.1016/j.ijhydene.2024.10.100",
+          "quote": "the best system configuration was able to reach a steam-to-carbon ratio of 2, a system fuel utilization of 100%"
+        },
+        {
+          "v": 2.0,
+          "doi": "10.3795/ksme-b.2019.43.12.817",
+          "quote": "S/C ratio는 2일 때, 개질기 운전 온도는 300℃일 때 수소수율이 76.04%로 가장 높고"
+        },
+        {
+          "v": 2.2,
+          "doi": "10.1016/j.cattod.2025.115445",
+          "quote": "restrictions in H2 flux through the Pd-membrane ... as observed when the S/C ratio is increased up to 2.2"
+        },
+        {
+          "v": 3.0,
+          "doi": "10.7316/khnes.2015.26.5.402",
+          "quote": "CH4 and CO conversion were 41.6%, 57.8% respectively at 600 °C, S/C ratio 3, GHSV 2000 h-1"
+        },
+        {
+          "v": 1.6,
+          "doi": "10.1016/j.ijhydene.2019.12.192",
+          "quote": "the optimum values of the temperature, S/C ratio and pressure to produce reformate were identified to be 200-300 C, 1.6-2.0 and 1.0 atm"
+        },
+        {
+          "v": 2.0,
+          "doi": "10.1016/j.ijhydene.2019.12.192",
+          "quote": "S/C ratio ... 1.6-2.0"
+        },
+        {
+          "v": 1.0,
+          "doi": "10.1177/14680874261417964",
+          "quote": "at 160 C with S/C = 1, the maximum reforming ratio is 0.6"
+        },
+        {
+          "v": 1.0,
+          "doi": "10.1021/acsaem.1c02356",
+          "quote": "methanol ... at 450 C at a steam/carbon (S/C) ratio of 1"
+        },
+        {
+          "v": 4.0,
+          "doi": "10.1021/acsaem.1c02356",
+          "quote": "glycerol ... at 700 C at a steam/carbon (S/C) ratio of 4"
+        },
+        {
+          "v": 0.8,
+          "doi": "10.1299/jtst.7.135",
+          "quote": "steam to methanol (S/C) ratios (0.8-1.6)"
+        },
+        {
+          "v": 1.6,
+          "doi": "10.1299/jtst.7.135",
+          "quote": "steam to methanol (S/C) ratios (0.8-1.6)"
+        }
+      ]
+    },
+    {
+      "id": "ammonia_slip_ppm",
+      "label": "Ammonia slip at the stack",
+      "label_ko": "배기단 암모니아 슬립",
+      "unit": "ppm",
+      "block": "ASC",
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      },
+      "note": "Slip after SCR, labelled by where it was measured: an ammonia-diesel engine's aftertreatment outlet and a Cu-SCR with slip catalyst on an ammonia engine, stationary coal-plant SCR, a gasoline passive SCR tailpipe. Engine-out slip and CO2-capture vents are a different quantity and are left out. Still few values from marine engines, so claims about a ship's slip should lean on the full texts and the regulation.",
+      "note_ko": "SCR 뒤의 슬립이며, 측정 위치를 함께 적었다 — 암모니아-디젤 엔진 후처리 출구와 암모니아 엔진의 Cu-SCR+슬립촉매, 석탄화력 SCR, 가솔린 passive SCR 배기관. 엔진 출구 슬립과 CO2 포집 배기는 다른 물성이라 뺐다. 선박 엔진 값은 여전히 적으므로, 선박 슬립에 관한 주장은 전문과 규제 문서에 기대야 한다.",
+      "values": [
+        {
+          "v": 1.0,
+          "doi": "10.9713/kcer.2011.49.1.089",
+          "quote": "ammonia slip from hybrid SNCR-SCR process was below 1 ppm at the condition of higher space velocity"
+        },
+        {
+          "v": 17.49,
+          "doi": "10.3390/pr12071519",
+          "quote": "the NH3 slip has been transformed from 122.26 ppm to 17.49 ppm"
+        },
+        {
+          "v": 50.0,
+          "doi": "10.1115/1.4069586",
+          "quote": "the SCR achieves more than 99% NOx conversion with less than 50 ppm NH3 slip at air-fuel equivalence ratios greater than 1.4"
+        },
+        {
+          "v": 10,
+          "doi": "10.1039/c8ra02767f",
+          "quote": "The project case could run continuously for six months with above 70% DeNOx efficiency and less than 10 ppm NH3 slip at 250 C and a space velocity of 4000 h-1 in the presence of 260-300 mg m-3 SOx"
+        },
+        {
+          "v": 4,
+          "doi": "10.1089/ees.2010.0122",
+          "quote": "The hybrid SNCR/SCR system including only 89 m3 catalysts could control NO emission under 25 ppm with ammonia slip <4 ppm (100 MW coal-fired utility boiler)"
+        },
+        {
+          "v": 0.62,
+          "doi": "10.1177/14680874261464321",
+          "quote": "NOx and NH3 emissions as low as 0.089 g/(kW h) and 0.62 ppm (ammonia-diesel engine with aftertreatment, WHSC)"
+        },
+        {
+          "v": 7.18,
+          "doi": "10.1177/14680874261464321",
+          "quote": "At the ATS outlet, NOx and NH3 emissions were controlled to 0.22 g/(kW h) and 7.18 ppm (WHTC)"
+        },
+        {
+          "v": 1.0,
+          "doi": "10.1016/j.jenvman.2022.115800",
+          "quote": "The deNOx process completes within 6 s, and the ammonia slip is less than 1.0 ppm (coal-fired power plant SCR, LES)"
+        },
+        {
+          "v": 15,
+          "doi": "10.1115/1.4043269",
+          "quote": "over 97% DeNOx efficiency and less than 15 ppm tailpipe ammonia slip (lean-burn gasoline, passive SCR)"
+        }
+      ]
+    },
+    {
+      "id": "current_density",
+      "label": "Stack current density",
+      "label_ko": "스택 전류밀도",
+      "unit": "A/cm2",
+      "block": "SOFC",
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "note": "Fuel cell operation only. Electrolysis values were excluded even where the same paper reports both, because a solid oxide electrolyser runs a different duty at a different sign of current.",
+      "note_ko": "연료전지 운전만 담았다. 같은 논문이 둘 다 보고하더라도 전해 값은 제외했다. 고체산화물 전해셀은 전류 부호도 부하도 다르기 때문이다.",
+      "values": [
+        {
+          "v": 0.125,
+          "doi": "10.1016/j.energy.2024.133452",
+          "quote": "the cells fracture during long-term operation under a load of 0.125 A cm-2"
+        },
+        {
+          "v": 0.2,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "ammonia-fueled SOFCs performed comparably to hydrogen-fueled configurations within typical operating ranges (0.2-0.5 A/cm2)"
+        },
+        {
+          "v": 0.3,
+          "doi": "10.1021/acsomega.1c04698",
+          "quote": "a metal-supported SOFC working at 600 °C and a 0.3 A/cm2 current density"
+        },
+        {
+          "v": 0.3,
+          "doi": "10.3390/en14123607",
+          "quote": "The operating current density and steam to carbon ratio are fixed at 0.3 A/cm2 and 2.5, respectively"
+        },
+        {
+          "v": 0.3,
+          "doi": "10.1002/adfm.77699",
+          "quote": "a Ni-BZCYYb anode-supported single cell ... maintains a stable operation for over 100 h at 0.3 A cm-2 at 650°C"
+        },
+        {
+          "v": 0.35,
+          "doi": "10.3390/en13184689",
+          "quote": "an efficiency of 40.1% based on ammonia lower heating value at the fuel cell operating point of 0.35 A/cm2 and 0.60 V"
+        },
+        {
+          "v": 0.5,
+          "doi": "10.1016/j.enconman.2025.120618",
+          "quote": "ammonia-fueled SOFCs performed comparably to hydrogen-fueled configurations within typical operating ranges (0.2-0.5 A/cm2)"
+        },
+        {
+          "v": 0.5,
+          "doi": "10.1016/j.enconman.2024.118396",
+          "quote": "the lowest difference (0.05%) belongs to 850 °C and fuel utilization of 70% at 0.5 A/cm2"
+        }
+      ]
+    },
+    {
+      "id": "h2_purity",
+      "label": "Hydrogen product purity",
+      "label_ko": "수소 제품 순도",
+      "unit": "%",
+      "block": "PSA",
+      "active_when": {
+        "S3": [
+          "PSA",
+          "MEMB"
+        ]
+      },
+      "note": "Fuel cell grade sits at the top of this sample and a diluted product at the bottom, which is the whole span the S3 branch has to cover. The distribution is strongly skewed: most reported values crowd above 99.9 percent, so the median says little and the lower tail is what matters.",
+      "note_ko": "표본의 위쪽은 연료전지급이고 아래쪽은 희석된 제품으로, S3 분기가 감당해야 하는 폭 전체다. 분포가 심하게 치우쳐 대부분의 값이 99.9 % 위에 몰려 있어 중앙값은 정보가 적고, 의미가 있는 것은 아래쪽 꼬리다.",
+      "values": [
+        {
+          "v": 90.0,
+          "doi": "10.1016/j.fuproc.2025.108203",
+          "quote": "Hydrogen recovery rates reached 97 %, with purity consistently exceeding 90 %"
+        },
+        {
+          "v": 99.0,
+          "doi": "10.1016/j.ijhydene.2025.150904",
+          "quote": "metal membranes achieve 99 % hydrogen purity, while PSA yields 85 % recovery"
+        },
+        {
+          "v": 99.2,
+          "doi": "10.1016/j.ijhydene.2025.150217",
+          "quote": "an ammonia conversion of 98.4 % and hydrogen purity of 99.2 % at 450 °C and 4 bar"
+        },
+        {
+          "v": 99.67,
+          "doi": "10.1016/j.cej.2023.144920",
+          "quote": "a 4-bed 12-step lab-scale VPSA rig filled with activated carbon RB3 ... a hydrogen product with a purity of 99.67 %"
+        },
+        {
+          "v": 99.8,
+          "doi": "10.1016/j.cep.2025.110368",
+          "quote": "The designed dehydrogenation process provides 1000 kg day-1 of hydrogen, with a purity of 99.8 %"
+        },
+        {
+          "v": 99.9,
+          "doi": "10.1016/j.xcrp.2026.103169",
+          "quote": "the produced hydrogen exceeds 99.9% purity with CO concentrations below the detection limit"
+        },
+        {
+          "v": 99.97,
+          "doi": "10.1016/j.ijhydene.2026.156660",
+          "quote": "an ammonia conversion of 97.1% and produced hydrogen with a purity of 99.97%"
+        },
+        {
+          "v": 99.97,
+          "doi": "10.1016/j.seppur.2024.130869",
+          "quote": "a final H2 product with a purity of 99.97 % (fuel cell grade), a recovery of 67 %"
+        },
+        {
+          "v": 99.99,
+          "doi": "10.1016/j.cej.2025.170994",
+          "quote": "the proposed design achieves up to 99.99 % hydrogen purity with a recovery of 77.4 %"
+        },
+        {
+          "v": 99.99,
+          "doi": "10.1016/j.ijhydene.2024.05.100",
+          "quote": "our VPSA process can achieve a hydrogen purity of 99.99% with 45.2% exergy efficiency"
+        },
+        {
+          "v": 99.99,
+          "doi": "10.1016/j.energy.2022.125209",
+          "quote": "the membrane reactor was able to achieve a high ammonia conversion (99.6%) and a high hydrogen purity (99.99%)"
+        },
+        {
+          "v": 99.995,
+          "doi": "10.1016/j.cej.2023.144920",
+          "quote": "Parametric optimization produced a H2 product of 99.995% purity and 92.29% recovery"
+        },
+        {
+          "v": 99.998,
+          "doi": "10.1016/j.fuproc.2021.106772",
+          "quote": "more than 86% of H2 fed to the system as ammonia was recovered with a purity of 99.998%"
+        },
+        {
+          "v": 99.999,
+          "doi": "10.3390/ma13020277",
+          "quote": "by using a Pd-based membrane, a quality of 5.0 (99.999% purity) or higher can be achieved"
+        },
+        {
+          "v": 99.9999,
+          "doi": "10.1016/j.enconman.2024.118748",
+          "quote": "a hydrogen recovery of 90 % and a purity of 99.9999 %"
+        },
+        {
+          "v": 99.5,
+          "doi": "10.3390/en19122753",
+          "quote": "reaching 99.5 vol.% H2 at 84% recovery and maintaining 99.2 vol.% H2 at 86% recovery"
+        },
+        {
+          "v": 99.95,
+          "doi": "10.1021/ie101210x",
+          "quote": "hydrogen with purity as high as 99.95% was produced from methylcyclohexane in the membrane reactor without using carrier gas or sweep gas"
+        },
+        {
+          "v": 99.8,
+          "doi": "10.1002/aic.14764",
+          "quote": "a H2 flow with purity higher than 99.8% was obtained in the permeate stream, and the H2 recovery ratio reached 0.99"
+        }
+      ]
+    },
+    {
+      "id": "h2_recovery",
+      "label": "Hydrogen recovery",
+      "label_ko": "수소 회수율",
+      "unit": "%",
+      "block": "PSA",
+      "active_when": {
+        "S3": [
+          "PSA",
+          "MEMB"
+        ]
+      },
+      "note": "The cost of the purity above. One membrane in this sample drops from 98 to 44 percent recovery as the permeate is taken from atmospheric pressure to ten bar, which is why the recovery figure is meaningless without the pressure it was taken at. Every value here is on a carrier this study uses: ammonia, methylcyclohexane or glycerol.",
+      "note_ko": "위 순도의 대가다. 이 표본의 한 막은 투과측 압력을 상압에서 10 bar로 올리는 동안 회수율이 98 %에서 44 %로 떨어진다. 회수율은 그것을 측정한 압력 없이는 의미가 없다는 뜻이다. 여기 값은 모두 이 연구가 쓰는 캐리어 — 암모니아·메틸사이클로헥산·글리세롤 — 기준이다.",
+      "values": [
+        {
+          "v": 44.0,
+          "doi": "10.1016/j.cep.2025.110474",
+          "quote": "hydrogen recovery dropping from 98% at atmospheric pressure to 44% at 10 bar"
+        },
+        {
+          "v": 63.0,
+          "doi": "10.1016/j.cej.2025.165783",
+          "quote": "50.2 % MCH conversion, 63.0 % hydrogen recovery, and 22.5 % CPC under optimal operating conditions"
+        },
+        {
+          "v": 64.5,
+          "doi": "10.1016/j.cej.2026.178342",
+          "quote": "Continuous H2 removal enhanced NH3 conversion beyond equilibrium limits within 300-450 °C, achieving 64.5% H2 recovery at 450 °C"
+        },
+        {
+          "v": 67.0,
+          "doi": "10.1016/j.seppur.2024.130869",
+          "quote": "a purity of 99.97 % (fuel cell grade), a recovery of 67 %, and productivity of 1.60e-2 kgH2/kgads"
+        },
+        {
+          "v": 72.0,
+          "doi": "10.1016/j.rser.2023.113989",
+          "quote": "MPCOF was the most efficient for ammonia-based green H2 separation with a H2 recovery of 72%"
+        },
+        {
+          "v": 77.4,
+          "doi": "10.1016/j.cej.2025.170994",
+          "quote": "up to 99.99 % hydrogen purity with a recovery of 77.4 %"
+        },
+        {
+          "v": 85.0,
+          "doi": "10.1016/j.ijhydene.2025.150904",
+          "quote": "metal membranes achieve 99 % hydrogen purity, while PSA yields 85 % recovery"
+        },
+        {
+          "v": 86.0,
+          "doi": "10.1016/j.fuproc.2021.106772",
+          "quote": "more than 86% of H2 fed to the system as ammonia was recovered with a purity of 99.998%"
+        },
+        {
+          "v": 90.0,
+          "doi": "10.1016/j.enconman.2024.118748",
+          "quote": "a hydrogen recovery of 90 % and a purity of 99.9999 %"
+        },
+        {
+          "v": 91.97,
+          "doi": "10.1016/j.cej.2023.144920",
+          "quote": "a hydrogen product with a purity of 99.67 % and a recovery of 91.97 %"
+        },
+        {
+          "v": 92.29,
+          "doi": "10.1016/j.cej.2023.144920",
+          "quote": "a H2 product of 99.995% purity and 92.29% recovery at an adsorption pressure of 6 bar"
+        },
+        {
+          "v": 97.0,
+          "doi": "10.1016/j.fuproc.2025.108203",
+          "quote": "Hydrogen recovery rates reached 97 %, with purity consistently exceeding 90 %"
+        },
+        {
+          "v": 98.0,
+          "doi": "10.1016/j.cep.2025.110474",
+          "quote": "hydrogen recovery dropping from 98% at atmospheric pressure to 44% at 10 bar"
+        },
+        {
+          "v": 84,
+          "doi": "10.3390/en19122753",
+          "quote": "reaching 99.5 vol.% H2 at 84% recovery and maintaining 99.2 vol.% H2 at 86% recovery"
+        },
+        {
+          "v": 86,
+          "doi": "10.3390/en19122753",
+          "quote": "maintaining 99.2 vol.% H2 at 86% recovery"
+        },
+        {
+          "v": 99,
+          "doi": "10.1002/aic.14764",
+          "quote": "a H2 flow with purity higher than 99.8% was obtained in the permeate stream, and the H2 recovery ratio reached 0.99"
+        }
+      ]
+    },
+    {
+      "label": "Electrochemical hydrogen compressor current density",
+      "label_ko": "전기화학 수소압축기 전류밀도",
+      "unit": "A/cm2",
+      "block": "ANODEREC",
+      "active_when": {
+        "S10": [
+          "EHC"
+        ]
+      },
+      "note": "Separated from the stack current density, where the extractor had put it. An electrochemical compressor or pump moves hydrogen across a membrane at a few hundred millivolts; it is the S10 EHC option, and until now that option had no operating figure at all.",
+      "note_ko": "추출기가 스택 전류밀도에 섞어 넣었던 것을 분리했다. 전기화학 압축기·펌프는 수백 mV로 막을 가로질러 수소를 옮기는 장치로, S10의 EHC 옵션에 해당한다. 이 옵션에는 지금까지 운전 수치가 하나도 없었다. 2026-09-16에 10 MPa까지 압축하는 EHC의 4 A/cm²(0.4 V, 35 °C)를 더했다. 같은 논문에서 효율 약 60 %는 그보다 낮은 전류밀도에서 나온 값이다.",
+      "id": "ehc_current_density",
+      "values": [
+        {
+          "v": 0.66,
+          "doi": "10.1002/fuce.201900068",
+          "quote": "high relative humidity hydrogen was fed to the EHC (at 0.66 A cm-2 and 0.36 V)"
+        },
+        {
+          "v": 0.7,
+          "doi": "10.3390/inorganics13020048",
+          "quote": "tests in an EHP/C cell at varying differential pressures in the range of 0-3 bar revealed stable behavior and high current density, reaching approximately 0.7 A cm-2 at 60 °C"
+        },
+        {
+          "v": 1.0,
+          "doi": "10.1021/acsenergylett.1c02853",
+          "quote": "The ability to operate the EHP at an elevated temperature allowed the EHP to purify hydrogen from gas feeds with large CO contents at 1 A cm-2"
+        },
+        {
+          "v": 4,
+          "doi": "10.1016/j.ijhydene.2024.09.019",
+          "quote": "the thinnest membrane, Gore 18 um, which allowed reaching a current density of 4 A cm-2 at 0.4 V and 35 °C"
+        },
+        {
+          "v": 0.2,
+          "doi": "10.1016/j.ijhydene.2024.06.262",
+          "quote": "the overall efficiency for hydrogen separation is high, ranging from about 87% at 0.2 A/cm2 to 75% at 0.6 A/cm2"
+        },
+        {
+          "v": 0.6,
+          "doi": "10.1016/j.ijhydene.2024.06.262",
+          "quote": "ranging from about 87% at 0.2 A/cm2 to 75% at 0.6 A/cm2"
+        },
+        {
+          "v": 0.4,
+          "doi": "10.1016/j.renene.2018.01.054",
+          "quote": "the membranes were evaluated in a hydrogen pumping system, and lower energy consumption at j = 0.4 A cm-2 has been obtained"
+        }
+      ]
+    },
+    {
+      "id": "mch_dehydro_T",
+      "label": "MCH dehydrogenation temperature",
+      "label_ko": "MCH 탈수소 온도",
+      "unit": "°C",
+      "block": "REFORMER",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "LOHC_CARRIER": [
+          "MCH"
+        ]
+      },
+      "note": "Methylcyclohexane to toluene in fixed-bed reactors only. Membrane reactors that pull hydrogen out (200-280 °C) were taken out on 2026-09-18: this superstructure has no such reactor, and at 250 °C the fixed-bed equilibrium conversion is 0.44-0.86.",
+      "note_ko": "고정층 반응기의 메틸사이클로헥산 → 톨루엔만 모았다. 수소를 빼내는 막반응기 값(200–280 °C)은 2026-09-18에 뺐다 — 이 슈퍼스트럭처에는 그런 반응기가 없고, 고정층 250 °C의 평형 전환율은 0.44–0.86이다.",
+      "values": [
+        {
+          "v": 250,
+          "doi": "10.1039/d2dt00332e",
+          "quote": "tested in a fixed-bed flow reactor at 250-350 °C, 0.1 MPa pressure"
+        },
+        {
+          "v": 350,
+          "doi": "10.1039/d2dt00332e",
+          "quote": "tested in a fixed-bed flow reactor at 250-350 °C, 0.1 MPa pressure"
+        },
+        {
+          "v": 450,
+          "doi": "10.3390/catal12090958",
+          "quote": "conversion of methylcyclohexane could reach 77.4% ... under the reaction conditions of reaction temperature 450 °C and LHSV = 4 mL g-1 h-1"
+        },
+        {
+          "v": 320,
+          "doi": "10.1021/acsnano.5c12158",
+          "quote": "achieves a reaction rate of up to 29,353 mmol gPt-1 min-1 at 320 °C, with a 99.98% selectivity for toluene"
+        },
+        {
+          "v": 350,
+          "doi": "10.1016/j.cjche.2020.05.026",
+          "quote": "raising the reaction temperature to 350 °C, the conversion and hydrogen evolution rate were increased to 99.9%"
+        },
+        {
+          "v": 350,
+          "doi": "10.1021/acscatal.5c03362",
+          "quote": "PtNi1/SiO2 exhibited a hydrogen production rate of 58.9 mmol H2 gcat-1 min-1 with high toluene selectivity (>99%) at 350 °C"
+        },
+        {
+          "v": 300,
+          "doi": "10.3390/en13010206",
+          "quote": "the methylcyclohexane dehydrogenation reaction is investigated over six potential catalysts for the temperature range of 300-450 C and a pressure range of 1-3 bar"
+        },
+        {
+          "v": 450,
+          "doi": "10.3390/en13010206",
+          "quote": "for the temperature range of 300-450 C and a pressure range of 1-3 bar"
+        }
+      ]
+    },
+    {
+      "id": "engine_indicated_efficiency",
+      "label": "Indicated thermal efficiency, ammonia dual fuel",
+      "label_ko": "암모니아 이중연료 엔진 도시열효율",
+      "unit": "%",
+      "block": "ENGINE",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "note": "Indicated, not brake: the friction and auxiliary losses between them are several points. Ammonia with a diesel (or n-heptane surrogate) pilot, or ammonia-methanol; where the abstract states the ammonia energy share, the quote carries it.",
+      "note_ko": "도시(indicated)열효율이다. 제동(brake)열효율과 몇 %p 차이가 나므로 섞지 않는다. 디젤(또는 대용 n-헵탄) 파일럿 암모니아 엔진과 암모니아-메탄올 엔진 값이며, 초록이 암모니아 에너지 비율을 밝힌 경우 인용문에 함께 적었다.",
+      "values": [
+        {
+          "v": 48.3,
+          "doi": "10.1177/14680874241248507",
+          "quote": "the increased ammonia energy share reduces the indicated thermal efficiency from 48.3% to 38.9%"
+        },
+        {
+          "v": 38.9,
+          "doi": "10.1177/14680874241248507",
+          "quote": "reduces the indicated thermal efficiency from 48.3% to 38.9% with high unburned ammonia emissions"
+        },
+        {
+          "v": 40.2,
+          "doi": "10.1177/14680874241248507",
+          "quote": "An ultra-high ammonia energy share of 95% could be finally achieved, and the thermal efficiency is 40.2%"
+        },
+        {
+          "v": 47.1,
+          "doi": "10.1080/15567036.2024.2348745",
+          "quote": "reaching a maximum value of 47.1% at DPR 40%"
+        },
+        {
+          "v": 48.1,
+          "doi": "10.1080/15567036.2024.2348745",
+          "quote": "ITE peaked at 48.1% with the optimal timing for diesel pilot-injection"
+        },
+        {
+          "v": 38,
+          "doi": "10.3390/pr14020298",
+          "quote": "Indicated thermal efficiency reaches 38-42% at 30% ammonia"
+        },
+        {
+          "v": 42,
+          "doi": "10.3390/pr14020298",
+          "quote": "Indicated thermal efficiency reaches 38-42% at 30% ammonia"
+        },
+        {
+          "v": 54.47,
+          "doi": "10.3390/en18143631",
+          "quote": "indicated thermal efficiency to 54.47% at a relatively high ammonia energy ratio of 60%"
+        },
+        {
+          "v": 51.6,
+          "doi": "10.1177/14680874241305210",
+          "quote": "The indicated thermal efficiency (ITE) could be increased to 51.6% at an indicated mean effective pressure (IMEP) of 14 bar"
+        },
+        {
+          "v": 48.3,
+          "doi": "10.1016/j.fuel.2026.139951",
+          "quote": "the highest indicated thermal efficiency of 48.3% was achieved at SOI NH3 -40 CAD (large-bore marine engine, liquid ammonia up to 77%)"
+        },
+        {
+          "v": 47.04,
+          "doi": "10.1016/j.fuproc.2025.108301",
+          "quote": "the indicated thermal efficiency of the engine reaches 47.04 % (ammonia energy ratios below 30 %)"
+        },
+        {
+          "v": 49.87,
+          "doi": "10.1038/s41598-026-66055-6",
+          "quote": "indicated thermal efficiency ... reaching a maximum of 49.87% at -10 CA ATDC for 60% ammonia energy percentage"
+        },
+        {
+          "v": 45.35,
+          "doi": "10.3390/pr14091445",
+          "quote": "the indicated thermal efficiency increases from 45.35% to 47.61% (ammonia-diesel engine, single to split diesel injection)"
+        },
+        {
+          "v": 47.61,
+          "doi": "10.3390/pr14091445",
+          "quote": "the indicated thermal efficiency increases from 45.35% to 47.61%"
+        }
+      ]
+    },
+    {
+      "id": "pilot_energy_ratio",
+      "label": "Pilot fuel energy share",
+      "label_ko": "파일럿 연료 에너지 분율",
+      "unit": "%",
+      "block": "PILOT",
+      "active_when": {
+        "S1": [
+          "NH3"
+        ],
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "note": "The share of the ignition fuel, by energy, in an ammonia dual fuel engine: 100 minus the ammonia energy share, taken only where ammonia is the primary fuel. A pilot-injection ratio (PIR, DPR) is how the diesel is split between injections, not its energy share, and is never read as one. The low end depends on the injection concept: port-premixed engines stop burning below about 16% diesel, high-pressure direct injection runs at 5%.",
+      "note_ko": "암모니아 이중연료 엔진에서 점화용 연료가 차지하는 에너지 비율로, 암모니아가 주연료일 때만 100 − 암모니아 에너지 비율로 읽는다. 파일럿 분사비(PIR, DPR)는 디젤을 여러 번 나눠 분사하는 비율이지 에너지 비율이 아니므로 이 값으로 읽지 않는다. 하한은 분사 방식에 달렸다 — 흡기 예혼합 엔진은 디젤 약 16 % 아래에서 연소가 멈추고, 고압 직접분사는 5 %에서도 운전된다. 무탄소 주연료라도 이만큼의 탄소가 배에 실린다.",
+      "values": [
+        {
+          "v": 3,
+          "doi": "10.1038/s41467-024-46452-z",
+          "quote": "at 3% diesel energetic ratio and 1000 rpm, the engine can increase the indicated thermal efficiency by 15.8%"
+        },
+        {
+          "v": 5,
+          "doi": "10.1177/14680874241248507",
+          "quote": "An ultra-high ammonia energy share of 95% could be finally achieved"
+        },
+        {
+          "v": 50,
+          "doi": "10.1080/15567036.2024.2348745",
+          "quote": "It focused primarily on evaluating the effectiveness of diesel pilot-injection strategy in reducing GHG emissions at AER50% (pilot energy share = 100 - AER; the 0-60% DPR in the same abstract is the split of the diesel, not its energy share)"
+        },
+        {
+          "v": 50,
+          "doi": "10.1038/s41598-026-49110-0",
+          "quote": "a twin-cylinder common rail direct injection (CRDI) diesel engine was operated in ADDF mode at 1800 rpm and medium load, with ammonia energy share of approximately 50% (the 20% PIR is the split of the diesel, not its energy share)"
+        },
+        {
+          "v": 22,
+          "doi": "10.3390/jmse12050806",
+          "quote": "for this engine model, the optimal diesel energy ratio is about 22%"
+        },
+        {
+          "v": 16,
+          "doi": "10.3390/jmse12050806",
+          "quote": "When the diesel energy ratio is below 16%, the cylinder cannot reach combustion conditions"
+        },
+        {
+          "v": 5,
+          "doi": "10.1016/j.fuel.2026.139720",
+          "quote": "The combustion concept demonstrated stable operation with an ammonia fuel fraction of up to 95 % (large-bore medium-speed engine, diesel pilot injector)"
+        },
+        {
+          "v": 10,
+          "doi": "10.1016/j.fuel.2026.139720",
+          "quote": "Due to increasing N2O emissions at the lowest diesel fractions, the lowest CO2-equivalent emissions are achieved at substitution rates of 85 to 90 %"
+        },
+        {
+          "v": 15,
+          "doi": "10.1016/j.fuel.2026.139720",
+          "quote": "the lowest CO2-equivalent emissions are achieved at substitution rates of 85 to 90 %"
+        },
+        {
+          "v": 40,
+          "doi": "10.3390/en18143631",
+          "quote": "an increase in the combustion efficiency to 98% and indicated thermal efficiency to 54.47% at a relatively high ammonia energy ratio of 60% (marine engine)"
+        },
+        {
+          "v": 27,
+          "doi": "10.1177/14680874241305210",
+          "quote": "Under high-load conditions of IMEP = 16 bar, employing a diesel pilot-injection strategy increased AER to 73% while maintaining high efficiency"
+        },
+        {
+          "v": 41,
+          "doi": "10.1177/14680874261464321",
+          "quote": "Under WHSC ... the engine achieved a maximum ammonia energy ratio (AER) of 59% while maintaining original power and torque (13 L multi-cylinder)"
+        },
+        {
+          "v": 47,
+          "doi": "10.1177/14680874261464321",
+          "quote": "Extending the strategy to WHTC operation, a cyclic AER of 53% was attained"
+        },
+        {
+          "v": 40,
+          "doi": "10.1016/j.fuel.2023.130269",
+          "quote": "The ammonia energy shares tested were 40 %, 50 % and 60 % (high-pressure dual fuel, liquid ammonia direct injection)"
+        },
+        {
+          "v": 23,
+          "doi": "10.1016/j.fuel.2026.139951",
+          "quote": "The impacts of liquid ammonia energy ratios up to 77% and injection timings ... were examined (large-bore marine engine)"
+        },
+        {
+          "v": 5,
+          "doi": "10.3390/en17122960",
+          "quote": "Simulations were conducted under 25%, 50%, 75% and 100% loads with a high ammonia energy substitution rate of 95% (low-speed marine engine)"
+        },
+        {
+          "v": 17,
+          "doi": "10.1177/14680874261479759",
+          "quote": "checked against V240 engine constraints over a wide range of ammonia energy ratios (0-83% AER)"
+        },
+        {
+          "v": 40,
+          "doi": "10.1038/s41598-026-66055-6",
+          "quote": "reaching a maximum of 49.87% at -10 CA ATDC for 60% ammonia energy percentage (AEP) (MAN L23/30H marine engine)"
+        },
+        {
+          "v": 30,
+          "doi": "10.3390/en16237687",
+          "quote": "The ammonia-diesel dual-fuel (ADDF) engine with an ammonia-to-energy ratio of 70% and optimized ammonia and diesel injection timing"
+        }
+      ]
+    },
+    {
+      "id": "norr_faradaic_efficiency",
+      "label": "NORR ammonia Faradaic efficiency",
+      "label_ko": "NORR 암모니아 패러데이 효율",
+      "unit": "%",
+      "block": "NORR",
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      },
+      "note": "Laboratory half cells reducing NO gas, not nitrate solutions and not a marine exhaust. The feed concentration differs by two orders of magnitude across the sample - 1000 ppm, 1 vol% and 10 vol% - and efficiency falls as the feed gets leaner, so the high end of this window belongs to the rich end of that span.",
+      "note_ko": "NO 기체를 환원한 실험실 반쪽전지 값이다. 질산염 환원 논문과 섞지 않았고 선박 배기 조건도 아니다. 공급 농도가 1,000 ppm·1 vol%·10 vol%로 두 자릿수 차이가 나고 희박할수록 효율이 떨어지므로, 이 창의 위쪽 끝은 농후한 쪽의 값이다.",
+      "values": [
+        {
+          "v": 97.9,
+          "doi": "10.1038/s41467-026-75925-6",
+          "quote": "Under a 1000 ppm NO feed, the three-shell catalyst achieves a Faradaic efficiency of 97.9% and a single-pass NO conversion of 97.3%"
+        },
+        {
+          "v": 98.8,
+          "doi": "10.1038/s41467-025-60043-6",
+          "quote": "a high NH3 Faradaic efficiency of 98.8% in NORR with an NH3 yield rate of 462.18 umol cm-2 h-1 at -0.5 V versus reversible hydrogen electrode"
+        },
+        {
+          "v": 91,
+          "doi": "10.1016/j.jcis.2023.02.026",
+          "quote": "achieving a maximal Faradaic efficiency of 91 % and a yield rate of 1023 ug h-1 mgcat-1 at -0.7 V vs RHE"
+        },
+        {
+          "v": 90,
+          "doi": "10.1002/celc.202101273",
+          "quote": "at relatively high gas flow rates, almost 90% faradaic efficiency and a NH3 production rate of 400 umol h-1 cm-2 were obtained in neutral electrolyte"
+        },
+        {
+          "v": 94.6,
+          "doi": "10.3390/catal14110838",
+          "quote": "CoMo-NC demonstrated notable NORR performance ... and FENH3 of 94.6% at -1.6 Vcell (diluted NO gas, 1%, in a PEM cell without catholyte)"
+        },
+        {
+          "v": 99.3,
+          "doi": "10.1002/adfm.202527175",
+          "quote": "realized superior ammonia Faradaic efficiency of 99.3% and yield of 626.47 ug h-1 cm-2 with dilute NO (10 vol.%)"
+        },
+        {
+          "v": 94.9,
+          "doi": "10.1002/adfm.202527175",
+          "quote": "or 94.9% and 476 ug h-1 cm-2 for even 1 vol.% NO"
+        },
+        {
+          "v": 92.1,
+          "doi": "10.1007/s40820-025-01919-6",
+          "quote": "The hexagonal close-packed RhB nanocatalysts demonstrate ... FENH3 of 92.1%"
+        },
+        {
+          "v": 89.6,
+          "doi": "10.1039/d3cc00131h",
+          "quote": "showing the maximum NO-to-NH3 faradaic efficiency of 89.6% ... at -0.3 V in neutral media"
+        },
+        {
+          "v": 82.27,
+          "doi": "10.1021/jacs.5c10404",
+          "quote": "exhibiting an ammonia yield of 1166.67 ug cm-2 h-1 and FE of 82.27%"
+        },
+        {
+          "v": 90.3,
+          "doi": "10.1002/sstr.70537",
+          "quote": "Cu2O/Cu NWs/CF delivers excellent NORR performance with NH3 Faradaic efficiency up to 90.3%"
+        },
+        {
+          "v": 86.73,
+          "doi": "10.1039/d2ta00744d",
+          "quote": "Fe2O3/CP acts as an electrocatalyst enabling efficient NH3 generation via NO reduction, capable of attaining a faradaic efficiency of 86.73%"
+        }
+      ]
+    },
+    {
+      "id": "dbt_dehydro_T",
+      "label": "DBT dehydrogenation temperature",
+      "label_ko": "DBT 탈수소 온도",
+      "unit": "°C",
+      "block": "REFORMER",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "LOHC_CARRIER": [
+          "DBT"
+        ]
+      },
+      "note": "Perhydro-dibenzyltoluene in reactors without hydrogen extraction. The 240 °C run that relied on an electrochemical compressor pulling hydrogen off the reactor was taken out on 2026-09-18. 250 °C needed a tungsten-modified catalyst and reached 80-90% dehydrogenation; full conversion is reported at 300 °C and a process simulation chose 320 °C.",
+      "note_ko": "수소를 빼내지 않는 반응기의 퍼하이드로-DBT만 모았다. 전기화학 압축기로 반응기에서 수소를 빼낸 240 °C 운전은 2026-09-18에 뺐다. 250 °C는 텅스텐 개질 촉매로 탈수소도 80–90 %였고, 완전 전환은 300 °C에서 보고되며 공정 모사는 320 °C를 골랐다.",
+      "values": [
+        {
+          "v": 250,
+          "doi": "10.1021/acs.iecr.5c03041",
+          "quote": "the WPt/Al2O3 catalyst could enable 18H-DBT continuous dehydrogenation at 250 °C, with the degree of dehydrogenation increasing from 80% to 90% and remaining stable even after 150 h"
+        },
+        {
+          "v": 290,
+          "doi": "10.1002/er.7604",
+          "quote": "The optimal temperature for the dehydrogenation of H18-DBT is found to be 290 °C"
+        },
+        {
+          "v": 300,
+          "doi": "10.3390/catal12050489",
+          "quote": "evaluated for the dehydrogenation of perhydro-dibenzyltoluene (H18-DBT) at 300 °C in a batch reactor"
+        },
+        {
+          "v": 300,
+          "doi": "10.3390/catal14010032",
+          "quote": "High dehydrogenation performance was obtained for Mg-doped Pt/Al2O3 using a batch reactor at 300 °C and 6 h reaction time ... dod, productivity and conversion obtained are 100%, 1.84 gH2/gPt/min and 99.9%"
+        },
+        {
+          "v": 240,
+          "doi": "10.1016/j.ijhydene.2020.02.129",
+          "quote": "the dehydrogenation of perhydro dibenzyltoluene (H18-DBT) is conducted at 240-300 C (reactor connected to a PEMFC stack)"
+        },
+        {
+          "v": 300,
+          "doi": "10.1016/j.ijhydene.2020.02.129",
+          "quote": "the dehydrogenation of perhydro dibenzyltoluene (H18-DBT) is conducted at 240-300 C"
+        },
+        {
+          "v": 270,
+          "doi": "10.3390/su13116490",
+          "quote": "perhydro-dibenzyl-toluene (PDBT) dehydrogenation system ... temperature range of 270-320 C"
+        },
+        {
+          "v": 320,
+          "doi": "10.3390/su13116490",
+          "quote": "the optimum operating conditions selected are 320 C and 2 bar, and 2 wt. % Pt/Al2O3 as a suitable catalyst"
+        }
+      ]
+    },
+    {
+      "id": "lohc_dehydro_T",
+      "label": "LOHC dehydrogenation temperature",
+      "label_ko": "LOHC 탈수소 온도",
+      "unit": "°C",
+      "block": "REFORMER",
+      "active_when": {
+        "S1": [
+          "LOHC"
+        ],
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "note": "Separated out of the cracking sample, where it did not belong: a carrier is dehydrogenated, not decomposed, and the temperatures are a hundred degrees lower. The spread is the carrier itself, N-ethylcarbazole at the low end and methylcyclohexane at the high end.",
+      "note_ko": "분해 표본에서 떼어냈다. 캐리어는 분해되는 것이 아니라 탈수소되며, 온도대가 100도 이상 낮다. 산포의 원인은 캐리어 자체로, 낮은 쪽이 N-에틸카바졸, 높은 쪽이 메틸사이클로헥산이다.",
+      "values": [
+        {
+          "v": 160,
+          "doi": "10.1016/j.ultsonch.2024.106793",
+          "quote": "The dehydrogenation efficiency reached 100 % in 4 h at 180 °C and 95.3 % in 6 h at 160 °C"
+        },
+        {
+          "v": 180,
+          "doi": "10.1016/j.ultsonch.2024.106793",
+          "quote": "The dehydrogenation efficiency reached 100 % in 4 h at 180 °C and 95.3 % in 6 h at 160 °C"
+        },
+        {
+          "v": 200,
+          "doi": "10.1016/j.ijhydene.2024.12.038",
+          "quote": "N-ethylcarbazole (NEC) is an attractive option mainly due to its ability to undergo hydrogenation and dehydrogenation below 200 °C"
+        },
+        {
+          "v": 250,
+          "doi": "10.1016/j.ijhydene.2025.152174",
+          "quote": "At 200 mbar abs and temperatures below 250 °C, we achieved complete dehydrogenation of H12-BT for the first time"
+        },
+        {
+          "v": 310,
+          "doi": "10.1016/j.cej.2026.175168",
+          "quote": "At 310 °C, a stable Pt-based hydrogen productivity of 2.7 gH2 gPt-1 min-1 and a degree of dehydrogenation of approx."
+        },
+        {
+          "v": 400,
+          "doi": "10.1016/j.mcat.2026.116143",
+          "quote": "under more severe conditions in MCH dehydrogenation at 400 °C, 1 bar, and WHSV = 1"
+        },
+        {
+          "v": 490,
+          "doi": "10.1016/j.apenergy.2023.121469",
+          "quote": "When the cell is operated at 490 °C and 90 mA cm-2 ... indicating an oxidative dehydrogenation reaction of MCH"
+        }
+      ],
+      "retired_because": "The sample mixes carriers - N-ethylcarbazole, benzyltoluene, methylcyclohexane and two unnamed ones - and the review requires MCH and DBT windows kept apart. Only one value is MCH at reactor conditions and none is DBT, so no carrier-specific distribution exists.",
+      "retired_because_ko": "표본에 N-에틸카바졸, 벤질톨루엔, MCH와 캐리어가 밝혀지지 않은 값 두 개가 섞여 있다. 검토는 MCH와 DBT의 운전창을 따로 두라고 요구하는데, 반응기 조건의 MCH 값은 1개, DBT 값은 0개라 캐리어별 분포를 만들 수 없다."
+    }
+  ],
+  "abstract_set": "2,786 abstracts, from 14,676 screened records queued across both the included and the held-pending-abstract pools. The earlier sample came from 1,366.",
+  "extraction_faults": [
+    "Widening the cracking context to 'reform' pulled in biomass, plastic, biogas, acetic acid and shale gas reforming. None of those feedstocks is a carrier in this study, and all were rejected.",
+    "'SCR' is not only selective catalytic reduction. Four hits came from a staged catalytic reactor for ammonia synthesis, where the same letters and the same units mean something else entirely.",
+    "Steam to carbon carries no unit, so the value pattern is a bare number and matches pressures, temperatures and space times in the same sentence. Seventy-nine hits reduced to seven.",
+    "'Purity' and 'recovery' were mined as one quantity, which merged the two sides of the S3 trade-off into a single meaningless distribution. They are separate quantities here. The same word also pulls in CO2, CH4, ammonia and methanol purity, all of which were rejected.",
+    "An abstract on anode-exhaust gas recirculation says the arrangement gives 'direct current-efficiencies of up to 65%'. The extractor read 65% as a recirculation ratio. It is an efficiency, and it was not used (10.1002/fuce.202100034).",
+    "A trilateral flash cycle paper states an ideal efficiency of about 3% below 80 °C without naming in that sentence which cycle it belongs to, so the number was left out and only the qualitative finding was cited (10.3390/e21121197).",
+    "Nitrate and nitrite electroreduction papers match every NORR pattern. They reduce a dissolved salt rather than NO gas, and are kept out of the NO sample even though the product is the same.",
+    "Low-grade ORC efficiencies (110-155 C evaporator, solar ORC) were first added to the bottoming-cycle sample and then moved out: they belong to a different heat-source class and pulled the sweep window down for exhaust-grade cases.",
+    "2026-09-18: pilot share is taken as 100 - ammonia energy share only where ammonia is the primary fuel; a 22% ammonia optimum (10.1016/j.csite.2026.107996) and a 40% ammonia test point were left out because diesel is the main fuel there.",
+    "2026-09-18 review: two pilot-share values (10.1080/15567036.2024.2348745, 10.1038/s41598-026-49110-0) had been read from a pilot-injection split ratio; both are 50% by energy. Two slip values that were not post-SCR slip were removed. An electrochemical separation purity was taken out of the S3 purifier sample.",
+    "2026-09-18 physics: hydrogen-extraction reactor temperatures (membrane, electrochemical) removed from the fixed-bed MCH and DBT samples; ammonia engine windows limited to ammonia cases."
+  ],
+  "venue_rule": "Values added after 2026-09-10 come from journals in the OpenAlex core set, checked against the public OpenAlex snapshot. Meeting abstracts and venues without an ISSN are held back.",
+  "physical_constraints": {
+    "why": "Each window is a literature sample of one variable. These are the physics that join them; a sampled point that breaks one is infeasible however well each coordinate is sourced.",
+    "source_audit": "scripts/physics_audit_20260918.py -> outputs/physics_audit_20260918/physics_audit.json",
+    "constraints": [
+      {
+        "id": "PH01",
+        "applies_to": {
+          "S1": [
+            "NH3"
+          ],
+          "S2": [
+            "FULL"
+          ]
+        },
+        "rule": "nh3_cracking_T >= T_eq(X=0.99, P_cracker) + margin",
+        "values_C": {
+          "1 bar": 388.3,
+          "3 bar": 474.1,
+          "9 bar": 583.1
+        },
+        "text_ko": "암모니아 FULL 케이스의 분해 온도는 해당 압력에서 평형 전환율 0.99가 되는 온도보다 높아야 한다 (1 bar 388.3 °C, 3 bar 474.1 °C, 9 bar 583.1 °C). 스윕 하한 230 °C는 촉매 활성 문헌값이지 FULL 설계점이 될 수 없다."
+      },
+      {
+        "id": "PH02",
+        "applies_to": {
+          "S1": [
+            "LOHC"
+          ],
+          "LOHC_CARRIER": [
+            "MCH"
+          ],
+          "S2": [
+            "FULL"
+          ]
+        },
+        "rule": "mch_dehydro_T above the fixed-bed equilibrium temperature for X=0.99 (not yet computed)",
+        "evidence": [
+          "10.1002/aic.14764: equilibrium conversion at 250 °C is 0.44-0.86",
+          "10.3390/membranes11050326: equilibrium conversion 42% at 573 K (conditions of that study)"
+        ],
+        "text_ko": "MCH FULL 케이스는 고정층 평형이 0.99를 넘는 온도 이상이어야 한다. 250 °C의 평형 전환율은 0.44–0.86이다. 막반응기 값은 표본에서 뺐다. 이 저장소에는 MCH·톨루엔의 검증된 열역학 데이터가 없으므로, 평형 판정은 실행 시 Aspen RGibbs로 한다."
+      },
+      {
+        "id": "PH03",
+        "applies_to": {
+          "S1": [
+            "MEOH",
+            "GLY"
+          ],
+          "S4": [
+            "PEMFC",
+            "HTPEM"
+          ]
+        },
+        "rule": "steam_to_carbon >= 1 (plus margin)",
+        "text_ko": "PEM 계열이 받는 메탄올·글리세롤 케이스는 S/C ≥ 1이어야 한다. S/C 0.8이면 완전 전환에서도 건조 기준 CO가 5.3 % 남아 HT-PEM 허용치(2–3 %)를 넘는다."
+      },
+      {
+        "id": "PH05",
+        "applies_to": {
+          "S5": [
+            "SOFCEXH"
+          ]
+        },
+        "rule": "T_reformer <= sofc_T - 40 K",
+        "by_feed": {
+          "NH3": {
+            "runs": 120,
+            "reformer_window_C": [
+              230,
+              755
+            ],
+            "SOFC_needed_at_reformer_max_C": 795,
+            "SOFC_window_C": [
+              503,
+              850
+            ],
+            "infeasible_if_SOFC_below_C": 795
+          },
+          "MEOH": {
+            "runs": 90,
+            "reformer_window_C": [
+              160,
+              622
+            ],
+            "SOFC_needed_at_reformer_max_C": 662,
+            "SOFC_window_C": [
+              503,
+              850
+            ],
+            "infeasible_if_SOFC_below_C": 662
+          },
+          "GLY": {
+            "runs": 45,
+            "reformer_window_C": [
+              650,
+              700
+            ],
+            "SOFC_needed_at_reformer_max_C": 740,
+            "SOFC_window_C": [
+              503,
+              850
+            ],
+            "infeasible_if_SOFC_below_C": 740
+          },
+          "LOHC": {
+            "runs": 180,
+            "reformer_window_C": [
+              200,
+              450
+            ],
+            "SOFC_needed_at_reformer_max_C": 490,
+            "SOFC_window_C": [
+              503,
+              850
+            ],
+            "infeasible_if_SOFC_below_C": null
+          }
+        },
+        "text_ko": "SOFC 배기로 개질기를 데우는 케이스에서 개질 온도는 스택 온도보다 40 K 이상 낮아야 한다. 두 변수를 독립 표본으로 뽑지 않는다."
+      },
+      {
+        "id": "PH06",
+        "applies_to": {
+          "S1": [
+            "NH3"
+          ],
+          "S4": [
+            "SOFC",
+            "HYB"
+          ],
+          "S2": [
+            "NONE",
+            "PARTIAL"
+          ]
+        },
+        "rule": "sofc_T >= 600 °C (P008: internal cracking essentially complete above 600 °C; P099 measured 650-750 °C)",
+        "text_ko": "직접 암모니아가 스택에 들어가는 케이스는 스택 온도 600 °C 이상이어야 한다. 스윕 하한(약 500 °C)에서는 스택 안 분해가 끝나지 않는다."
+      },
+      {
+        "id": "PH08",
+        "applies_to": {
+          "S4": [
+            "PEMFC"
+          ]
+        },
+        "rule": "h2_purity >= 99.97 %",
+        "text_ko": "LT-PEM 케이스의 수소 순도는 99.97 % 이상이어야 한다(표본에서 연료전지급으로 명시된 값, 10.1016/j.seppur.2024.130869). 순도는 불순물의 종류를 말하지 않으므로, 암모니아 허용치(P011)는 출처를 찾을 때까지 비워 둔다."
+      }
+    ]
+  }
+}

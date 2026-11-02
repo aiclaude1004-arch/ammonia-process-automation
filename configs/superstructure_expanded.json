@@ -1,0 +1,1156 @@
+{
+  "superstructure_name": "marine_alt_fuel_hybrid_power_expanded",
+  "schema_version": "1.0.0",
+  "description": "Literature-expanded decision space: adds a protonic ceramic stack, autothermal reforming, a guard bed, sCO2 and gas-turbine bottoming, an N2O catalyst, a NOx concentrator ahead of NORR, onboard carbon capture and battery hybridisation.",
+  "nodes": [
+    {
+      "id": "S1",
+      "name": "feedstock",
+      "label_ko": "연료 (Feed)",
+      "label_en": "Feedstock",
+      "options": [
+        {
+          "code": "NH3",
+          "label_ko": "액체 암모니아",
+          "label_en": "Liquid ammonia",
+          "note": "18.6 MJ/kg LHV, 12.7 MJ/L, carbon free, toxic"
+        },
+        {
+          "code": "MEOH",
+          "label_ko": "메탄올",
+          "label_en": "Methanol",
+          "note": "19.9 MJ/kg LHV, 15.8 MJ/L, carbon bearing, liquid at ambient"
+        },
+        {
+          "code": "LOHC",
+          "label_ko": "LOHC (MCH/DBT)",
+          "label_en": "LOHC (MCH/DBT)",
+          "note": "dehydrogenation only, carrier returns to shore"
+        },
+        {
+          "code": "LH2",
+          "label_ko": "액체 수소",
+          "label_en": "Liquid hydrogen",
+          "note": "no reforming, 20 K storage, boil-off and volume penalty"
+        },
+        {
+          "code": "GLY",
+          "label_ko": "글리세롤",
+          "label_en": "Glycerol",
+          "note": "biodiesel by-product, steam reforming route"
+        },
+        {
+          "code": "LNG",
+          "label_ko": "LNG",
+          "label_en": "Liquefied natural gas",
+          "note": "cryogenic storage and boil-off; methane slip carries a GWP100 of 28"
+        },
+        {
+          "code": "LPG",
+          "label_ko": "LPG",
+          "label_en": "Liquefied petroleum gas",
+          "note": "pressurised ambient-temperature storage, an established IMO gas-carrier fuel"
+        },
+        {
+          "code": "DME",
+          "label_ko": "DME",
+          "label_en": "Dimethyl ether",
+          "note": "propane-like storage near 5 bar, high cetane, and reforms to hydrogen at low temperature"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "hydrogen_production",
+      "label_ko": "수소 생산 (개질/분해)",
+      "label_en": "Hydrogen production",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음 (연료 직접 공급)",
+          "label_en": "None (direct feed)",
+          "note": "feed goes straight to the prime mover"
+        },
+        {
+          "code": "PARTIAL",
+          "label_ko": "부분 개질",
+          "label_en": "Partial reforming",
+          "note": "hydrogen only as a combustion promoter, remainder burned as feed"
+        },
+        {
+          "code": "FULL",
+          "label_ko": "완전 개질",
+          "label_en": "Full reforming",
+          "note": "conversion above 0.99 for fuel-cell grade gas"
+        },
+        {
+          "code": "ATR",
+          "label_ko": "자열 개질 (ATR)",
+          "label_en": "Autothermal reforming",
+          "note": "partial oxidation balances the endotherm, so no external reformer duty is needed"
+        },
+        {
+          "code": "MEMBRXN",
+          "label_ko": "막반응기 개질",
+          "label_en": "Membrane reactor",
+          "note": "in-situ hydrogen removal shifts the equilibrium and absorbs the separation duty; 98.9% at 450 C and 30 bar"
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "purification",
+      "label_ko": "가스 정제",
+      "label_en": "Purification",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음",
+          "label_en": "None",
+          "note": "diluted H2/N2 accepted by the consumer"
+        },
+        {
+          "code": "PSA",
+          "label_ko": "PSA",
+          "label_en": "PSA",
+          "note": "high purity, hydrogen recovery 0.75-0.90, compression duty"
+        },
+        {
+          "code": "MEMB",
+          "label_ko": "막분리",
+          "label_en": "Membrane",
+          "note": "compact and light, lower purity and recovery"
+        },
+        {
+          "code": "GUARD",
+          "label_ko": "흡착 가드베드",
+          "label_en": "Guard bed",
+          "note": "adsorbent ammonia trap, far lighter than PSA, sufficient for a PBI membrane"
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "name": "prime_mover",
+      "label_ko": "주 동력원",
+      "label_en": "Prime mover",
+      "options": [
+        {
+          "code": "SOFC",
+          "label_ko": "SOFC",
+          "label_en": "SOFC",
+          "note": "700-850 C, internal cracking, slow load ramp"
+        },
+        {
+          "code": "HTPEM",
+          "label_ko": "HT-PEM",
+          "label_en": "HT-PEM",
+          "note": "160-180 C, CO tolerant, ammonia must still be removed"
+        },
+        {
+          "code": "PEMFC",
+          "label_ko": "LT-PEM",
+          "label_en": "LT-PEM",
+          "note": "80 C, ammonia below 0.1 ppm, fast ramp"
+        },
+        {
+          "code": "ICE",
+          "label_ko": "이중연료 엔진 단독",
+          "label_en": "Dual fuel engine only",
+          "note": "ammonia/hydrogen dual fuel, fast ramp, NOx and N2O source"
+        },
+        {
+          "code": "HYB",
+          "label_ko": "SOFC + 엔진 하이브리드",
+          "label_en": "SOFC + engine hybrid",
+          "note": "fuel cell base load, engine peak and transient"
+        },
+        {
+          "code": "PCFC",
+          "label_ko": "양성자 세라믹 (PCFC)",
+          "label_en": "Protonic ceramic (PCFC)",
+          "note": "400-650 C, proton conductor so the anode is not diluted by product nitrogen"
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "name": "reformer_heat_source",
+      "label_ko": "개질기 열원",
+      "label_en": "Reformer heat source",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음 (개질기 부재)",
+          "label_en": "None (no reformer)",
+          "note": "only valid when S2 is NONE"
+        },
+        {
+          "code": "SOFCEXH",
+          "label_ko": "SOFC 배기 고온열",
+          "label_en": "SOFC exhaust heat",
+          "note": "700-850 C, best exergy match, couples reformer duty to stack load"
+        },
+        {
+          "code": "ANODEBURN",
+          "label_ko": "Anode off-gas 촉매연소기",
+          "label_en": "Anode off-gas burner",
+          "note": "burns unconverted hydrogen, decouples reformer from stack temperature"
+        },
+        {
+          "code": "FUELBURN",
+          "label_ko": "연료 직접 연소",
+          "label_en": "Direct fuel firing",
+          "note": "simplest and fastest, consumes 15-20 percent of feed LHV"
+        }
+      ]
+    },
+    {
+      "id": "S6",
+      "name": "bottoming_cycle",
+      "label_ko": "폐열 회수 (보조 전력)",
+      "label_en": "Bottoming cycle",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음",
+          "label_en": "None",
+          "note": "reference case that prices the value of heat recovery"
+        },
+        {
+          "code": "ORC",
+          "label_ko": "ORC",
+          "label_en": "ORC",
+          "note": "source below 350 C, jacket water and scavenge air included"
+        },
+        {
+          "code": "SRC",
+          "label_ko": "Steam Rankine cycle",
+          "label_en": "Steam Rankine",
+          "note": "source above 400 C, feedwater treatment and volume penalty"
+        },
+        {
+          "code": "KAL",
+          "label_ko": "Kalina",
+          "label_en": "Kalina",
+          "note": "ammonia-water mixture, temperature glide matched to sensible sources"
+        },
+        {
+          "code": "CASC",
+          "label_ko": "Steam Rankine 상단 + ORC 하단",
+          "label_en": "Steam topping + ORC bottoming",
+          "note": "high grade heat to steam, rejected heat to ORC"
+        },
+        {
+          "code": "SCO2",
+          "label_ko": "초임계 CO2 브레이턴",
+          "label_en": "Supercritical CO2 Brayton",
+          "note": "compact turbomachinery, suited to a source above 400 C, best fit for the volume axis"
+        },
+        {
+          "code": "GT",
+          "label_ko": "가스터빈 (SOFC-GT)",
+          "label_en": "Gas turbine (SOFC-GT)",
+          "note": "pressurised stack exhausting to a turbine, the classic solid oxide topping arrangement"
+        }
+      ]
+    },
+    {
+      "id": "S7",
+      "name": "aftertreatment",
+      "label_ko": "배기 후처리",
+      "label_en": "Aftertreatment",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음",
+          "label_en": "None",
+          "note": "only defensible when no combustor is present"
+        },
+        {
+          "code": "SCR",
+          "label_ko": "SCR",
+          "label_en": "SCR",
+          "note": "consumes one mole of ammonia per mole of NOx, produces N2O"
+        },
+        {
+          "code": "SCR_ASC",
+          "label_ko": "SCR + 암모니아 슬립 촉매",
+          "label_en": "SCR + ammonia slip catalyst",
+          "note": "adds a slip catalyst to hold ammonia slip below the limit"
+        },
+        {
+          "code": "NORR",
+          "label_ko": "NORR (전기화학 NOx→NH₃)",
+          "label_en": "NORR (electrochemical NOx to NH3)",
+          "note": "recovers ammonia instead of consuming it, pays an electrical duty"
+        },
+        {
+          "code": "SCR_ASC_N2O",
+          "label_ko": "SCR + ASC + N2O 촉매",
+          "label_en": "SCR + slip catalyst + N2O catalyst",
+          "note": "adds a decomposition stage for the emission that dominates the ammonia GWP balance"
+        },
+        {
+          "code": "NORR_CONC",
+          "label_ko": "NOx 농축 + NORR",
+          "label_en": "NOx concentrator + NORR",
+          "note": "adsorber concentrates 0.1% exhaust NO toward the 1-2% the cells are demonstrated on"
+        },
+        {
+          "code": "SCR_HP",
+          "label_ko": "고압 SCR (과급기 전단)",
+          "label_en": "High pressure SCR",
+          "note": "placed before the turbocharger so the exhaust stays inside the 300-400 C window at low load"
+        }
+      ]
+    },
+    {
+      "id": "S8",
+      "name": "carbon_capture",
+      "label_ko": "선상 탄소포집",
+      "label_en": "Onboard carbon capture",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음",
+          "label_en": "None",
+          "note": "no capture train"
+        },
+        {
+          "code": "AMINE",
+          "label_ko": "아민 흡수 (30% MEA)",
+          "label_en": "Amine absorption",
+          "note": "30 wt% MEA, up to 70% capture; 25% fuel penalty and 8% of tonnage on a methanol ship"
+        },
+        {
+          "code": "CRYO",
+          "label_ko": "저온 액화 포집",
+          "label_en": "Cryogenic capture",
+          "note": "liquefies CO2 directly, trades reboiler duty for refrigeration duty"
+        }
+      ]
+    },
+    {
+      "id": "S9",
+      "name": "energy_storage",
+      "label_ko": "에너지 저장",
+      "label_en": "Energy storage",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음",
+          "label_en": "None",
+          "note": "the prime movers follow the load unaided"
+        },
+        {
+          "code": "BATT",
+          "label_ko": "배터리 (BESS)",
+          "label_en": "Battery storage",
+          "note": "absorbs transients, which is the load-following argument the engine was carrying"
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "name": "anode_recirculation",
+      "label_ko": "Anode 재순환",
+      "label_en": "Anode recirculation",
+      "options": [
+        {
+          "code": "NONE",
+          "label_ko": "없음",
+          "label_en": "None",
+          "note": "anode off-gas leaves on a single pass"
+        },
+        {
+          "code": "BLOWER",
+          "label_ko": "고온 블로워",
+          "label_en": "Hot blower",
+          "note": "mechanical recycle of anode off-gas; 62.06% net in the reference study"
+        },
+        {
+          "code": "EHC",
+          "label_ko": "전기화학 수소압축기",
+          "label_en": "Electrochemical hydrogen compressor",
+          "note": "selective hydrogen recycle; 62.04% net, no hot rotating machinery"
+        }
+      ]
+    }
+  ],
+  "logic_cuts": [
+    {
+      "id": "LC01",
+      "if": {
+        "S4": [
+          "PEMFC",
+          "HTPEM"
+        ],
+        "S1": [
+          "NH3",
+          "MEOH",
+          "LOHC",
+          "GLY",
+          "LNG",
+          "LPG",
+          "DME"
+        ]
+      },
+      "then_require": {
+        "S2": [
+          "FULL",
+          "MEMBRXN"
+        ]
+      },
+      "rationale": "Low temperature cells cannot crack or internally reform a carrier. Liquid hydrogen is exempt: it needs no reforming."
+    },
+    {
+      "id": "LC02",
+      "if": {
+        "S4": [
+          "PEMFC",
+          "HTPEM"
+        ],
+        "S1": [
+          "NH3",
+          "MEOH",
+          "LOHC",
+          "GLY",
+          "LNG",
+          "LPG",
+          "DME"
+        ]
+      },
+      "then_forbid": {
+        "S3": [
+          "NONE"
+        ]
+      },
+      "rationale": "Ammonia and residual carrier poison the membrane and ionomer at ppm level. Liquid hydrogen is exempt: it arrives already pure."
+    },
+    {
+      "id": "LC03",
+      "if": {
+        "S4": [
+          "SOFC",
+          "HYB",
+          "ICE",
+          "PCFC"
+        ]
+      },
+      "then_require": {
+        "S3": [
+          "NONE"
+        ]
+      },
+      "rationale": "High temperature stacks and engines tolerate nitrogen dilution, so purification is pure CAPEX and recovery loss."
+    },
+    {
+      "id": "LC04",
+      "if": {
+        "S4": [
+          "ICE"
+        ]
+      },
+      "then_forbid": {
+        "S2": [
+          "FULL"
+        ]
+      },
+      "rationale": "An engine needs hydrogen only as a combustion promoter, not a fully cracked stream."
+    },
+    {
+      "id": "LC05",
+      "if": {
+        "S2": [
+          "NONE"
+        ]
+      },
+      "then_require": {
+        "S3": [
+          "NONE"
+        ],
+        "S5": [
+          "NONE"
+        ]
+      },
+      "rationale": "With no reformer there is nothing to purify and no reformer duty to supply."
+    },
+    {
+      "id": "LC06",
+      "if": {
+        "S2": [
+          "PARTIAL",
+          "FULL",
+          "MEMBRXN"
+        ]
+      },
+      "then_forbid": {
+        "S5": [
+          "NONE"
+        ]
+      },
+      "rationale": "Endothermic cracking and reforming must be heated; an unheated reformer is not a flowsheet."
+    },
+    {
+      "id": "LC07",
+      "if": {
+        "S5": [
+          "SOFCEXH"
+        ]
+      },
+      "then_require": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "rationale": "Only a solid oxide stack exhausts above the reformer temperature."
+    },
+    {
+      "id": "LC08",
+      "if": {
+        "S5": [
+          "ANODEBURN"
+        ]
+      },
+      "then_forbid": {
+        "S4": [
+          "ICE"
+        ]
+      },
+      "rationale": "An anode off-gas burner requires a fuel cell anode."
+    },
+    {
+      "id": "LC09",
+      "if": {
+        "S7": [
+          "SCR",
+          "SCR_ASC",
+          "SCR_ASC_N2O",
+          "SCR_HP",
+          "NORR",
+          "NORR_CONC"
+        ]
+      },
+      "then_require": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "rationale": "A fuel-cell-only plant has no flame and produces negligible thermal NOx."
+    },
+    {
+      "id": "LC10",
+      "if": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "then_forbid": {
+        "S7": [
+          "NONE"
+        ]
+      },
+      "rationale": "IMO Tier III inside an emission control area cannot be met by an ammonia or hydrogen engine without aftertreatment."
+    },
+    {
+      "id": "LC11",
+      "if": {
+        "S7": [
+          "NORR",
+          "NORR_CONC"
+        ]
+      },
+      "then_require": {
+        "S1": [
+          "NH3"
+        ]
+      },
+      "rationale": "Recovered ammonia only closes a loop when ammonia is the feed; otherwise it is an unsold by-product."
+    },
+    {
+      "id": "LC12",
+      "if": {
+        "S4": [
+          "PEMFC",
+          "HTPEM"
+        ]
+      },
+      "then_require": {
+        "S6": [
+          "NONE",
+          "ORC"
+        ]
+      },
+      "rationale": "A heat source below 200 C cannot drive a steam, Kalina or cascaded cycle."
+    },
+    {
+      "id": "LC13",
+      "if": {
+        "S1": [
+          "LH2"
+        ]
+      },
+      "then_require": {
+        "S2": [
+          "NONE"
+        ]
+      },
+      "rationale": "Liquid hydrogen is already the product of reforming."
+    },
+    {
+      "id": "LC14",
+      "if": {
+        "S1": [
+          "LOHC"
+        ]
+      },
+      "then_forbid": {
+        "S2": [
+          "NONE"
+        ]
+      },
+      "rationale": "A carrier such as MCH cannot be fed to any converter without dehydrogenation."
+    },
+    {
+      "id": "LC15",
+      "if": {
+        "S1": [
+          "GLY"
+        ]
+      },
+      "then_require": {
+        "S2": [
+          "FULL"
+        ]
+      },
+      "rationale": "Glycerol requires steam reforming; it is neither a direct engine fuel nor a fuel cell feed."
+    },
+    {
+      "id": "LC16",
+      "if": {
+        "S8": [
+          "AMINE",
+          "CRYO"
+        ]
+      },
+      "then_require": {
+        "S1": [
+          "MEOH",
+          "GLY",
+          "LNG",
+          "LPG",
+          "DME"
+        ]
+      },
+      "rationale": "There is no carbon in the exhaust of an ammonia, LOHC or hydrogen plant to capture."
+    },
+    {
+      "id": "LC17",
+      "if": {
+        "S2": [
+          "ATR"
+        ]
+      },
+      "then_require": {
+        "S1": [
+          "MEOH",
+          "GLY",
+          "LNG",
+          "LPG"
+        ]
+      },
+      "rationale": "Autothermal reforming balances its endotherm by burning part of the carbon feed."
+    },
+    {
+      "id": "LC18",
+      "if": {
+        "S2": [
+          "ATR"
+        ]
+      },
+      "then_require": {
+        "S5": [
+          "NONE"
+        ]
+      },
+      "rationale": "An autothermal reformer supplies its own duty, so an external heat source is redundant."
+    },
+    {
+      "id": "LC19",
+      "if": {
+        "S4": [
+          "PCFC"
+        ]
+      },
+      "then_require": {
+        "S1": [
+          "NH3"
+        ]
+      },
+      "rationale": "The protonic ceramic route is studied here as a direct-ammonia stack."
+    },
+    {
+      "id": "LC20",
+      "if": {
+        "S4": [
+          "PCFC"
+        ]
+      },
+      "then_forbid": {
+        "S2": [
+          "FULL"
+        ]
+      },
+      "rationale": "A proton conductor cracks ammonia internally and is not diluted by product nitrogen."
+    },
+    {
+      "id": "LC21",
+      "if": {
+        "S6": [
+          "GT"
+        ]
+      },
+      "then_require": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      },
+      "rationale": "A bottoming gas turbine needs a pressurised solid oxide stack to exhaust into it."
+    },
+    {
+      "id": "LC22",
+      "if": {
+        "S6": [
+          "SCO2"
+        ]
+      },
+      "then_forbid": {
+        "S4": [
+          "PEMFC",
+          "HTPEM"
+        ]
+      },
+      "rationale": "A source below 200 C cannot drive a supercritical CO2 Brayton cycle."
+    },
+    {
+      "id": "LC23",
+      "if": {
+        "S3": [
+          "GUARD"
+        ]
+      },
+      "then_require": {
+        "S4": [
+          "HTPEM"
+        ]
+      },
+      "rationale": "A guard bed removes ammonia but not carbon monoxide, so only a PBI stack tolerates it."
+    },
+    {
+      "id": "LC24",
+      "if": {
+        "S7": [
+          "NORR_CONC"
+        ]
+      },
+      "then_require": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      },
+      "rationale": "A concentrator needs a combustion exhaust to concentrate."
+    },
+    {
+      "id": "LC25",
+      "if": {
+        "S2": [
+          "MEMBRXN"
+        ]
+      },
+      "then_require": {
+        "S1": [
+          "NH3"
+        ]
+      },
+      "rationale": "The demonstrated onboard membrane cracking data are for ammonia."
+    },
+    {
+      "id": "LC26",
+      "if": {
+        "S2": [
+          "MEMBRXN"
+        ]
+      },
+      "then_require": {
+        "S3": [
+          "NONE"
+        ]
+      },
+      "rationale": "A hydrogen-selective membrane already performs the separation, so a downstream purifier is redundant."
+    },
+    {
+      "id": "LC27",
+      "if": {
+        "S10": [
+          "BLOWER",
+          "EHC"
+        ]
+      },
+      "then_require": {
+        "S4": [
+          "SOFC",
+          "HYB",
+          "PCFC"
+        ]
+      },
+      "rationale": "Anode recirculation needs a fuel cell anode to recycle from."
+    },
+    {
+      "id": "LC28",
+      "if": {
+        "S1": [
+          "LNG",
+          "LPG"
+        ]
+      },
+      "then_forbid": {
+        "S2": [
+          "NONE"
+        ]
+      },
+      "rationale": "A gaseous hydrocarbon has to be reformed before any fuel cell will take it."
+    },
+    {
+      "id": "LC29",
+      "if": {
+        "S1": [
+          "LNG",
+          "LPG",
+          "DME"
+        ]
+      },
+      "then_require": {
+        "S7": [
+          "NONE",
+          "SCR",
+          "SCR_ASC",
+          "SCR_ASC_N2O",
+          "SCR_HP"
+        ]
+      },
+      "rationale": "NORR recovers ammonia, which only closes a loop on an ammonia feed."
+    }
+  ],
+  "operating_variables": [
+    {
+      "name": "T_reformer_C",
+      "unit": "C",
+      "bounds": [
+        350.0,
+        850.0
+      ],
+      "active_when": {
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "name": "P_reformer_bar",
+      "unit": "bar",
+      "bounds": [
+        1.1,
+        20.0
+      ],
+      "active_when": {
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "name": "reformer_conversion",
+      "unit": "-",
+      "bounds": [
+        0.3,
+        0.995
+      ],
+      "active_when": {
+        "S2": [
+          "PARTIAL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "name": "steam_to_carbon",
+      "unit": "mol/mol",
+      "bounds": [
+        1.5,
+        4.0
+      ],
+      "active_when": {
+        "S1": [
+          "MEOH",
+          "GLY"
+        ]
+      }
+    },
+    {
+      "name": "purifier_recovery",
+      "unit": "-",
+      "bounds": [
+        0.7,
+        0.95
+      ],
+      "active_when": {
+        "S3": [
+          "PSA",
+          "MEMB"
+        ]
+      }
+    },
+    {
+      "name": "sofc_T_C",
+      "unit": "C",
+      "bounds": [
+        650.0,
+        900.0
+      ],
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "name": "fuel_utilization",
+      "unit": "-",
+      "bounds": [
+        0.55,
+        0.9
+      ],
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HTPEM",
+          "PEMFC",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "name": "air_utilization",
+      "unit": "-",
+      "bounds": [
+        0.1,
+        0.5
+      ],
+      "active_when": {
+        "S4": [
+          "SOFC",
+          "HTPEM",
+          "PEMFC",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "name": "engine_h2_energy_fraction",
+      "unit": "-",
+      "bounds": [
+        0.05,
+        0.4
+      ],
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "name": "engine_excess_air_ratio",
+      "unit": "-",
+      "bounds": [
+        1.05,
+        2.2
+      ],
+      "active_when": {
+        "S4": [
+          "ICE",
+          "HYB"
+        ]
+      }
+    },
+    {
+      "name": "fc_power_fraction",
+      "unit": "-",
+      "bounds": [
+        0.3,
+        0.95
+      ],
+      "active_when": {
+        "S4": [
+          "HYB"
+        ]
+      }
+    },
+    {
+      "name": "bottoming_evap_P_bar",
+      "unit": "bar",
+      "bounds": [
+        3.0,
+        60.0
+      ],
+      "active_when": {
+        "S6": [
+          "ORC",
+          "SRC",
+          "KAL",
+          "CASC"
+        ]
+      }
+    },
+    {
+      "name": "bottoming_pinch_C",
+      "unit": "C",
+      "bounds": [
+        5.0,
+        30.0
+      ],
+      "active_when": {
+        "S6": [
+          "ORC",
+          "SRC",
+          "KAL",
+          "CASC"
+        ]
+      }
+    },
+    {
+      "name": "condenser_T_C",
+      "unit": "C",
+      "bounds": [
+        30.0,
+        55.0
+      ],
+      "active_when": {
+        "S6": [
+          "ORC",
+          "SRC",
+          "KAL",
+          "CASC"
+        ]
+      }
+    },
+    {
+      "name": "aftertreatment_conversion",
+      "unit": "-",
+      "bounds": [
+        0.7,
+        0.99
+      ],
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC",
+          "NORR"
+        ]
+      }
+    },
+    {
+      "name": "nh3_to_nox_ratio",
+      "unit": "mol/mol",
+      "bounds": [
+        0.8,
+        1.2
+      ],
+      "active_when": {
+        "S7": [
+          "SCR",
+          "SCR_ASC"
+        ]
+      }
+    },
+    {
+      "name": "norr_faradaic_efficiency",
+      "unit": "-",
+      "bounds": [
+        0.2,
+        0.9
+      ],
+      "active_when": {
+        "S7": [
+          "NORR"
+        ]
+      }
+    }
+  ],
+  "gwp100_factors": {
+    "CO2": 1.0,
+    "CH4": 28.0,
+    "N2O": 273.0,
+    "source": "IPCC AR6 GWP100"
+  },
+  "design_basis": {
+    "propulsion_power_kw": 5000.0,
+    "auxiliary_power_kw": 800.0,
+    "annual_operating_hours": 6000.0,
+    "plant_lifetime_years": 20.0,
+    "discount_rate": 0.08,
+    "note": "Placeholder ship basis. Replace with the actual vessel duty profile before the economic run."
+  },
+  "fuel_provenance": {
+    "note": "Applied after simulation. Two cases that differ only here share one Aspen run.",
+    "options": [
+      {
+        "code": "FOSSIL",
+        "label_ko": "화석 유래",
+        "label_en": "Fossil"
+      },
+      {
+        "code": "BIO",
+        "label_ko": "바이오 유래",
+        "label_en": "Bio-based"
+      },
+      {
+        "code": "EFUEL",
+        "label_ko": "e-fuel (재생전력 + 포집 CO2)",
+        "label_en": "E-fuel",
+        "note": "e-methanol from green hydrogen and captured CO2 reaches -1.3 kg CO2 per kg fuel with capture credits"
+      }
+    ]
+  },
+  "variants": {
+    "LOHC_CARRIER": {
+      "parent_node": "S1",
+      "parent_code": "LOHC",
+      "label_ko": "LOHC 캐리어",
+      "label_en": "LOHC carrier",
+      "options": [
+        {
+          "code": "MCH",
+          "label_ko": "MCH / 톨루엔",
+          "label_en": "MCH / toluene",
+          "note": "C7H14 -> C7H8 + 3 H2; toluene returned ashore"
+        },
+        {
+          "code": "DBT",
+          "label_ko": "H18-DBT / H0-DBT",
+          "label_en": "H18-DBT / H0-DBT",
+          "note": "H18-DBT -> H0-DBT + 9 H2; pseudo-components and partly hydrogenated intermediates must be documented; H0-DBT returned ashore"
+        }
+      ]
+    }
+  }
+}

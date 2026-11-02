@@ -1,0 +1,122 @@
+{
+  "description": "Values read and verified from the Semantic Scholar search, held back from operating_ranges.json until their journals pass the venue check. Each sentence has been read and judged exactly as for the main file; what is still missing is scripts/check_venues.py, which needs the OpenAlex budget that resets at midnight UTC. Only values whose DOI's journal comes back as core are merged.",
+  "read_on": "2026-09-10",
+  "source_search": "references/s2_search",
+  "rejected_note": "Rejected in this pass: engine-out unburned ammonia read as stack slip (10.3390/en18143631, 16016 to 100 ppm is the engine, not the funnel); a sensor's measuring range read as slip; efficiencies inside recirculation sentences; an ASC reactivation temperature read as an operating one; and an unoptimised SCR baseline of 122 ppm slip (10.3390/pr12071519), kept out because it is the deliberately poor reference the paper improves on, not a design point. Current density: electrolysis values (SOEC, AEMWE, PCEC in electrolysis mode, co-electrolysis) and electrocatalytic ammonia synthesis and NOx reduction were rejected; a cell voltage above about 1.2 V marks electrolysis. Two operating points whose device the sentence does not name were rejected rather than guessed.",
+  "values": {
+    "ammonia_slip_ppm": [
+      {
+        "v": 2.5,
+        "doi": "10.70267/esg2026.v3n2.7886",
+        "quote": "ammonia slip is less than 2.5 ppm, and system resistance is below 800 Pa",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "Environment, Social and Governance"
+      }
+    ],
+    "anode_recirculation": [
+      {
+        "v": 90,
+        "doi": "10.1149/ma2025-031462mtgabs",
+        "quote": "A system with 90% anode off-gas recirculation (AOR) is analyzed to achieve high efficiency",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      }
+    ],
+    "scr_T": [
+      {
+        "v": 250,
+        "doi": "10.1115/icef2024-140557",
+        "quote": "with the SCR inlet temperatures from 250 to 400 °C",
+        "venue_verdict": "no ISSN (meeting abstract, proceedings or unrecorded venue)",
+        "journal": "ASME 2024 ICE Forward Conference"
+      },
+      {
+        "v": 320,
+        "doi": "10.1115/icef2024-140557",
+        "quote": "viable for particulate filter regeneration only when SCR inlet temperatures are sufficiently high (>= 320 °C)",
+        "venue_verdict": "no ISSN (meeting abstract, proceedings or unrecorded venue)",
+        "journal": "ASME 2024 ICE Forward Conference"
+      },
+      {
+        "v": 400,
+        "doi": "10.1115/icef2024-140557",
+        "quote": "with the SCR inlet temperatures from 250 to 400 °C",
+        "venue_verdict": "no ISSN (meeting abstract, proceedings or unrecorded venue)",
+        "journal": "ASME 2024 ICE Forward Conference"
+      }
+    ],
+    "current_density": [
+      {
+        "v": 0.2,
+        "doi": "10.1149/ma2023-0154215mtgabs",
+        "quote": "the cell voltage at 0.2 A/cm2 was slightly decreased as a function of operating time, which means that the nickel was degraded under ammonia atmosphere",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      },
+      {
+        "v": 0.23,
+        "doi": "10.1051/e3sconf/202123804002",
+        "quote": "All the schemes feature an electrolyte supported SOFC working at 860°C and 0.23 A/cm2 current density",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "E3S Web of Conferences"
+      },
+      {
+        "v": 0.5,
+        "doi": "10.1149/ma2025-031458mtgabs",
+        "quote": "Single cells were able to operate in ammonia with very limited degradation at 750 °C, a current density of 0.5 A/cm2, and a fuel utilization of 55.6%",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      },
+      {
+        "v": 0.987,
+        "doi": "10.1149/ma2025-03144mtgabs",
+        "quote": "The thin-film YSZ-electrolyte cell ... to sustain an average current density in the cell of 0.987 A cm-2",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      },
+      {
+        "v": 1.15,
+        "doi": "10.1149/ma2025-03144mtgabs",
+        "quote": "The GDC-based cell, however, can still achieve high average current densities of 1.15 A cm-2 at a cell voltage of 0.75 V",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      }
+    ],
+    "ehc_current_density": [
+      {
+        "v": 0.5,
+        "doi": "10.1149/ma2024-01341794mtgabs",
+        "quote": "At 0.5 A cm-2, an applied voltage of 195 mV was required to compress hydrogen at atmospheric pressure in one step to 10 barg",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      },
+      {
+        "v": 1.0,
+        "doi": "10.1149/ma2024-01341794mtgabs",
+        "quote": "Current densities reaching 1.0 A cm-2 (corresponding to a specific hydrogen flow rate of 7.45 mL min-1 cm-2) were achieved during testing",
+        "venue_verdict": "journal not in the OpenAlex core set",
+        "journal": "ECS Meeting Abstracts"
+      }
+    ]
+  },
+  "new_quantities": {
+    "ehc_current_density": {
+      "label": "Electrochemical hydrogen compressor current density",
+      "label_ko": "전기화학 수소압축기 전류밀도",
+      "unit": "A/cm2",
+      "block": "ANODEREC",
+      "active_when": {
+        "S10": [
+          "EHC"
+        ]
+      },
+      "note": "Separated from the stack current density, where the extractor had put it. An electrochemical compressor or pump moves hydrogen across a membrane at a few hundred millivolts; it is the S10 EHC option, and until now that option had no operating figure at all.",
+      "note_ko": "추출기가 스택 전류밀도에 섞어 넣었던 것을 분리했다. 전기화학 압축기·펌프는 수백 mV로 막을 가로질러 수소를 옮기는 장치로, S10의 EHC 옵션에 해당한다. 이 옵션에는 지금까지 운전 수치가 하나도 없었다."
+    }
+  },
+  "merged_on": "2026-09-10",
+  "held_because": {
+    "journal not in the OpenAlex core set": 9,
+    "no ISSN (meeting abstract, proceedings or unrecorded venue)": 3
+  }
+}

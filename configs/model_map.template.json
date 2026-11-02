@@ -1,0 +1,18 @@
+{
+  "model_copy": "C:\\Temp\\AspenMCP\\NH3_H2_SOFC_ICE_ORC_MCPBaseCase.bkp",
+  "notes": "Fill paths only after verifying them in the live Aspen model.",
+  "inputs": {
+    "cracker_temperature": {
+      "tree_path": "",
+      "unit": "degC",
+      "meaning": "Ammonia cracker operating temperature"
+    }
+  },
+  "outputs": {
+    "net_power": {
+      "tree_path": "",
+      "unit": "kW",
+      "meaning": "Combined SOFC, engine, and ORC net electric power"
+    }
+  }
+}

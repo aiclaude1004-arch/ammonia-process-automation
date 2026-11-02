@@ -1,0 +1,1094 @@
+{
+  "purpose": "Cost database for the superstructure, joined to the process database on Case ID.",
+  "status": "skeleton written 2026-09-20; every cost field is empty (미조사) until it is collected from a named source. An empty field is not zero.",
+  "functional_unit": "1 MWh of net electricity delivered (the same basis as the LCA database)",
+  "formulas": {
+    "capex_scaling": "C = C_ref * (S / S_ref)^n",
+    "cost_year_normalisation": "C_2026 = C_year * CEPCI_2026 / CEPCI_year",
+    "installed_cost": "C_installed = C_equipment * f_installation",
+    "annualisation": "CRF = i (1+i)^N / ((1+i)^N - 1)",
+    "levelised_cost": "LCOE = (CAPEX * CRF + OPEX_annual) / E_net,annual",
+    "note": "Replacement items (stack, catalyst, membrane) enter either as a sinking fund in OPEX or as repeated CAPEX; state which, and use one convention for every case."
+  },
+  "economic_assumptions": {
+    "discount_rate": null,
+    "plant_life_years": null,
+    "capacity_factor": null,
+    "operating_hours_per_year": null,
+    "cost_year_basis": null,
+    "currency": null,
+    "CEPCI_reference_year": null,
+    "CEPCI_reference_value": null,
+    "contingency_fraction": null,
+    "indirect_cost_fraction": null,
+    "working_capital_fraction": null
+  },
+  "opex_items": [
+    {
+      "item": "ammonia price",
+      "unit": "USD/t",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "market/IEA/Argus series, or a scenario range; the cracker TEA read here says this term dominates"
+    },
+    {
+      "item": "pilot fuel price (MGO)",
+      "unit": "USD/t",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "bunker price series (Ship & Bunker, Clarksons), scenario range"
+    },
+    {
+      "item": "electricity import price",
+      "unit": "USD/MWh",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "shore power tariff or onboard opportunity cost"
+    },
+    {
+      "item": "electricity export credit",
+      "unit": "USD/MWh",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "only if the case exports; otherwise state as not applicable"
+    },
+    {
+      "item": "demineralised water",
+      "unit": "USD/m3",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "ship water plant operating cost or vendor"
+    },
+    {
+      "item": "urea/SCR reagent",
+      "unit": "USD/t",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "supplier price; only for non-ammonia feeds in this superstructure"
+    },
+    {
+      "item": "SOFC stack replacement",
+      "unit": "USD/kW per replacement",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "same source as the stack capital cost"
+    },
+    {
+      "item": "catalyst replacement (cracker, SCR)",
+      "unit": "USD/m3 and interval",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "vendor or published plant data"
+    },
+    {
+      "item": "membrane replacement (PSA/Pd/EHC)",
+      "unit": "USD/m2 and interval",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "vendor or published module cost"
+    },
+    {
+      "item": "maintenance",
+      "unit": "fraction of CAPEX per year",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "standard marine practice or a cited TEA"
+    },
+    {
+      "item": "labour",
+      "unit": "USD/year",
+      "value": null,
+      "source": null,
+      "how_to_obtain": "crew cost basis; state if unchanged across cases and therefore cancels"
+    }
+  ],
+  "equipment": [
+    {
+      "block": "AIR",
+      "label": "Ambient air",
+      "kind": "boundary",
+      "runs_all": 1619,
+      "runs_nh3": 466,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "boundary, no equipment"
+      ]
+    },
+    {
+      "block": "ANODEBURN",
+      "label": "Anode off-gas burner",
+      "kind": "unit",
+      "runs_all": 475,
+      "runs_nh3": 128,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (catalytic burner)"
+      ]
+    },
+    {
+      "block": "ANODEREC",
+      "label": "Anode recycle",
+      "kind": "unit",
+      "runs_all": 970,
+      "runs_nh3": 280,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (blower or electrochemical compressor $/kW)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "AOG_SPLITTER",
+      "label": "Anode off-gas split",
+      "kind": "unit",
+      "runs_all": 1455,
+      "runs_nh3": 420,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "negligible capital; document the assumption"
+      ]
+    },
+    {
+      "block": "ASC",
+      "label": "Slip catalyst",
+      "kind": "unit",
+      "runs_all": 485,
+      "runs_nh3": 115,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (slip catalyst)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "BLOWER",
+      "label": "Air blower",
+      "kind": "unit",
+      "runs_all": 1619,
+      "runs_nh3": 466,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (blower)"
+      ]
+    },
+    {
+      "block": "CARRIER",
+      "label": "Spent carrier tank",
+      "kind": "boundary",
+      "runs_all": 592,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (carrier tank)"
+      ]
+    },
+    {
+      "block": "COND",
+      "label": "Reformate KO drum",
+      "kind": "unit",
+      "runs_all": 447,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (knockout drum)"
+      ]
+    },
+    {
+      "block": "DRAIN",
+      "label": "Liquid discharge",
+      "kind": "boundary",
+      "runs_all": 964,
+      "runs_nh3": 249,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "negligible capital; document the assumption"
+      ]
+    },
+    {
+      "block": "ENGINE",
+      "label": "Dual fuel engine",
+      "kind": "unit",
+      "runs_all": 1085,
+      "runs_nh3": 345,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW marine dual-fuel engine)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "FEEDSYS",
+      "label": "Pump & vaporiser",
+      "kind": "unit",
+      "runs_all": 1619,
+      "runs_nh3": 466,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (pump and vaporiser)"
+      ]
+    },
+    {
+      "block": "FIREDHTR",
+      "label": "Fired heater",
+      "kind": "unit",
+      "runs_all": 520,
+      "runs_nh3": 143,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (fired heater)"
+      ]
+    },
+    {
+      "block": "HRSG",
+      "label": "HRSG",
+      "kind": "unit",
+      "runs_all": 614,
+      "runs_nh3": 180,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (heat recovery steam generator)"
+      ]
+    },
+    {
+      "block": "HTPEM",
+      "label": "HT-PEM",
+      "kind": "unit",
+      "runs_all": 42,
+      "runs_nh3": 8,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "KALINA",
+      "label": "Kalina cycle",
+      "kind": "unit",
+      "runs_all": 307,
+      "runs_nh3": 90,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW Kalina cycle)"
+      ]
+    },
+    {
+      "block": "LOHC_SEP",
+      "label": "Carrier separator",
+      "kind": "unit",
+      "runs_all": 592,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (flash separator)"
+      ]
+    },
+    {
+      "block": "MAKEUP",
+      "label": "Demin make-up",
+      "kind": "boundary",
+      "runs_all": 683,
+      "runs_nh3": 249,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (water treatment)"
+      ]
+    },
+    {
+      "block": "MEMB",
+      "label": "Membrane",
+      "kind": "unit",
+      "runs_all": 40,
+      "runs_nh3": 8,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (Pd membrane area cost)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "NH3REC",
+      "label": "NH3 recovery",
+      "kind": "unit",
+      "runs_all": 115,
+      "runs_nh3": 115,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (stripper/contactor)"
+      ]
+    },
+    {
+      "block": "NORR",
+      "label": "NORR cell",
+      "kind": "unit",
+      "runs_all": 115,
+      "runs_nh3": 115,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (electrochemical cell $/m2)",
+        "no commercial unit: flag as an R&D cost"
+      ]
+    },
+    {
+      "block": "NORR_PRE",
+      "label": "NOx capture",
+      "kind": "unit",
+      "runs_all": 115,
+      "runs_nh3": 115,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (absorber)"
+      ]
+    },
+    {
+      "block": "ORC",
+      "label": "ORC",
+      "kind": "unit",
+      "runs_all": 656,
+      "runs_nh3": 188,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW ORC module)",
+        "correlation"
+      ]
+    },
+    {
+      "block": "PEMFC",
+      "label": "LT-PEM",
+      "kind": "unit",
+      "runs_all": 42,
+      "runs_nh3": 8,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "PILOT",
+      "label": "Pilot fuel",
+      "kind": "boundary",
+      "runs_all": 1085,
+      "runs_nh3": 345,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "OPEX only (pilot fuel), no separate capital item"
+      ]
+    },
+    {
+      "block": "POWER",
+      "label": "Net power boundary",
+      "kind": "boundary",
+      "runs_all": 1619,
+      "runs_nh3": 466,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "boundary, no equipment"
+      ]
+    },
+    {
+      "block": "PSA",
+      "label": "PSA",
+      "kind": "unit",
+      "runs_all": 40,
+      "runs_nh3": 8,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (PSA unit cost)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "REAGENT",
+      "label": "Reagent tank",
+      "kind": "unit",
+      "runs_all": 740,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "vendor (urea tank)",
+        "negligible"
+      ]
+    },
+    {
+      "block": "REFHX",
+      "label": "Reformer exchanger",
+      "kind": "unit",
+      "runs_all": 435,
+      "runs_nh3": 120,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (high-temperature exchanger)"
+      ]
+    },
+    {
+      "block": "REFORMER",
+      "label": "Reformer / cracker",
+      "kind": "unit",
+      "runs_all": 1430,
+      "runs_nh3": 391,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "literature (ammonia cracking plant studies)"
+      ]
+    },
+    {
+      "block": "SCR",
+      "label": "SCR",
+      "kind": "unit",
+      "runs_all": 970,
+      "runs_nh3": 230,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW marine SCR)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "SOFC",
+      "label": "SOFC",
+      "kind": "unit",
+      "runs_all": 1455,
+      "runs_nh3": 420,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature ($/kW stack and BoP, with replacement interval)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "STACK",
+      "label": "Funnel",
+      "kind": "unit",
+      "runs_all": 1619,
+      "runs_nh3": 466,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "negligible capital (funnel); document the assumption"
+      ]
+    },
+    {
+      "block": "STEAMGEN",
+      "label": "Steam generator",
+      "kind": "unit",
+      "runs_all": 447,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (shell-and-tube steam generator)"
+      ]
+    },
+    {
+      "block": "STEAMTURB",
+      "label": "Steam turbine",
+      "kind": "unit",
+      "runs_all": 614,
+      "runs_nh3": 180,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (steam turbine)"
+      ]
+    },
+    {
+      "block": "SWCOND",
+      "label": "Condenser",
+      "kind": "unit",
+      "runs_all": 1270,
+      "runs_nh3": 368,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (seawater condenser)"
+      ]
+    },
+    {
+      "block": "TANK",
+      "label": "Fuel storage",
+      "kind": "unit",
+      "runs_all": 1619,
+      "runs_nh3": 466,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "literature (marine ammonia tank $/m3 by storage type)",
+        "vendor"
+      ]
+    },
+    {
+      "block": "WATER",
+      "label": "Reformer process water",
+      "kind": "boundary",
+      "runs_all": 447,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "boundary, no equipment"
+      ]
+    },
+    {
+      "block": "WGS",
+      "label": "Water-gas shift",
+      "kind": "unit",
+      "runs_all": 302,
+      "runs_nh3": 0,
+      "size_basis": null,
+      "reference_cost": null,
+      "reference_cost_currency": null,
+      "reference_cost_year": null,
+      "reference_capacity": null,
+      "scaling_exponent": null,
+      "installation_factor": null,
+      "lifetime_years": null,
+      "replacement_interval_years": null,
+      "source": null,
+      "how_to_obtain": [
+        "APEA",
+        "correlation (shift reactor)"
+      ]
+    }
+  ],
+  "seed_sources": {
+    "sustain2025-nh3-decomp-tea": {
+      "short": "Sustainability 17 (2025)",
+      "year": 2025,
+      "type": "peer-reviewed",
+      "title": "Techno-economic analysis of onsite sustainable hydrogen production via ammonia decomposition with heat recovery system",
+      "url": "https://doi.org/10.3390/su17125399",
+      "read": "Aspen Plus plus its economic evaluation system; LCOH 5.64 USD/kg H2, 10.6% below the furnace case; up to 99% of LCOH is the ammonia feed cost, and the ammonia price is the most sensitive parameter.",
+      "use": "cracker-side cost method (APEA on a converged case) and the warning that feedstock price, not equipment, dominates the levelised cost"
+    },
+    "ecm2022-sofc-mgt-lcoe": {
+      "short": "Energy Convers. Manage. 270 (2022)",
+      "year": 2022,
+      "type": "peer-reviewed",
+      "title": "Thermoeconomic comparison of a molten carbonate fuel cell and a solid oxide fuel cell system coupled with a micro gas turbine as hybrid plants",
+      "url": "https://doi.org/10.1016/j.enconman.2022.116533",
+      "read": "500 kWdc stacks; LCOE 0.339-0.402 $/kWh for SOFC/MGT against 0.875-0.897 $/kWh for MCFC/MGT; SOFC stack and its replacements are about 10% of purchased equipment cost.",
+      "use": "an order-of-magnitude check on the LCOE this study will compute, and the stack share of equipment cost"
+    },
+    "acssce2025-nh3-h2-lcoe": {
+      "short": "ACS Sustain. Chem. Eng. (2025)",
+      "year": 2025,
+      "type": "peer-reviewed",
+      "title": "Comparative analysis of direct ammonia and hydrogen utilization: a holistic sustainability perspective for decarbonizing transport and power sectors",
+      "url": "https://doi.org/10.1021/acssuschemeng.5c04838",
+      "read": "Power generation LCOE 0.93 $/kWh for ammonia against 0.49 $/kWh for hydrogen from cracked ammonia; carbon abatement cost 4510 $/tCO2 (ammonia) and 1525 $/tCO2 (hydrogen) in the power sector.",
+      "use": "the cracked-versus-direct comparison this superstructure enumerates, priced by someone else"
+    },
+    "apen2021-rsoc-capex-target": {
+      "short": "Appl. Energy 304 (2021)",
+      "year": 2021,
+      "type": "peer-reviewed",
+      "title": "Reversible solid-oxide cell stack based power-to-x-to-power systems: economic potential evaluated via plant capital-cost target",
+      "url": "https://doi.org/10.1016/j.apenergy.2021.116700",
+      "read": "Plant CAPEX target expressed per reference stack of 5120 cm2 active cell area; about 1000 EUR/ref-stack for the ammonia pathway against 2300 for hydrogen.",
+      "use": "a way to normalise stack capital cost by active area, which is what the process model sizes"
+    },
+    "ijhe2025-nh3-carrier-tea": {
+      "short": "Int. J. Hydrogen Energy (2025)",
+      "year": 2025,
+      "type": "peer-reviewed",
+      "title": "Techno-economic analysis of using ammonia as an energy carrier for renewable energy conversion and storage",
+      "url": "https://doi.org/10.1016/j.ijhydene.2025.150784",
+      "read": null,
+      "use": "named in the paper plan; the abstract is not in the indexes used here, so it has to be read from the publisher before anything from it is cited"
+    },
+    "martra2024-macc-shipping": {
+      "short": "Marit. Transp. Res. 7 (2024)",
+      "year": 2024,
+      "type": "peer-reviewed",
+      "title": "Marginal abatement cost curves for CO2 emission reduction from shipping to 2050",
+      "url": "https://doi.org/10.1016/j.martra.2024.100112",
+      "read": "MACC built from more than 50 abatement measures, 10 fuel systems and 8 fuels: the IMO's 20-30% reduction by 2030 is reached at 50-100 USD/tCO2, 70-80% by 2040 at 230-240 USD/tCO2, and net zero in 2050 at about 300 USD/tCO2; the two dominant inputs are future carbon-neutral fuel cost and trade growth.",
+      "use": "우리가 계산할 탄소 저감비용이 해운 전체와 견주어 볼 기준선"
+    },
+    "jmse2024-mac-method": {
+      "short": "J. Mar. Sci. Eng. 12 (2024)",
+      "year": 2024,
+      "type": "peer-reviewed",
+      "title": "Study on cost-effective performance of alternative fuels and energy efficiency measures for shipping decarbonization",
+      "url": "https://doi.org/10.3390/jmse12050743",
+      "read": "A marginal abatement cost model for ships that keeps Tank-to-Wake and Well-to-Wake emissions apart within one evaluation system, applied to bulk carriers, container ships, tankers and ferries.",
+      "use": "저감비용을 계산할 때 TtW와 WtW를 섞지 않는 방식 — 우리 경계 설정과 직접 연결"
+    },
+    "energy2024-exergy-methods": {
+      "short": "Energy 306 (2024)",
+      "year": 2024,
+      "type": "peer-reviewed",
+      "title": "The future of exergy-based methods",
+      "url": "https://doi.org/10.1016/j.energy.2024.131881",
+      "read": "Exergoeconomics combines an exergy analysis with cost analysis using exergy costing; the SPECO (specific cost) approach of Lazzaretto and Tsatsaronis (2006) defines fuel and product for each component, and exergoenvironmental analysis applies the same machinery to life-cycle impacts.",
+      "use": "선택 사항 — 비용과 환경부하를 장치별로 나눠 보고 싶을 때의 방법론 근거"
+    },
+    "ese2018-gt-src-orc-exergoecon": {
+      "short": "Energy Sci. Eng. 6 (2018)",
+      "year": 2018,
+      "type": "peer-reviewed",
+      "title": "Thermoeconomic analysis and multiobjective optimization of a combined gas turbine, steam, and organic Rankine cycle",
+      "url": "https://doi.org/10.1002/ese3.227",
+      "read": "Exergoeconomic analysis of a GT + steam Rankine + ORC combination with seven decision variables (turbine inlet pressures and temperatures, back pressures, pinch points); exergy efficiency 40.75% at the design point, and the combustion chamber carries the highest sum of exergy destruction and investment cost.",
+      "use": "우리 바텀 사이클(SRC+ORC)과 같은 구성의 적용 예 — 결정변수 목록과 핀치 처리 방식"
+    },
+    "ijhe2024-stack-replacement-lcoh": {
+      "short": "Int. J. Hydrogen Energy 89 (2024)",
+      "year": 2024,
+      "type": "peer-reviewed",
+      "title": "Impact of expected cost reduction and lifetime extension of electrolysis stacks on hydrogen production costs",
+      "url": "https://doi.org/10.1016/j.ijhydene.2024.08.015",
+      "read": "Levelised cost is usually computed with today's stack cost and lifetime; carrying cost and lifetime development functions through the project instead changes each stack replacement and lowers the average capital cost by more than 11%.",
+      "use": "스택 교체를 어떻게 연간화할지 — 우리 SOFC 교체 주기 가정이 결과를 크게 좌우하는 지점"
+    }
+  },
+  "open_questions": [
+    "Which cost year and currency the whole study is normalised to.",
+    "Whether the ship hull, tanks and general arrangement are inside the cost boundary or fixed across cases (if fixed, say so: it cancels in comparisons but not in absolute LCOE).",
+    "How the SOFC stack replacement is annualised, since it is the largest single driver in the system studies read so far."
+  ],
+  "method_equations": [
+    {
+      "id": "T1",
+      "name": "참조 흐름 (기능단위당 연료)",
+      "eq": "ṁ_NH3 = 3600 / (η_net · LHV_NH3)   [kg / MWh_net]",
+      "symbols": "η_net 순효율 [-], LHV_NH3 = 18.6 MJ/kg (superstructure S1 주석)",
+      "from": "모사 결과 η_net",
+      "source": "정의",
+      "note": "모든 TEA·LCA 수치가 이 한 줄에서 갈라진다. 효율이 낮으면 같은 1 MWh에 연료를 더 쓰고, 그것이 연료비와 상류 배출로 그대로 옮겨 간다."
+    },
+    {
+      "id": "T2",
+      "name": "장비 원가 규모 보정",
+      "eq": "C = C_ref · (S / S_ref)^n",
+      "symbols": "S 크기(kW, m², kmol/h …), n 규모지수(장치별, 흔히 0.5–0.8)",
+      "from": "원가 DB (지금 비어 있음)",
+      "source": "교과서 관행 — 쓰는 판본을 논문에 명시",
+      "note": "n을 장치마다 따로 둔다. 하나의 n을 전체에 쓰면 큰 장치와 작은 장치의 비용이 함께 틀어진다."
+    },
+    {
+      "id": "T3",
+      "name": "연도 보정 (CEPCI)",
+      "eq": "C_기준연도 = C_출처연도 · (CEPCI_기준연도 / CEPCI_출처연도)",
+      "symbols": "CEPCI: Chemical Engineering Plant Cost Index",
+      "from": "지수 값 (연도별)",
+      "source": "Chemical Engineering 지수 — 사용한 연도와 값을 표에 적는다",
+      "note": "출처마다 원가 연도가 다르므로, 보정 전에는 서로 더할 수 없다."
+    },
+    {
+      "id": "T4",
+      "name": "설치·총투자비",
+      "eq": "C_installed = C_equipment · f_install ;  TCI = Σ C_installed + 간접비 + 예비비 + 운전자본",
+      "symbols": "f_install 설치계수(Lang 계수 또는 bare-module 계수)",
+      "from": "계수 가정 (미조사)",
+      "source": "교과서 관행",
+      "note": "선박은 육상 플랜트와 설치 조건이 달라, 육상 계수를 그대로 쓰면 과대평가가 된다. 쓰는 계수의 근거를 논문에 밝혀야 한다."
+    },
+    {
+      "id": "T5",
+      "name": "자본회수계수",
+      "eq": "CRF = i(1+i)^N / [(1+i)^N − 1]",
+      "symbols": "i 할인율, N 수명(년)",
+      "from": "경제 가정 (미조사)",
+      "source": "정의",
+      "note": "i와 N은 결과를 가장 크게 좌우하는 두 숫자다. 민감도 분석에 반드시 넣는다."
+    },
+    {
+      "id": "T6",
+      "name": "교체 항목의 연간화",
+      "eq": "A_replace = C_replace · SFF,   SFF = i / [(1+i)^L − 1]",
+      "symbols": "L 교체 주기(년) — 스택, 촉매, 막",
+      "from": "교체 주기·단가 (미조사)",
+      "source": "ijhe2024-stack-replacement-lcoh",
+      "note": "스택 교체를 CAPEX로 반복 계상할지 OPEX로 녹일지 하나로 정하고 모든 케이스에 같게 쓴다. 읽은 문헌은 수명·원가가 프로젝트 기간에 변한다는 점까지 다룬다."
+    },
+    {
+      "id": "T7",
+      "name": "운전비",
+      "eq": "OPEX = Σ(소비량 × 단가) + f_maint · CAPEX + 인건비 + A_replace",
+      "symbols": "소비량: 암모니아, 파일럿 연료, 물, 환원제, 수입 전력",
+      "from": "모사 소비량 + 단가(미조사)",
+      "source": "sustain2025-nh3-decomp-tea",
+      "note": "읽은 분해 TEA에서는 LCOH의 99 %까지가 암모니아 원료비였다. 우리 결과도 연료비가 지배할 가능성이 크므로 암모니아 가격은 단일값이 아니라 범위로 돌린다."
+    },
+    {
+      "id": "T8",
+      "name": "균등화 발전원가 (단순 연간화)",
+      "eq": "LCOE = (TCI · CRF + OPEX_annual) / E_net,annual",
+      "symbols": "E_net,annual = P_net × 연간 운전시간",
+      "from": "위 항목 전부",
+      "source": "정의",
+      "note": "연간 비용과 발전량이 매년 같다고 볼 때만 성립한다."
+    },
+    {
+      "id": "T9",
+      "name": "균등화 발전원가 (할인 현금흐름)",
+      "eq": "LCOE = Σ_t (I_t + O_t)(1+i)^−t  ⁄  Σ_t E_t (1+i)^−t",
+      "symbols": "I_t 투자, O_t 운전비, E_t 발전량 (연도 t)",
+      "from": "연도별 현금흐름",
+      "source": "정의",
+      "note": "교체가 특정 연도에 몰리거나 가동률이 변하면 이 쪽을 쓴다. 두 식 중 무엇을 썼는지 반드시 밝힌다."
+    },
+    {
+      "id": "T10",
+      "name": "탄소 저감비용",
+      "eq": "CAC = (LCOE_대상 − LCOE_기준) / (e_기준 − e_대상)   [$ / tCO₂-eq]",
+      "symbols": "e 배출강도 [tCO₂-eq/MWh] — TtW인지 WtW인지 반드시 명시",
+      "from": "LCOE + LCA 결과",
+      "source": "jmse2024-mac-method · martra2024-macc-shipping",
+      "note": "해운 전체 MACC 기준선: 2030년 50–100, 2040년 230–240, 2050년 약 300 USD/tCO₂. 우리 값이 이보다 훨씬 크면 그 자체가 결과다(읽은 암모니아 발전 연구의 CAC는 4,510 $/tCO₂였다)."
+    },
+    {
+      "id": "T11",
+      "name": "(선택) 엑서지경제 SPECO",
+      "eq": "Σ Ċ_out,k + Ċ_w,k = Σ Ċ_in,k + Ż_k ,   Ċ_j = c_j · Ė_j",
+      "symbols": "Ż_k 장치 k의 투자비율[$/h], c_j 비엑서지비용[$/GJ]",
+      "from": "엑서지 해석 + 장비 원가",
+      "source": "energy2024-exergy-methods · ese2018-gt-src-orc-exergoecon",
+      "note": "필수는 아니다. 다만 “왜 이 구조가 비싼가”를 장치 단위로 나눠 보여 줄 수 있고, 적용 예에서는 연소기가 비용 손실의 최대 지점이었다."
+    }
+  ]
+}

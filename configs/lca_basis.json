@@ -1,0 +1,346 @@
+{
+  "purpose": "Life-cycle inventory database for the superstructure, joined on Case ID.",
+  "status": "skeleton written 2026-09-20; inventory values are empty until the process simulation produces them or a background database is cited.",
+  "functional_unit": "1 MWh of net electricity delivered",
+  "boundary": [
+    "ammonia production (cradle)",
+    "ammonia transport and bunkering",
+    "onboard conversion to power (this superstructure)",
+    "electricity delivered"
+  ],
+  "impact_categories": [
+    {
+      "category": "climate change",
+      "indicator": "GWP100",
+      "status": "required",
+      "characterisation_source": null,
+      "how_to_obtain": "IPCC AR6 GWP100 factors; state the version and whether biogenic carbon is separated. N2O matters here: the engine cases emit it and its factor is large."
+    },
+    {
+      "category": "acidification",
+      "indicator": null,
+      "status": "planned",
+      "characterisation_source": "ijlca2019-impact-world (or ReCiPe; pick one and state the region)",
+      "how_to_obtain": "NH3 slip and NOx from the simulation multiplied by regionalized factors"
+    },
+    {
+      "category": "eutrophication (terrestrial/freshwater)",
+      "indicator": null,
+      "status": "planned",
+      "characterisation_source": "ijlca2019-impact-world (or ReCiPe)",
+      "how_to_obtain": "same flows as acidification; the regional factor spread is one to two orders of magnitude, so the region has to be declared"
+    }
+  ],
+  "foreground_flows_from_simulation": [
+    {
+      "flow": "ammonia consumed",
+      "unit": "kg per MWh_net",
+      "from": "Aspen case result"
+    },
+    {
+      "flow": "pilot fuel consumed",
+      "unit": "kg per MWh_net",
+      "from": "Aspen case result (ICE/HYB only)"
+    },
+    {
+      "flow": "CO2 emitted",
+      "unit": "kg per MWh_net",
+      "from": "Aspen case result (pilot carbon only)"
+    },
+    {
+      "flow": "N2O emitted",
+      "unit": "g per MWh_net",
+      "from": "Aspen case result; the process database holds measured ranges (P037-P041)"
+    },
+    {
+      "flow": "NOx emitted",
+      "unit": "g per MWh_net",
+      "from": "Aspen case result after the S7 train"
+    },
+    {
+      "flow": "NH3 slip",
+      "unit": "g per MWh_net",
+      "from": "Aspen case result after the S7 train"
+    },
+    {
+      "flow": "water make-up",
+      "unit": "kg per MWh_net",
+      "from": "Aspen case result (steam cycles)"
+    },
+    {
+      "flow": "electricity import",
+      "unit": "kWh per MWh_net",
+      "from": "parasitic load balance"
+    },
+    {
+      "flow": "stack, catalyst and membrane replacement mass",
+      "unit": "kg per MWh_net",
+      "from": "TEA replacement intervals times component mass; needs the mass, which is not collected yet"
+    }
+  ],
+  "background_data_needed": [
+    {
+      "item": "ammonia production",
+      "status": "seeded",
+      "note": "five production routes read from jert2023-nh3-production-lca; a second source (ijer2022-carrier-lca) gives a different value for the PV route, so the spread is real and belongs in the scenario axis"
+    },
+    {
+      "item": "ammonia transport and bunkering",
+      "status": null,
+      "how_to_obtain": "distance-based shipping inventory; state the route and the boil-off assumption"
+    },
+    {
+      "item": "pilot fuel (MGO) upstream",
+      "status": null,
+      "how_to_obtain": "background database"
+    },
+    {
+      "item": "stack and catalyst materials",
+      "status": null,
+      "how_to_obtain": "background database plus a published stack bill of materials"
+    },
+    {
+      "item": "electricity mix for any import",
+      "status": null,
+      "how_to_obtain": "port grid mix for the declared region"
+    }
+  ],
+  "upstream_ammonia_gwp": [
+    {
+      "route": "grey (SMR)",
+      "value": 0.148,
+      "unit": "kg CO2-eq / MJ LHV",
+      "doi": "10.1115/1.4064371"
+    },
+    {
+      "route": "blue (SMR + CCS)",
+      "value": 0.0701,
+      "unit": "kg CO2-eq / MJ LHV",
+      "doi": "10.1115/1.4064371"
+    },
+    {
+      "route": "green (PV)",
+      "value": 0.0197,
+      "unit": "kg CO2-eq / MJ LHV",
+      "doi": "10.1115/1.4064371"
+    },
+    {
+      "route": "green (wind)",
+      "value": 0.01039,
+      "unit": "kg CO2-eq / MJ LHV",
+      "doi": "10.1115/1.4064371"
+    },
+    {
+      "route": "pink (nuclear)",
+      "value": 0.00565,
+      "unit": "kg CO2-eq / MJ LHV",
+      "doi": "10.1115/1.4064371"
+    },
+    {
+      "route": "diesel, for comparison",
+      "value": 0.0851,
+      "unit": "kg CO2-eq / MJ LHV",
+      "doi": "10.1115/1.4064371"
+    },
+    {
+      "route": "green (PV), second source",
+      "value": 0.0439,
+      "unit": "kg CO2-eq / MJ ammonia",
+      "doi": "10.1002/er.7947"
+    }
+  ],
+  "seed_sources": {
+    "jert2023-nh3-production-lca": {
+      "short": "J. Energy Resour. Technol. 146 (2024)",
+      "year": 2023,
+      "type": "peer-reviewed",
+      "title": "Life cycle assessment of selected ammonia production technologies from the perspective of ammonia as a fuel for heavy-duty vehicle",
+      "url": "https://doi.org/10.1115/1.4064371",
+      "read": "Climate change per 1 MJ (LHV) of ammonia: grey 0.148, blue 0.0701, green PV 0.0197, green wind 0.01039, pink 0.00565 kg CO2-eq, against diesel 0.0851 kg CO2-eq including stoichiometric combustion. ReCiPe, GaBi with Sphera Managed LCA Content.",
+      "use": "the upstream ammonia intensity this study's GWP result is most sensitive to; five production routes give the scenario axis the paper plans"
+    },
+    "ijer2022-carrier-lca": {
+      "short": "Int. J. Energy Res. 46 (2022)",
+      "year": 2022,
+      "type": "peer-reviewed",
+      "title": "LCA comparison analysis for two types of H2 carriers: methanol and ammonia",
+      "url": "https://doi.org/10.1002/er.7947",
+      "read": "Full supply chain including production, storage, transport and utilisation; solar PV ammonia has the lowest GWP at 43.9 g CO2-eq per MJ of ammonia; electricity is the key sensitivity.",
+      "use": "an independent value for the same quantity (0.0439 kg CO2-eq/MJ against 0.0197 above), which is the spread the scenario analysis has to carry"
+    },
+    "ijlca2019-impact-world": {
+      "short": "Int. J. Life Cycle Assess. 24 (2019)",
+      "year": 2019,
+      "type": "peer-reviewed",
+      "title": "IMPACT World+: a globally regionalized life cycle impact assessment method",
+      "url": "https://doi.org/10.1007/s11367-019-01583-0",
+      "read": "A midpoint-damage framework; GWP100 complemented by GTP100 for long-term climate impact, and regionalized categories including acidification and eutrophication, whose characterization factors vary by one to two orders of magnitude between regions.",
+      "use": "the characterization method for the acidification and eutrophication categories the plan adds next to GWP100, and the reason a regionalized factor must be stated, not assumed"
+    },
+    "ecm2026-nh3-power-lca": {
+      "short": "Energy Convers. Manage. (2026)",
+      "year": 2025,
+      "type": "peer-reviewed",
+      "title": "Advancing conventional power systems: life cycle assessment of ammonia-based decarbonization",
+      "url": "https://doi.org/10.1016/j.enconman.2025.120567",
+      "read": null,
+      "use": "named in the paper plan; no abstract in the indexes used here, so read the paper before citing"
+    },
+    "recipe2016": {
+      "short": "Int. J. Life Cycle Assess. 22 (2017)",
+      "year": 2016,
+      "type": "peer-reviewed",
+      "title": "ReCiPe2016: a harmonised life cycle impact assessment method at midpoint and endpoint level",
+      "url": "https://doi.org/10.1007/s11367-016-1246-y",
+      "read": "Life cycle impact assessment translates emissions and resource extractions into a limited number of impact scores through characterisation factors, derived at midpoint or endpoint level; the paper updates ReCiPe2008.",
+      "use": "특성화 계수 출처 후보 — 중간지표(midpoint) 기준으로 GWP·산성화·부영양화를 한 방법으로 묶을 때"
+    }
+  },
+  "open_questions": [
+    "Which background database the study will use, and whether it is available (the two studies read here both used GaBi/Sphera content).",
+    "Whether ammonia transport is inside the boundary; the plan says 'as far as possible', which is not a boundary a reviewer can check.",
+    "Whether N2O is reported with AR6 or AR5 factors; the difference is visible in an ammonia engine."
+  ],
+  "method_equations": [
+    {
+      "id": "L1",
+      "name": "경계 분해",
+      "eq": "WtW = WtT + TtW",
+      "symbols": "WtT 상류(생산·수송·벙커링), TtW 선내 전환",
+      "from": "상류: 문헌 / TtW: 모사",
+      "source": "jmse2024-mac-method",
+      "note": "둘을 합쳐 보고할 때도 각각을 따로 적는다. 규제(IMO)는 WtW로, 우리 모사는 TtW만 계산한다."
+    },
+    {
+      "id": "L2",
+      "name": "인벤토리 정규화 (기능단위당)",
+      "eq": "m_i,FU = ṁ_i / P_net   [kg / MWh_net]",
+      "symbols": "ṁ_i 흐름 i의 질량유량, P_net 순출력",
+      "from": "모사 결과",
+      "source": "정의",
+      "note": "모든 흐름(연료, CO₂, N₂O, NOx, NH₃ 슬립, 물, 전력)을 같은 기준으로 환산한다."
+    },
+    {
+      "id": "L3",
+      "name": "상류 배출",
+      "eq": "GWP_WtT = ṁ_NH3 · LHV_NH3 · I_NH3",
+      "symbols": "I_NH3 생산경로별 배출강도 [kg CO₂-eq / MJ]",
+      "from": "jert2023-nh3-production-lca (5경로) + ijer2022-carrier-lca",
+      "source": "jert2023-nh3-production-lca",
+      "note": "회색 0.148 … 핑크 0.00565 kg CO₂-eq/MJ로 25배 차이가 난다. 단일값으로 고정하면 결론이 그 선택에 끌려간다 — 시나리오 축으로 둔다."
+    },
+    {
+      "id": "L4",
+      "name": "선내 배출의 특성화",
+      "eq": "GWP_TtW = Σ_i m_i,FU · GWP100_i",
+      "symbols": "CO₂ 1, CH₄·N₂O는 채택한 평가보고서(AR5/AR6) 값",
+      "from": "모사 배출량",
+      "source": "계수 출처 미정 — 쓰는 판본을 명시할 것",
+      "note": "암모니아 엔진은 N₂O가 결과를 좌우한다. 계수 판본에 따라 값이 달라지므로 AR5인지 AR6인지 반드시 적는다. 이 저장소에는 아직 계수를 넣지 않았다."
+    },
+    {
+      "id": "L5",
+      "name": "다른 영향범주",
+      "eq": "Impact_c = Σ_i m_i,FU · CF_i,c",
+      "symbols": "c: 산성화, 부영양화 등 / CF: 특성화 계수",
+      "from": "모사 NH₃·NOx 배출",
+      "source": "recipe2016 · ijlca2019-impact-world",
+      "note": "암모니아 슬립과 NOx는 GWP보다 산성화·부영양화에서 더 크게 나타난다. 두 방법 모두 지역화 계수를 쓰므로 어느 지역을 가정했는지 적어야 한다."
+    },
+    {
+      "id": "L6",
+      "name": "배분 (부산물이 있을 때)",
+      "eq": "에너지 배분: A_전력 = E_전력 / (E_전력 + Q_열)  또는 시스템 확장",
+      "symbols": "Q_열: 승조원용 온수 등 회수열",
+      "from": "모사 열회수량",
+      "source": "ISO 14040/14044 관행",
+      "note": "열을 부산물로 계상하면 전력의 부담이 줄어 효율이 좋아 보인다. 배분 방식을 케이스마다 바꾸지 않는다."
+    },
+    {
+      "id": "L7",
+      "name": "불확실성",
+      "eq": "몬테카를로: 입력 분포 → 결과 분포 (상류 강도, 가격, 효율, 배출계수)",
+      "symbols": "—",
+      "from": "문헌 범위",
+      "source": "정의",
+      "note": "이미 분포를 갖고 있다 — 스윕 표본의 값들과 상류 배출강도 범위. 점추정만 제시하는 것보다 이 범위를 그대로 반영하는 편이 설득력 있다."
+    }
+  ],
+  "lci_table_template": [
+    {
+      "column": "case_id",
+      "unit": "-",
+      "from": "케이스 식별자 — 공정·TEA·LCA 데이터베이스를 잇는 연결 고리"
+    },
+    {
+      "column": "P_net_kW",
+      "unit": "kW",
+      "from": "모사"
+    },
+    {
+      "column": "eta_net",
+      "unit": "-",
+      "from": "모사"
+    },
+    {
+      "column": "nh3_kg_per_MWh",
+      "unit": "kg/MWh",
+      "from": "T1 식"
+    },
+    {
+      "column": "pilot_kg_per_MWh",
+      "unit": "kg/MWh",
+      "from": "모사 (ICE·HYB)"
+    },
+    {
+      "column": "co2_kg_per_MWh",
+      "unit": "kg/MWh",
+      "from": "모사 (파일럿 탄소)"
+    },
+    {
+      "column": "n2o_g_per_MWh",
+      "unit": "g/MWh",
+      "from": "모사"
+    },
+    {
+      "column": "nox_g_per_MWh",
+      "unit": "g/MWh",
+      "from": "모사 (후처리 뒤)"
+    },
+    {
+      "column": "nh3_slip_g_per_MWh",
+      "unit": "g/MWh",
+      "from": "모사 (후처리 뒤)"
+    },
+    {
+      "column": "water_kg_per_MWh",
+      "unit": "kg/MWh",
+      "from": "모사 (증기 사이클 보급수)"
+    },
+    {
+      "column": "elec_import_kWh_per_MWh",
+      "unit": "kWh/MWh",
+      "from": "기생부하 수지"
+    },
+    {
+      "column": "stack_replacement_kg_per_MWh",
+      "unit": "kg/MWh",
+      "from": "교체 주기 × 부품 질량 (질량 미조사)"
+    },
+    {
+      "column": "gwp_wtt_kg_per_MWh",
+      "unit": "kg CO2-eq/MWh",
+      "from": "L3 식"
+    },
+    {
+      "column": "gwp_ttw_kg_per_MWh",
+      "unit": "kg CO2-eq/MWh",
+      "from": "L4 식"
+    },
+    {
+      "column": "gwp_wtw_kg_per_MWh",
+      "unit": "kg CO2-eq/MWh",
+      "from": "L1 식"
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "protocol_name": "marine_alt_fuel_superstructure_literature",
+  "schema_version": "1.0.0",
+  "description": "Search protocol and screening log for the literature behind this superstructure. Records identified is not records cited: a defensible claim of coverage comes from a documented screen, not from a long reference list.",
+  "status": "SYSTEMATIC SCREEN RUN - full-text stage in progress",
+  "status_note": "A database export of 37,158 records was screened against the inclusion criteria below. Counts come from `references/screening/prisma.json` and are reproducible with `scripts/screen_papers.py`. The abstract and full-text stages are partial: 4 percent of the export carried an abstract, so the shortlist was enriched from OpenAlex and Crossref before reading.",
+  "completed_stage": {
+    "method": "targeted web search first, then a systematic screen of a 37,158-record database export",
+    "date": "2026-09-04",
+    "search_rounds": 17,
+    "records_examined": "not counted - results were read as ranked lists, not exported",
+    "sources_adopted": 76,
+    "full_text_read": [
+      "MEPC 83/7/23 (6 pages, extracted and read in full)",
+      "J. Hydrogen New Energy 35(1) 2024 40-47 (parameters extracted)"
+    ],
+    "limitation": "Web search ranks by relevance, not by exhaustiveness, and cannot be replayed exactly. It is adequate for finding operating windows and anchor reviews; it is not a systematic search and must not be described as one.",
+    "year_span": "2001-2026 (11 sources predate 2020, 6 predate 2015)"
+  },
+  "planned_searches": [
+    {
+      "database": "Scopus",
+      "query": "TITLE-ABS-KEY((ammonia OR NH3) AND (marine OR ship* OR vessel) AND (\"fuel cell\" OR SOFC OR engine) AND (efficiency OR emission* OR \"techno-econom*\"))",
+      "date_range": "2000-2026",
+      "document_types": "article, review, conference paper"
+    },
+    {
+      "database": "Web of Science",
+      "query": "TS=((ammonia OR methanol OR LOHC OR \"liquid hydrogen\") AND (marine OR maritime) AND (superstructure OR \"process synthesis\" OR optimi*ation))",
+      "date_range": "2000-2026",
+      "document_types": "article, review"
+    },
+    {
+      "database": "ScienceDirect",
+      "query": "(\"ammonia cracking\" OR \"ammonia decomposition\") AND (\"membrane reactor\" OR \"packed bed\") AND hydrogen",
+      "date_range": "2000-2026",
+      "document_types": "article, review"
+    },
+    {
+      "database": "KCI (한국학술지인용색인)",
+      "query": "암모니아 AND (선박 OR 해양) AND (연료전지 OR 개질 OR 추진)",
+      "date_range": "2000-2026",
+      "document_types": "학술논문"
+    },
+    {
+      "database": "IMO IMODOCS / MEPC",
+      "query": "nitrous oxide ammonia fuel life cycle GHG intensity",
+      "date_range": "MEPC 80-84",
+      "document_types": "committee submissions, guidelines"
+    }
+  ],
+  "inclusion_criteria": [
+    "Reports a numeric operating condition, performance figure or emission factor for a unit in the superstructure",
+    "Marine application, or a land-based study whose conditions transfer with a stated argument",
+    "Published 2000 or later. Foundational work is included on the same terms as recent work: the kinetics, the first direct-ammonia cells and the ORC fluid screens are what later studies argue against."
+  ],
+  "exclusion_criteria": [
+    "No extractable numeric value",
+    "Duplicate reporting of the same underlying dataset",
+    "Fuel or unit outside the declared decision space",
+    "Not retrievable in full text"
+  ],
+  "screening": {
+    "records_identified": 37158,
+    "records_without_doi": 1,
+    "duplicates_removed": 985,
+    "title_abstract_screened": 36173,
+    "excluded_at_screening": 21497,
+    "exclusion_reasons": {
+      "off-domain": 3308,
+      "no superstructure unit or carrier in the title": 18189
+    },
+    "included_after_title_screen": 6224,
+    "held_pending_abstract": 8452,
+    "abstracts_retrieved": 1366,
+    "abstracts_read": 267,
+    "records_cited": 197,
+    "note": "Abstracts read is the count actually opened and judged, not the shortlist size. The remaining included records are unread and must not be cited.",
+    "retrieval_note": "Abstracts retrieved is what the fetcher actually holds, not what was asked for. 5,125 records were queued and 1,366 came back with text; the rest have no abstract in OpenAlex or Crossref and would have to be opened as PDFs. The earlier figure of 283 was the ceiling on citations, not the size of the search: the per-node caps were 30 in the fetcher and 400 in the screener's export, and both were the real limit.",
+    "gap_search_2026_09_12": {
+      "why": "2026-09-11 검토와 2026-09-12 재감사가 비운 칸(캐리어별 LOHC, 엔진·파일럿 연료, NORR, EHC, 저온 ORC, 정제)을 채우기 위한 추가 검색",
+      "engine": "Semantic Scholar bulk search, 질의 66개",
+      "rounds": {
+        "s2_gaps_20260912": {
+          "new_candidates": 143,
+          "passed_screen": 115,
+          "core_journal": 66
+        },
+        "s2_gaps_20260912b": {
+          "new_candidates": 3229,
+          "passed_screen": 2190,
+          "core_journal": 1444
+        },
+        "s2_gaps_20260912c": {
+          "new_candidates": 122,
+          "passed_screen": 95,
+          "core_journal": 69
+        }
+      },
+      "abstracts_read_in_full": 26,
+      "newly_cited": 19,
+      "still_empty": [
+        "DBT 탈수소 온도 표본 (핵심 학술지에서 0편; 찾은 논문은 모두 육상 수소화 쪽)",
+        "EHC 소비전력 (kWh/kg) 표본",
+        "암모니아 엔진 N2O 배출 절대값 (ppm 또는 g/kWh)"
+      ],
+      "note": "후보는 인용이 아니다. 초록을 끝까지 읽은 26편 중 19편만 인용했고, 값의 정의가 모호한 나머지는 쓰지 않았다. 인용한 값에는 그 문장을 함께 저장했다."
+    },
+    "unit_coverage_search_2026_09_15": {
+      "why": "출처가 하나도 없는 활성 장치 10개(공기 블로워는 전 케이스)를 커버리지 지도로 찾아 겨냥한 검색",
+      "map": "outputs/coverage_20260915/block_coverage.json",
+      "abstracts_read_in_full": 22,
+      "newly_cited": 15,
+      "still_empty": [
+        "AOG_SPLITTER 분배율 (공개 값 없음 · 설계 결정 사항)",
+        "COND·STEAMGEN (케이스별 사이징, 문헌값 아님)",
+        "EHC 소비전력 (kWh/kg)"
+      ]
+    },
+    "thin_unit_search_2026_09_16": {
+      "why": "출처가 한 편뿐인 장치(버너·배열보일러·칼리나·전환기·증기터빈)에 두 번째 근거를 붙이기 위한 검색",
+      "engine": "Semantic Scholar bulk search, 질의 22개",
+      "new_candidates": 137,
+      "passed_screen": 99,
+      "core_journal": 72,
+      "abstracts_read_in_full": 9,
+      "newly_cited": 5,
+      "still_empty": [
+        "AOG_SPLITTER 분배율",
+        "COND·STEAMGEN",
+        "EHC 소비전력(kWh/kg)",
+        "DBT 탈수소 온도 표본"
+      ]
+    },
+    "source_check_2026_09_16": {
+      "method": "인용 출처 전부를 DOI 등록기관(Crossref/DataCite)에 조회해 제목·학술지·연도를 대조",
+      "script": "ammonia_optimizer/scripts/verify_sources.py",
+      "checked": 153,
+      "registry_match": 152,
+      "fixed": "같은 논문(10.1038/s41467-024-46452-z)이 두 개의 키로 들어가 있어 하나로 합쳤다. 출처 수가 한 편 줄었다.",
+      "note": "Rostock 대학 저장소 DOI는 Crossref가 아니라 DataCite에 등록되어 있어 따로 확인한다."
+    },
+    "deepening_2026_09_16": {
+      "why": "출처가 한 편뿐인 장치 보강, 얇은 표본 확충, 인용 전수 DOI 검증",
+      "norr_faradaic_efficiency": "표본 4 → 11개 (NO 1,000 ppm·1 vol%·10 vol% 조건 포함)",
+      "source_check": "152편 전수 조회 통과, 중복 인용 1건 병합",
+      "still_empty": [
+        "AOG_SPLITTER 분배율",
+        "COND·STEAMGEN",
+        "EHC 소비전력(kWh/kg)",
+        "DBT 탈수소 온도 표본",
+        "ASC 제2 근거 (핵심 학술지 풀에 없음)"
+      ]
+    },
+    "abstract_backfill_2026_09_16": {
+      "why": "초록이 없어 판정조차 못 한 핵심 학술지 후보 624편을 되살리기 위한 보완",
+      "method": "OpenAlex의 abstract_inverted_index를 DOI 50개씩 조회, 실패분은 Crossref",
+      "recovered": 147,
+      "still_without_abstract": 446,
+      "passed_screen": 121,
+      "abstracts_read_in_full": 9,
+      "newly_cited": 6,
+      "filled": [
+        "DBT 탈수소 온도 독립 근거",
+        "EHC 운전점(4 A/cm², 약 60 %)",
+        "저온 ORC 효율 4.6–10.5 %",
+        "엔진 제동효율 40.38 %와 NOx 6.69–11.89 g/kWh"
+      ],
+      "note": "제목만으로는 판정하지 않는다. 초록을 받지 못한 477편은 미판정으로 남는다.",
+      "second_round": "Semantic Scholar 개별 조회 + Europe PMC로 31편 추가 복구(총 178편), 23편 스크리닝 통과",
+      "newly_cited_total": 9
+    },
+    "regulatory_basis_2026_09_16": {
+      "why": "후처리(SCR·ASC·NORR)가 맞춰야 할 배출 기준 자체가 파라미터 표에 없었다",
+      "read": [
+        "IMO MEPC 81/5/3 (2024) 원문 PDF 전문 추출",
+        "DieselNet의 MARPOL 부속서 VI 13규칙 한계값 표"
+      ],
+      "added": [
+        "Tier III 한계값 1.96–3.4 g/kWh (회전수 의존)",
+        "적용 범위: 130 kW 초과 기관, NOx ECA, 2016년 이후 건조",
+        "N2O가 잘못 설계된 NOx 저감으로 악화될 수 있다는 규제 측 서술",
+        "ABS 벙커링 권고서: 연료 규격(NH3 99.5 %, 물 0.2 % 이상, 오일 5 ppm 이하), 저장 3방식, AEGL 노출기준, 자연발화·단열화염온도",
+        "IMO 2023 GHG 전략: 2050년경 net zero, 2030년 −20 %(목표 30 %), 2040년 −70 %(목표 80 %), 2030년 무탄소 연료 5 %(목표 10 %), WtW 산정"
+      ],
+      "note": "숫자는 2차 정리 자료에서 읽었고 그 사실을 비고에 적었다. 규칙 원문 자체는 유료·비공개 배포다."
+    },
+    "openalex_search_2026_09_16": {
+      "why": "Semantic Scholar만 계속 두드려도 신규 후보가 나오지 않아, 색인 자체를 바꿔 다시 검색",
+      "engine": "OpenAlex works search (title_and_abstract.search), 질의 35개",
+      "records_returned": 3142,
+      "new_candidates": 883,
+      "core_journal": 756,
+      "passed_screen": 657,
+      "abstracts_read_in_full": 13,
+      "newly_cited": 20,
+      "filled": [
+        "DBT 탈수소 온도 표본 5개 (240–300 °C) — 검토가 요구한 캐리어별 분포",
+        "EHC 소비전력 약 3 kWh/kg",
+        "보일러 블로다운 최대 10 %",
+        "SOFC 온도·연료이용률·MCH·SCR 상한 표본 보강 (값 10개)",
+        "AOG 분배기 첫 근거(미반응 수소 재순환 ×1.28), EHC 전류밀도 표본 4 → 6개",
+        "수소 순도·회수율·MCH 막반응기, 배기급 ORC 효율, 암모니아 SOFC 계단형 전체효율"
+      ],
+      "note": "초록이 함께 오므로 미판정으로 쌓이지 않는다. 그래도 인용한 것은 읽은 8편 중 6편뿐이다.",
+      "corrections": [
+        "저온 ORC 효율 3개를 바텀 사이클 표본에서 빼 저온 ORC 행으로 옮김"
+      ]
+    },
+    "short_query_s2_2026_09_16": {
+      "why": "OpenAlex API 예산이 소진된 뒤, 짧은 질의로 Semantic Scholar를 다시 검색",
+      "new_candidates": 1031,
+      "passed_screen": 627,
+      "venue_check": "OpenAlex 공개 스냅샷을 스트리밍해 ISSN별 핵심 학술지 여부 판정(디스크 저장 없음)",
+      "core_journal_screened": 395,
+      "abstracts_read_in_full": 9,
+      "newly_cited": 5,
+      "note": "EGR 후보 130편은 대부분 농업용 소형 디젤·바이오연료 엔진이라, 수소 이중연료 CI 엔진 한 편만 표본에 넣었다. 표본을 늘리는 것보다 정의에 맞는 것이 먼저다."
+    },
+    "openalex_reset_2026_09_17": {
+      "why": "어제 예산 소진으로 멈춘 OpenAlex 라운드를 리셋 후 재실행",
+      "queries": 36,
+      "records_returned": 2997,
+      "new_candidates": 600,
+      "core_journal": 507,
+      "passed_screen": 475,
+      "abstracts_read_in_full": 18,
+      "range_values_added": 31,
+      "parameter_rows_added": 2,
+      "note": "대부분 기존 스윕 변수의 표본을 넓히는 값이었다. 시스템 연료이용률(재순환 포함 90 %)은 스택 값이 아니어서 넣지 않았다."
+    },
+    "thin_sample_round_2026_09_18": {
+      "why": "얇은 표본(파일럿 비율, 도시효율, 슬립, DBT, EHC)과 근거가 하나뿐이거나 없는 단위를 겨냥",
+      "pools": [
+        "2026-09-17 OpenAlex 선별 후보 475편 중 읽지 않았던 457편 재검토",
+        "Semantic Scholar 신규 검색 659편(선별 통과 403편)"
+      ],
+      "openalex": "당일 예산이 한 시간 안에 소진되어 Semantic Scholar로 대체",
+      "venue_check": "OpenAlex 공개 스냅샷 스트리밍(디스크 저장 없음)과 기존 판정표",
+      "range_values_added": 38,
+      "newly_cited": 12,
+      "note": "파일럿 비율은 암모니아가 주연료일 때(디젤 ≤ 50 %)만 100 − 암모니아 에너지 비율로 넣었다. 제동효율(유효효율)은 도시효율 표본에 섞지 않았다.",
+      "held_by_venue_rule": [
+        "10.25130/tjes.sp1.2025.47 (Tikrit J. Eng. Sci., OpenAlex core 아님): 선박 메탄올 개질 가스터빈의 수분 회수 82 % — 내용은 COND에 직접 해당하지만 학술지 규칙으로 보류"
+      ]
+    },
+    "records_registered_unreferenced": 14
+  },
+  "source_type_targets": {
+    "note": "A reference list is judged on composition, not length. These are the shares to aim for.",
+    "peer-reviewed": "at least half",
+    "regulatory submission": "the IMO and EU instruments the constraints come from",
+    "industry report": "OEM and class-society figures, always paired with a peer-reviewed check",
+    "national laboratory": "measurement campaigns",
+    "policy analysis": "well-to-wake accounting conventions"
+  },
+  "corroboration_policy": "A value that can change the conclusion must carry at least one independent source in `corroborated_by`. As of this revision that applies to the N2O emission range, its parity thresholds with MGO and LNG, its climate intensity, and the OEM targets.",
+  "to_retrieve": [
+    {
+      "cite": "Wojcik et al., Ammonia as a fuel in solid oxide fuel cells, J. Power Sources 118 (2003)",
+      "why": "first systematic direct-ammonia SOFC study"
+    },
+    {
+      "cite": "Fournier et al. (2006), high-performance direct ammonia SOFC",
+      "why": "performance step after Wojcik"
+    },
+    {
+      "cite": "Ma et al. (2007), ammonia-fuelled SOFC on a YSZ thin-film electrolyte",
+      "why": "thin-film electrolyte route"
+    },
+    {
+      "cite": "Ganley et al. (2004), catalyst screen across 13 metals, rate-limiting step by metal",
+      "why": "Ru > Ni > Rh > Co activity order used throughout the cracking literature"
+    },
+    {
+      "cite": "Chellappa et al. (2002), ammonia decomposition kinetics, 520-690 C, first order in NH3",
+      "why": "rate expression for the cracker model"
+    },
+    {
+      "cite": "Saleh et al., Working fluids for low-temperature organic Rankine cycles, Energy (2007)",
+      "why": "the standard ORC fluid screen"
+    },
+    {
+      "cite": "Chen, Goswami & Stefanakos, Renew. Sustain. Energy Rev. (2010)",
+      "why": "low-grade heat cycle and fluid review"
+    },
+    {
+      "note": "Seen in search results but without a URL this session. Pull the DOI from Scopus before citing; do not guess identifiers."
+    }
+  ],
+  "query_sheet": {
+    "file": "SEARCH_QUERIES.md",
+    "concept_blocks": 10,
+    "distinct_keywords": 295,
+    "scopus_queries": 15,
+    "note": "Run these, export each result set as CSV, then fill `screening` from the exports.",
+    "screening_script": "scripts/screen_papers.py",
+    "abstract_script": "scripts/fetch_abstracts.py"
+  },
+  "screening_revisions": [
+    "The first rule required a carrier or a marine context in the title, which discarded unit-level papers such as an anode-recycle ejector or an ORC fluid screen. Widening it to accept a narrow unit on its own moved S5 from 10 to 63 and S10 from 21 to 137.",
+    "Bare permeability, selectivity, purification and psa matched prostate markers, chorioamniotic membranes, clay liners and aspen veneer. Every S3 term now carries its own gas-separation context, and geoscience, construction and clinical families were added to the off-domain rules.",
+    {
+      "date": "2026-09-08",
+      "defect": "Reading the included set showed the title screen was passing whole families of off-domain work. Aspen the tree survived as the Aspen simulator, soybean nodule ammonia permeability as a carrier study, earthquake ground motion as gas purification, and bench catalysis for dyes and hydrogen peroxide as reforming.",
+      "fix": "The simulator now has to be named in full. Three families were added (plant and wood, fine chemical synthesis, aerospace), the geoscience family was split so that CO2 reservoirs and blast furnace gas stay in scope while earthquakes and plywood do not, and six families were made decisive: on-domain vocabulary can no longer rescue a record that trips them. Two process nodes used to overrule any off-domain hit, which is what let these through.",
+      "effect": "Title stage moved little, because only 1,531 of 36,173 records carry an abstract and the giveaway words are in the abstract. At the abstract stage the same rules removed 32 of 258 retrieved records, including every one of the twelve false positives found by hand."
+    }
+  ]
+}
