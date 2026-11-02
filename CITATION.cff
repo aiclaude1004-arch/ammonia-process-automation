@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software version; the associated manuscript is in preparation."
+type: software
+title: "Ammonia Process Automation"
+authors:
+  - name: "Ammonia Process Automation contributors"
+version: "0.1.0"
+date-released: "2026-11-02"
+repository-code: "https://github.com/aiclaude1004-arch/ammonia-process-automation"
+license: MIT
