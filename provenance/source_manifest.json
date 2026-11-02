@@ -1,0 +1,387 @@
+[
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/aspen_gateway.py",
+    "target": "src/ammonia_optimizer/aspen_gateway.py",
+    "source_sha256": "11ab7e8c8a91def1127ac3aa50d4986d58b01e956940d6c9027af6f8038576a2",
+    "packaged_sha256": "11ab7e8c8a91def1127ac3aa50d4986d58b01e956940d6c9027af6f8038576a2",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/aspen_paths.py",
+    "target": "src/ammonia_optimizer/aspen_paths.py",
+    "source_sha256": "46ae9a0b364760d9f849da22c5f20b289d463200b1fb6e8aa655388301802da9",
+    "packaged_sha256": "81b55010959c06e557f2c8ce136a8d83da804654c60adb1d5b6e96e07075aa75",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/feasibility.py",
+    "target": "src/ammonia_optimizer/feasibility.py",
+    "source_sha256": "7ba7f01668f2d80c44c9fde359bef0e33954bafdd64c11351a3f5871e3d715b3",
+    "packaged_sha256": "7ba7f01668f2d80c44c9fde359bef0e33954bafdd64c11351a3f5871e3d715b3",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/flowsheet.py",
+    "target": "src/ammonia_optimizer/flowsheet.py",
+    "source_sha256": "281bf3826ba706d411896c7a3329008ea6a5ab4e9931ebcf5409014f069c13a2",
+    "packaged_sha256": "281bf3826ba706d411896c7a3329008ea6a5ab4e9931ebcf5409014f069c13a2",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/interactive_aspen.py",
+    "target": "src/ammonia_optimizer/interactive_aspen.py",
+    "source_sha256": "a940e7ad4540548444fe16fbaee37ae89559dcececba5fb1d6a032acd3790728",
+    "packaged_sha256": "a940e7ad4540548444fe16fbaee37ae89559dcececba5fb1d6a032acd3790728",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/optimizer.py",
+    "target": "src/ammonia_optimizer/optimizer.py",
+    "source_sha256": "7be704ccd31be947d237519bec0d028fbaefab694a4ba39a3929369bcfcad56a",
+    "packaged_sha256": "7be704ccd31be947d237519bec0d028fbaefab694a4ba39a3929369bcfcad56a",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/parameters.py",
+    "target": "src/ammonia_optimizer/parameters.py",
+    "source_sha256": "8fa8d4576675b043ee3977b9ddfd9f431fb8a8672e0e2d271270c76edc9132ad",
+    "packaged_sha256": "44f2899b0bed6db5d82de27f7506356b682262d401f60a13099c63c5aeabe7ff",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/physics.py",
+    "target": "src/ammonia_optimizer/physics.py",
+    "source_sha256": "48e4c60ff19654f680b1997c38bd980ae9c439e7101fec8717bcabc80e2edf89",
+    "packaged_sha256": "48e4c60ff19654f680b1997c38bd980ae9c439e7101fec8717bcabc80e2edf89",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/schema.py",
+    "target": "src/ammonia_optimizer/schema.py",
+    "source_sha256": "c996d9ee391d9b163ecce2b49a30686ec6ef261b2aa20833755b8ada72d0a606",
+    "packaged_sha256": "c996d9ee391d9b163ecce2b49a30686ec6ef261b2aa20833755b8ada72d0a606",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/spec.py",
+    "target": "src/ammonia_optimizer/spec.py",
+    "source_sha256": "473c008fe6625c6e7f71001e893a875a2e5eb50c709a7939c5aff0869d0b6717",
+    "packaged_sha256": "473c008fe6625c6e7f71001e893a875a2e5eb50c709a7939c5aff0869d0b6717",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/superstructure.py",
+    "target": "src/ammonia_optimizer/superstructure.py",
+    "source_sha256": "241d8bec03210481b2bae50c25686e9f5c5ae0e5b5cf3041faeddd72a38aef3a",
+    "packaged_sha256": "1093e17204c1c0a66dc967d205a8d8ec7c5e64bd9bfb2fd3a3a6b4d59227a9fa",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/src/ammonia_optimizer/__init__.py",
+    "target": "src/ammonia_optimizer/__init__.py",
+    "source_sha256": "18217a352c1e6363c2c3e057c7e675a8ba6bf05defdc411a5d157bf139abe8d3",
+    "packaged_sha256": "60cc1de9799494d4736cfe71234a917e5af074bd8afc5897cfddf66166c96937",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_flowsheet.py",
+    "target": "tests/test_flowsheet.py",
+    "source_sha256": "0a86110406fdecabe41c4d383bd58912c8b0d3593245effdd462597344bd6632",
+    "packaged_sha256": "ced5faedb31ca2b1e064c87e6e9b9f83777cf8afad9af8603e3319f3390e5ec8",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_interactive_aspen.py",
+    "target": "tests/test_interactive_aspen.py",
+    "source_sha256": "b46291b3a853585033b4f3ba86786c922a28d5bd516692a503fc802dd89c0c81",
+    "packaged_sha256": "b46291b3a853585033b4f3ba86786c922a28d5bd516692a503fc802dd89c0c81",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_parameters.py",
+    "target": "tests/test_parameters.py",
+    "source_sha256": "eb1b2d6c693212dda2dadf5fbe50efc1227e7dbca90ce1bf9d4b5d68c4bff5d9",
+    "packaged_sha256": "287da74719ec43ce7cdb5fffd2b665c4ae5771c53d2520bc7f61f54f8837525a",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_physics.py",
+    "target": "tests/test_physics.py",
+    "source_sha256": "65249b5acc8ad8269fc09481cec725e22e38cf8d2a558405db4c79ce0e9cee4c",
+    "packaged_sha256": "65249b5acc8ad8269fc09481cec725e22e38cf8d2a558405db4c79ce0e9cee4c",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_physics_constraints.py",
+    "target": "tests/test_physics_constraints.py",
+    "source_sha256": "7e38257a3b52cd630a8b9d62578a5634034707b260043c5a30714412d5b6139b",
+    "packaged_sha256": "7e38257a3b52cd630a8b9d62578a5634034707b260043c5a30714412d5b6139b",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_stream_routes.py",
+    "target": "tests/test_stream_routes.py",
+    "source_sha256": "bb678978f2fb7aaa1be03c9060d74a14e460232f02a4b6239c32a27b60061d3a",
+    "packaged_sha256": "6021e2f9337f048e68855dcde0afaaa3cc1ac4c22771e6eb348245305891eef1",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/tests/test_superstructure.py",
+    "target": "tests/test_superstructure.py",
+    "source_sha256": "73625d4276f728cd6471100e876b3f82fa743419bf356659ffedd69b1f0cb504",
+    "packaged_sha256": "8a67cd6dab7f3062ce2b2f76cf2bff0571d2da2dacb34e94ec51b74cf2fcd9c4",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/baseline.json",
+    "target": "configs/baseline.json",
+    "source_sha256": "02b506d56eed4cfdce54f19abec1e80bf18b51ca5b09c98d3599e1b532a2f365",
+    "packaged_sha256": "02b506d56eed4cfdce54f19abec1e80bf18b51ca5b09c98d3599e1b532a2f365",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/configs/case_status.json",
+    "target": "configs/case_status.json",
+    "source_sha256": "87545086e438e1a87b17abe7f2945ca9fe5b53eb570e3626697b17f507ff5b78",
+    "packaged_sha256": "36c8bb95b59c75ff5e846e8a44234b5c6e5712d7ad7e3ac006aac354f9d11604",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/flowsheet.json",
+    "target": "configs/flowsheet.json",
+    "source_sha256": "710fce74be43101129efcb8b5e103bc66bc39b0fcd1acffb5220d72fadb152c8",
+    "packaged_sha256": "4c2e9be2bb17f6ca93eac4f1a392b16fdae45b043e22d84083a9df615ff2697c",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/lca_basis.json",
+    "target": "configs/lca_basis.json",
+    "source_sha256": "0a1c48dcbda00faf4e7998c1d9891b26e3a00831fd611e995514ac1d4823927e",
+    "packaged_sha256": "1c69f116a3b0098fbb04f474092e2b9a7a19ffddd785f34a61f06b3eb6241648",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/literature_protocol.json",
+    "target": "configs/literature_protocol.json",
+    "source_sha256": "7b4b105b93cc53244069673cb0abb7079c7644a899297640e708891b44576350",
+    "packaged_sha256": "f77a312c9e384d208d320fb84eaaee4d0f330c37ec848cb4e42a7bcba2488b93",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/operating_ranges.json",
+    "target": "configs/operating_ranges.json",
+    "source_sha256": "6b0e933576168c0442603a2794dce6f755a5fc40eb1c3f31c70c00f8cbf17495",
+    "packaged_sha256": "ca22abc8a2b4ad24ffb1cedc8589a4e36e538842cbc29c148808579691541048",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/operating_ranges_pending.json",
+    "target": "configs/operating_ranges_pending.json",
+    "source_sha256": "8dd3bcd897d622e8bbae1d1dc38e6bd6f001c8681802a1f6885e562061bd16c8",
+    "packaged_sha256": "434adb235546172b451d96894ffbca88904f82bce7599d6d1f458ba291da06dc",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/paper_review.json",
+    "target": "configs/paper_review.json",
+    "source_sha256": "586d1a59e8cbf2fe0705b146579033ef5a0885239c1827479f5524e4cddba25b",
+    "packaged_sha256": "10378821d04e20fa50f27bf10248a0e02a8bb4ec204271d043a86181f07e37c4",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/parameters.json",
+    "target": "configs/parameters.json",
+    "source_sha256": "66276cc58a28c797707489fa3298e6344319cd05723a731537abf32072531e3c",
+    "packaged_sha256": "2447ed18b2ed0859787c1b643fb1baec0566019224c6a14610f7f4599cdf583c",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/stream_routes.json",
+    "target": "configs/stream_routes.json",
+    "source_sha256": "14a1984ac024cd8d7ada90fa357bb22602115da6af5a80a01779d0030dcb3834",
+    "packaged_sha256": "14a1984ac024cd8d7ada90fa357bb22602115da6af5a80a01779d0030dcb3834",
+    "modified": false
+  },
+  {
+    "source": "ammonia_optimizer/configs/superstructure.json",
+    "target": "configs/superstructure.json",
+    "source_sha256": "d558a673f8b3d672610860b5316618e9bbbacfabfe980fb7b7d8670251ed8cd7",
+    "packaged_sha256": "97f85df8ead01bd6fb94eae7b65d876f65ea6e1808d01a8285aaa8ab52316478",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/superstructure_expanded.json",
+    "target": "configs/superstructure_expanded.json",
+    "source_sha256": "382568cf10682445d9876140bcaa59fb373b681a9c7f5fb3b6a8ace37d74b2a2",
+    "packaged_sha256": "35bf3c14e6ed40ac366a7d79aa611725db8273457422adf23435a5c5646de1de",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/tea_basis.json",
+    "target": "configs/tea_basis.json",
+    "source_sha256": "53e4562d5eabee12cd31aadc4e65735fd9ea27dff97fba114d99d7a60902da4c",
+    "packaged_sha256": "5f81917a03fbc49bde1a51af4f38ab5a900c18102089893f4846181532e6e9f7",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/configs/thermo_nasa7.json",
+    "target": "configs/thermo_nasa7.json",
+    "source_sha256": "327dcab8d71f74acbeef6af89ce5e714d06096321af32ec82000b42b0b1582b9",
+    "packaged_sha256": "499b1f42dabd1973d1f0291c8a9b36b29cdaf76c602ff1e5b249c41e3f490597",
+    "modified": true
+  },
+  {
+    "source": "aspen_automation/src/aspen_automation/session.py",
+    "target": "src/aspen_automation/session.py",
+    "source_sha256": "38af8cbf80a3b341d56bf3323a7dba6ec6caf3e0be240c48c18c8897f9509699",
+    "packaged_sha256": "38af8cbf80a3b341d56bf3323a7dba6ec6caf3e0be240c48c18c8897f9509699",
+    "modified": false
+  },
+  {
+    "source": "aspen_automation/src/aspen_automation/__init__.py",
+    "target": "src/aspen_automation/__init__.py",
+    "source_sha256": "90da2022f4d9f9dfd8de2d8d3d38b0f26488ab77c130f9614ccc625082d4a756",
+    "packaged_sha256": "90da2022f4d9f9dfd8de2d8d3d38b0f26488ab77c130f9614ccc625082d4a756",
+    "modified": false
+  },
+  {
+    "source": "aspen_automation/tests/test_session.py",
+    "target": "tests/test_session.py",
+    "source_sha256": "efd610e7771bf59773ef1467c4a17949eea4291d9dde90ed0d114dd524b909eb",
+    "packaged_sha256": "efd610e7771bf59773ef1467c4a17949eea4291d9dde90ed0d114dd524b909eb",
+    "modified": false
+  },
+  {
+    "source": "aspen_automation/config/model_map.template.json",
+    "target": "configs/model_map.template.json",
+    "source_sha256": "f57843ed098dc7af924c4a9017f3d3ea95c992021d93fd1514ab333c57cc4217",
+    "packaged_sha256": "f57843ed098dc7af924c4a9017f3d3ea95c992021d93fd1514ab333c57cc4217",
+    "modified": false
+  },
+  {
+    "source": "SOFC/17_All_Cases_Review/outputs/case_review_20260911/Expanded_Review_1619.csv",
+    "target": "tests/fixtures/case_review_20260911/Expanded_Review_1619.csv",
+    "source_sha256": "e622183f3a10a6df1c02f261257dbdf0dcbeeb27316544a75cb4dc59684ff656",
+    "packaged_sha256": "ebbe7cd3d6161410199479ddf3abde793d41dfa4ac490538bcdea9c6f4c45220",
+    "modified": true
+  },
+  {
+    "source": "ammonia_optimizer/scripts/generate_case_matrix.py",
+    "target": "scripts/generate_case_matrix.py",
+    "source_sha256": "d87911de7f69bf1857f380bd529b305a285680e68a754cefd307b63e1c0d3466",
+    "packaged_sha256": "d87911de7f69bf1857f380bd529b305a285680e68a754cefd307b63e1c0d3466",
+    "modified": false
+  },
+  {
+    "source": "Paper_Code_Release_20261102/ammonia-process-automation/scripts/open_model.py",
+    "target": "scripts/open_model.py",
+    "source_sha256": "9befedf4000737c0fbf80ac2acee3ff972fc834328355a4a60bf98a50f18b9e8",
+    "packaged_sha256": "2fd43f90a209bb7d7a8d28dfcc1c36ef3707e7ad02d65fc0b49beaac5c451667",
+    "modified": true
+  },
+  {
+    "source": "Paper_Code_Release_20261102/ammonia-process-automation/scripts/verify_snapshot.py",
+    "target": "scripts/verify_snapshot.py",
+    "source_sha256": "a52adbb44ea730cd630e3d46a7ebe2023167bb1bb2323d3946c8c7f99c5fe602",
+    "packaged_sha256": "01504986d8b3be736d4d6073ab8a1e7cbbc3638a00d71119c56ac327c1f0bebd",
+    "modified": true
+  },
+  {
+    "source": "Paper_Code_Release_20261102/ammonia-process-automation/.gitignore",
+    "target": ".gitignore",
+    "source_sha256": "3bbfab8ba737fe28ee42623c87f50f9348ad97f61ded2468aa2c498f64117fb8",
+    "packaged_sha256": "83f05c0a8f46f7a9c8e070c613182c4bfc28e420ac0c6753c5315c7e50f74513",
+    "modified": true
+  },
+  {
+    "source": "Paper_Code_Release_20261102/ammonia-process-automation/CONTRIBUTING.md",
+    "target": "CONTRIBUTING.md",
+    "source_sha256": "7e54d1ef54262da8091978cd836a1897b82d33449cbe1ca5e25fa9f250c51b34",
+    "packaged_sha256": "2f026ee14af6488b74f765ae8cea167ea37449123f0e2f9134009d885ce8417d",
+    "modified": true
+  },
+  {
+    "source": "Paper_Code_Release_20261102/ammonia-process-automation/docs/BENCHMARKS.md",
+    "target": "docs/BENCHMARKS.md",
+    "source_sha256": "21543ef6cdbd40b53a2c3abb6af084b8130bdeebcd7d918c556e4ac4d1258da0",
+    "packaged_sha256": "0622149cc068ddbce57b31f9bf6465a5dfa1b3987a1932b8b6947c61da2a198e",
+    "modified": true
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/audits.py",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/audits.py",
+    "source_sha256": "d80977b8823928089471a3ff395c28ea4ecd387cc457223d1e950641d799b47f",
+    "packaged_sha256": "5fe77ae5e1eb8c3cce493d9149b053b0dd5d6671fd6d16c25abf44d3984e1181",
+    "modified": true
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/case_calculation.py",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/case_calculation.py",
+    "source_sha256": "81a6e3fab8fd45165f74cb4a4b8070303e36bb60b333a534f7edb2c6dd1151ad",
+    "packaged_sha256": "54444f0ad783a5cf6e218552b8cedfea18152e2fe433fb81ec56002c097c7fa8",
+    "modified": true
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/durable_json.py",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/durable_json.py",
+    "source_sha256": "e4ac8737b16e6a72fe5821075cb2d3bc3b43de8a0aa4f840e3504d68ac8bb257",
+    "packaged_sha256": "e4ac8737b16e6a72fe5821075cb2d3bc3b43de8a0aa4f840e3504d68ac8bb257",
+    "modified": false
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/Baseline_Config.json",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/Baseline_Config.json",
+    "source_sha256": "7ed062ad3ce67ef566da0b39e36a894177994cb37bb5a08cfdf72965328aca00",
+    "packaged_sha256": "351101e8d698b48214b409de67ecf78b5033be5b423b0eab53baf9656671c738",
+    "modified": true
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/Protocol.json",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/Protocol.json",
+    "source_sha256": "db04ca4357a07607702bbb1171af9d1037c97bc006a4a8ecd6070290ce24117a",
+    "packaged_sha256": "2be099b0e12f727128c1f70d9d915a4d9564096e70e67304ff04de660d00326e",
+    "modified": true
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/batch_worker.py",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/batch_worker.py",
+    "source_sha256": "ff6e6b6de654d859d737295648e0d429df52d5727b64281e7872ee6882cc1e1a",
+    "packaged_sha256": "f8e25c80ab6cdfbf0726ba1f25da84f8cb4ce7a4763d1bddd481f3fce644a907",
+    "modified": true
+  },
+  {
+    "source": "SOFC/18_Thermodynamic_Revision/campaign_controller.py",
+    "target": "reproduction/baseline/SOFC/18_Thermodynamic_Revision/campaign_controller.py",
+    "source_sha256": "5f158969e2f7cc5a10e7883b0fcd29e3c02931bae91ab93424b433863b7ab1cf",
+    "packaged_sha256": "49a3020ce9ff16b265b04717f2e7976c619d58090006fc112f8b601eeeb6ee2c",
+    "modified": true
+  },
+  {
+    "source": "SOFC/03_Model/electrochemistry.py",
+    "target": "reproduction/baseline/SOFC/03_Model/electrochemistry.py",
+    "source_sha256": "733bbc7bb2146ad930f8733dc355d88d834844c5fae1d8bdf0d75895f87ac3f0",
+    "packaged_sha256": "733bbc7bb2146ad930f8733dc355d88d834844c5fae1d8bdf0d75895f87ac3f0",
+    "modified": false
+  },
+  {
+    "source": "SOFC/03_Model/sofc_model.py",
+    "target": "reproduction/baseline/SOFC/03_Model/sofc_model.py",
+    "source_sha256": "667306153aec7b02f5ecec4246252cef597409536d90a984340ff926c3d8bf16",
+    "packaged_sha256": "667306153aec7b02f5ecec4246252cef597409536d90a984340ff926c3d8bf16",
+    "modified": false
+  },
+  {
+    "source": "C0295_source_prepare_capture_v6_candidate_20261102_v1/capture_prepare.py",
+    "target": "research/c0295_source_capture_v6/capture_prepare.py",
+    "source_sha256": "1ee38c978b144d2e3ff8cb9413e06feae61c524609ab7b69c6997d18dbc8aa1b",
+    "packaged_sha256": "1ee38c978b144d2e3ff8cb9413e06feae61c524609ab7b69c6997d18dbc8aa1b",
+    "modified": false
+  },
+  {
+    "source": "C0295_source_prepare_capture_v6_candidate_20261102_v1/test_capture.py",
+    "target": "research/c0295_source_capture_v6/test_capture.py",
+    "source_sha256": "106194450773637846658cca74d86f22c7b308d2a017d4951d011580fe601713",
+    "packaged_sha256": "106194450773637846658cca74d86f22c7b308d2a017d4951d011580fe601713",
+    "modified": false
+  }
+]
