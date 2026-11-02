@@ -1,0 +1,171 @@
+{
+  "model_id": "C0421_THERMO_16D_20260911",
+  "seed": 20260912,
+  "variables": [
+    {
+      "key": "cracker_feed_kmol_h",
+      "lower": 90.0,
+      "upper": 105.0,
+      "baseline": 100.0,
+      "unit": "kmol/h",
+      "description": "Cracker inlet including recycle",
+      "kind": "operating"
+    },
+    {
+      "key": "fuel_utilization",
+      "lower": 0.6,
+      "upper": 0.8,
+      "baseline": 0.7,
+      "unit": "fraction",
+      "description": "SOFC fuel utilization",
+      "kind": "operating"
+    },
+    {
+      "key": "temperature_C",
+      "lower": 700.0,
+      "upper": 825.0,
+      "baseline": 750.0,
+      "unit": "C",
+      "description": "SOFC R2 and air heater H1 temperature",
+      "kind": "operating"
+    },
+    {
+      "key": "pressure_bar",
+      "lower": 1.05,
+      "upper": 1.18,
+      "baseline": 1.1,
+      "unit": "bar",
+      "description": "SOFC and linked downstream fuel pressure",
+      "kind": "operating"
+    },
+    {
+      "key": "oxygen_utilization",
+      "lower": 0.15,
+      "upper": 0.3,
+      "baseline": 0.2,
+      "unit": "fraction",
+      "description": "S1 O2 transfer and SOFC air feed",
+      "kind": "operating"
+    },
+    {
+      "key": "ice_fresh_NH3_kmol_h",
+      "lower": 10.0,
+      "upper": 20.0,
+      "baseline": 15.0,
+      "unit": "kmol/h",
+      "description": "ICE additional NH3 stream 07",
+      "kind": "operating"
+    },
+    {
+      "key": "ice_lambda",
+      "lower": 1.1,
+      "upper": 1.5,
+      "baseline": 1.2,
+      "unit": "ratio",
+      "description": "ICE excess air stream 09",
+      "kind": "operating"
+    },
+    {
+      "key": "fuel_preheat_C",
+      "lower": 120.0,
+      "upper": 180.0,
+      "baseline": 150.0,
+      "unit": "C",
+      "description": "H2 fuel preheat outlet",
+      "kind": "operating"
+    },
+    {
+      "key": "norr_feed_C",
+      "lower": 30.0,
+      "upper": 45.0,
+      "baseline": 35.0,
+      "unit": "C",
+      "description": "H3 process gas preparation temperature",
+      "kind": "operating"
+    },
+    {
+      "key": "exhaust_cooling_C",
+      "lower": 45.0,
+      "upper": 65.0,
+      "baseline": 45.0,
+      "unit": "C",
+      "description": "H6 exhaust cooler outlet",
+      "kind": "operating"
+    },
+    {
+      "key": "orc_high_pressure_bar",
+      "lower": 11.5,
+      "upper": 13.5,
+      "baseline": 12.5747941,
+      "unit": "bar",
+      "description": "P1 ORC high-side pressure",
+      "kind": "operating"
+    },
+    {
+      "key": "NO_capture_fraction",
+      "lower": 0.85,
+      "upper": 0.98,
+      "baseline": 0.95,
+      "unit": "fraction",
+      "description": "S2 NO component split to stream 37",
+      "kind": "separation_performance_assumption"
+    },
+    {
+      "key": "NH3_recovery_fraction",
+      "lower": 0.85,
+      "upper": 0.98,
+      "baseline": 0.95,
+      "unit": "fraction",
+      "description": "S4 NH3 component split to stream 44",
+      "kind": "separation_performance_assumption"
+    },
+    {
+      "key": "cracker_temperature_C",
+      "lower": 600.0,
+      "upper": 625.0,
+      "baseline": 610.0,
+      "unit": "C",
+      "description": "Controlled R1 outlet temperature by fired-fuel rate",
+      "kind": "operating"
+    },
+    {
+      "key": "cracker_pressure_bar",
+      "lower": 2.0,
+      "upper": 4.0,
+      "baseline": 3.0,
+      "unit": "bar",
+      "description": "Actual R1 pressure, separate from SOFC pressure",
+      "kind": "operating"
+    },
+    {
+      "key": "cracker_conversion",
+      "lower": 0.991,
+      "upper": 0.995,
+      "baseline": 0.993,
+      "unit": "fraction",
+      "description": "Assumed catalyst performance, must remain below equilibrium",
+      "kind": "reaction_performance_assumption"
+    }
+  ],
+  "input_sha256": "773bc016173ed265ec77f4f5d0de8feb966b079898ac38ae45295f740a9160a7",
+  "sampling": "Sequential screened multivariate Latin hypercube candidates; retain all rejected candidates; final 1000 accepted conditions",
+  "target": "net_AC_efficiency_LHV",
+  "scope": "Thermodynamically screened conditional research model; no experimental engine/catalyst validation",
+  "acceptance": {
+    "global_mass_kg_h": 0.001,
+    "block_mass_kg_h": 0.001,
+    "global_energy_kW": 0.001,
+    "block_energy_kW": 0.001,
+    "allocation_energy_kW": 0.002,
+    "element_kmol_atoms_h": 0.0001,
+    "coupling_kmol_h": 1e-06,
+    "HX_approach_K": 20,
+    "ORC_exit_quality": 0.85,
+    "all_blocks_status": 0,
+    "thermal_heater_and_dump_kW": 1500,
+    "cracker_equilibrium_margin_fraction": 0.0005,
+    "cracker_heat_approach_K": 20.0,
+    "cracker_temperature_K": 0.001
+  },
+  "range_revision": "Candidate ranges require boundary and joint screening. No claim of kinetic validation."
+}
